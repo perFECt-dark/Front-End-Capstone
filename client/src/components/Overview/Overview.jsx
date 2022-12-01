@@ -1,3 +1,5 @@
+/* eslint-disable import/no-duplicates */
+/* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import { useState } from 'react';
@@ -7,7 +9,7 @@ import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 
 const Overview = () => {
-  /* n eed a usestate for current selected style
+  /* need a usestate for current selected style
   FOR SELECTED STYLE I NEED TO SHOW
     IMAGE
     STAR RATING
