@@ -1,3 +1,3 @@
 # Front-End-Capstone
 -------------------------
-We're starting here
+We're starting!
