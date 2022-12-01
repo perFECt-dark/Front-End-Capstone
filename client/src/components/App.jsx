@@ -4,7 +4,8 @@ const App = () => {
   return (
   <div>
     Hello World!
-  </div>)
+  </div>
+  );
 };
 
 export default App;
