@@ -1,6 +1,7 @@
+/* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
-import Thumbnail from './renderOne/Thumbnail.jsx'
+import Thumbnail from './renderOne/Thumbnail.jsx';
 
 const Gallery = () => {
   const placeholder = {

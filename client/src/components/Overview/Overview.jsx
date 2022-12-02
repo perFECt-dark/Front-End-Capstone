@@ -39,6 +39,7 @@ const Overview = () => {
     border: '15px solid pink',
     margin: '10px',
   };
+  setProductStyle();
   return (
     <div>
       <Gallery current={productStyle} />
