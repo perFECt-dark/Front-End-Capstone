@@ -1,17 +1,10 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import Select from 'react-select';
 
 const AddToCart = () => {
-  const placeholder = {
-    position: 'relative',
-    float: 'left',
-    width: '30%',
-    padding: '15px',
-    border: '10px solid blue',
-    margin: '0 10px',
-  };
   const sizes = [
     { value: 'select', label: 'Select Size' },
     { value: 'xs', label: 'XS' },
@@ -30,7 +23,7 @@ const AddToCart = () => {
   const [size, setSize] = React.useState(sizes[0]);
   const [amount, setAmount] = React.useState(quantity[0]);
   return (
-    <div style={placeholder} id="cart-box" className="right-col">
+    <div id="cart-box" className="right-col">
       <Select
         defaultValue={size}
         onChange={setSize}
@@ -41,6 +34,7 @@ const AddToCart = () => {
         onChange={setAmount}
         options={quantity}
       />
+      <button className="button">Add to Cart</button>
     </div>
   );
 };

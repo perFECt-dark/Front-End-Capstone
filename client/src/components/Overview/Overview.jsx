@@ -27,27 +27,25 @@ const Overview = () => {
       QUANTITY DROPDOWN
       ADD TO CART BUTTON
     */
-  const [productStyle, setProductStyle] = useState([]);
   // going to get product when we fetch from the api
-
-  const placeholder = {
-    float: 'left',
-    height: '100px',
-    width: 'calc(80% + 100px)',
-    maxWidth: '90%',
-    padding: '15px',
-    border: '15px solid pink',
-    margin: '10px',
-  };
-  setProductStyle();
+  const [currentProduct, setCurrentProduct] = useState([]);
+  // incoming data
   return (
     <div>
-      <Gallery current={productStyle} />
-      <Information />
-      <StyleSelector />
-      <AddToCart />
-      <div style={placeholder} id="description-box">
+      <Gallery current={currentProduct} />
+      <div className="right-col-container">
+        <Information />
+        <StyleSelector />
+        <AddToCart />
+      </div>
+      <div id="description-box">
         Description
+      </div>
+      <div id="share-buttons">
+        Share to:
+        <div className="facebook" />
+        <div className="instagram" />
+        <div className="pinterest" />
       </div>
     </div>
   );

@@ -1,0 +1,145 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+OVER VIEW CSS ELEMENTS
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+*/
+
+#main-image {
+  position: 'relative';
+  float: left;
+  height: 400px;
+  width: 50%;
+  max-width: 700px;
+  padding: 30px;
+  border: 2px solid black;
+  margin: 10px;
+  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=500");
+}
+
+#right-info-box {
+  position: relative;
+  float: left;
+  width: 30%;
+  padding: 5px 15px;
+  border: 2px solid black;
+  margin: 10px 10px 0px 10px;
+}
+
+#description-box {
+  float: left;
+  height: 100px;
+  width: calc(80% + 88px);
+  max-width: 90%;
+  padding: 15px;
+  border: 2px solid black;
+  margin: 10px;
+}
+
+#selection-box {
+  width: 30%;
+  padding: 15px;
+  border: 2px solid black;
+  margin: 10px;
+}
+
+#cart-box {
+  position: relative;
+  float: left;
+  max-height: 100px;
+  width: 30%;
+  padding: 15px;
+  border: 2px solid black;
+  margin: 0 10px 10px 10px;
+}
+
+.right-col {
+  float:left;
+  max-width: calc(400px - 1.5rem);
+  max-height: 400px;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.style-icons {
+  float: left;
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
+}
+
+#share-buttons {
+  float: left;
+  flex-flow: row nowrap;
+  width: 40%;
+  position: relative;
+  border: 2px solid black;
+}
+
+.facebook {
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png");
+}
+
+.instagram {
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png");
+}
+
+.pinterest {
+  height: 50px;
+  width: 50px;
+  border: 2px solid black;
+  background-image: url("https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png");}

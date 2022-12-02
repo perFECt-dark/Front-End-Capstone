@@ -9,9 +9,11 @@ const StyleSelector = () => {
   const placeholder = {
     position: 'relative',
     float: 'left',
+    maxHeight: '200px',
     width: '30%',
     padding: '15px',
-    border: '10px solid purple',
+    border: '2px solid black',
+    topBorder: '0px',
     margin: '0 10px',
     flexWrap: 'wrap',
   };
