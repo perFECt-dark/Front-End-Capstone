@@ -3,17 +3,29 @@ import React from 'react';
 import Thumbnail from './Thumbnail.jsx'
 
 const Gallery = () => {
-  const currentImg = 'placeholder';
+  const placeholder = {
+    float: 'left',
+    height: '400px',
+    width: '50%',
+    maxWidth: '700px',
+    padding: '30px',
+    border: '15px solid green',
+    margin: '10px',
+    backgroundImage: 'url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=500")',
+  };
   const thumbnails = []; // placeholder array
   return (
     <div id="main-image">
-      <img src={currentImg} alt="" />
+      <div style={placeholder} />
       <div className="thumbnails">
-        {thumbnails.map((image) => (
-          <Thumbnail image={image} />
-        ))}
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
+        <Thumbnail />
       </div>
-      Gallery
     </div>
   );
 };

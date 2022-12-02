@@ -4,6 +4,13 @@ import React from 'react';
 import Select from 'react-select';
 
 const AddToCart = () => {
+  const placeholder = {
+    float: 'left',
+    width: '30%',
+    padding: '15px',
+    border: '10px solid blue',
+    margin: '0 10px',
+  };
   const sizes = [
     { value: 'select', label: 'Select Size' },
     { value: 'xs', label: 'XS' },
@@ -15,14 +22,14 @@ const AddToCart = () => {
     { value: 'xxxl', label: 'XXXL' },
   ];
   const quantity = [];
+  // will have to change this depending on product stock
   for (var i = 1; i < 16; i++) {
     quantity.push({ value: `${i}`, label: `${i}` });
   }
-  console.log(quantity);
   const [size, setSize] = React.useState(sizes[0]);
   const [amount, setAmount] = React.useState(quantity[0]);
   return (
-    <div id="cart-box" className="right-col">
+    <div style={placeholder} id="cart-box" className="right-col">
       <Select
         defaultValue={size}
         onChange={setSize}
@@ -31,7 +38,7 @@ const AddToCart = () => {
       <Select
         defaultValue={amount}
         onChange={setAmount}
-        options={amount}
+        options={quantity}
       />
     </div>
   );
