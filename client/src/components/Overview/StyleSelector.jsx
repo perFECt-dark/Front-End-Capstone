@@ -1,16 +1,18 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
-import StyleEntry from './StyleEntry.jsx';
+import StyleEntry from './renderOne/StyleEntry.jsx';
 
 const StyleSelector = () => {
   var selected = 'SELECTED STYLE';
   const placeholder = {
+    position: 'relative',
     float: 'left',
     width: '30%',
     padding: '15px',
     border: '10px solid purple',
     margin: '0 10px',
+    flexWrap: 'wrap',
   }
   return (
     <div style={placeholder} id="selection-box" className="right-col">

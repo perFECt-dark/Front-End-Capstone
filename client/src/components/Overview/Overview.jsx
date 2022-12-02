@@ -41,7 +41,6 @@ const Overview = () => {
   };
   return (
     <div>
-      Overview
       <Gallery current={productStyle} />
       <Information />
       <StyleSelector />

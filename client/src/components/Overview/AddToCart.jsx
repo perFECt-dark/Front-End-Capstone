@@ -5,6 +5,7 @@ import Select from 'react-select';
 
 const AddToCart = () => {
   const placeholder = {
+    position: 'relative',
     float: 'left',
     width: '30%',
     padding: '15px',
@@ -23,7 +24,7 @@ const AddToCart = () => {
   ];
   const quantity = [];
   // will have to change this depending on product stock
-  for (var i = 1; i < 16; i++) {
+  for (let i = 1; i < 16; i += 1) {
     quantity.push({ value: `${i}`, label: `${i}` });
   }
   const [size, setSize] = React.useState(sizes[0]);

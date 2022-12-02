@@ -1,9 +1,10 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
-import Thumbnail from './Thumbnail.jsx'
+import Thumbnail from './renderOne/Thumbnail.jsx'
 
 const Gallery = () => {
   const placeholder = {
+    position: 'relative',
     float: 'left',
     height: '400px',
     width: '50%',
@@ -13,7 +14,6 @@ const Gallery = () => {
     margin: '10px',
     backgroundImage: 'url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=500")',
   };
-  const thumbnails = []; // placeholder array
   return (
     <div id="main-image">
       <div style={placeholder} />

@@ -4,6 +4,7 @@ import React from 'react';
 
 const Information = () => {
   const placeholder = {
+    position: 'relative',
     float: 'left',
     width: '30%',
     padding: '15px',
@@ -13,8 +14,8 @@ const Information = () => {
   return (
     <div style={placeholder} id="all-product-info">
       <div id="right-info-box" className="right-col">
-        <h3> ⭐⭐⭐⭐⭐ Read all (#) Reviews </h3>
-        <h4> Category </h4>
+        <h6> ⭐⭐⭐⭐⭐ Read all (#) Reviews </h6>
+        <h5> Category </h5>
         <h3> Product Name </h3>
         Price
       </div>
