@@ -7,6 +7,10 @@ const Information = () => {
     <div id="all-product-info">
       <div id="right-info-box" className="right-col">
         Information
+        <h3> ⭐⭐⭐⭐⭐ Read all (#) Reviews </h3>
+        <h4> Category </h4>
+        <h3> Product Name </h3>
+        Price
       </div>
     </div>
   );

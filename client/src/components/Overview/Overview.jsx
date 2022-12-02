@@ -28,7 +28,7 @@ const Overview = () => {
       ADD TO CART BUTTON
     */
   const [product, setProduct] = useState([]);
-
+  // going to get product when we fetch from the api
   return (
     <div>
       Overview

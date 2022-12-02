@@ -4,11 +4,14 @@ import Thumbnail from './Thumbnail.jsx'
 
 const Gallery = () => {
   const currentImg = 'placeholder';
+  const thumbnails = []; // placeholder array
   return (
     <div id="main-image">
       <img src={currentImg} alt="" />
       <div className="thumbnails">
-        <Thumbnail />
+        {thumbnails.map((image) => (
+          <Thumbnail image={image} />
+        ))}
       </div>
       Gallery
     </div>

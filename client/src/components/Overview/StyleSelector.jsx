@@ -3,9 +3,12 @@
 import React from 'react';
 
 const StyleSelector = () => {
+  var selected = 'SELECTED STYLE';
   return (
     <div id="selection-box" className="right-col">
-      Style Selector
+      <h4> Style > {selected}</h4>
+
+
     </div>
   );
 };
