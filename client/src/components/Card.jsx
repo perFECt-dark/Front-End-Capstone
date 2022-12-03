@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+// import propTypes from 'prop-types';
 import React from 'react';
 
 function Card({ product }) {
@@ -17,12 +17,13 @@ function Card({ product }) {
     //     {product.results.sale_price}
     //   </div>
     // </div>
-    <div>Hello</div>
+    <div>When this stupid propType works, put card here</div>
   );
 }
 
-Card.propTypes = {
-  product: propTypes.objectOf(propTypes.object()).isRequired,
-};
+//trying to use prop type breaks everything, even though its a dependency and after npm install, so I commented everything in card and just return a div
+// Card.propTypes = {
+//   product: propTypes.objectOf(propTypes.object()).isRequired,
+// };
 
 export default Card;

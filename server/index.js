@@ -1,13 +1,14 @@
+import router from './router';
+
 const express = require('express');
-const router = require('./router.js');
+// const router = require('./router.js');
 
 const app = express();
 // add .env support
 const PORT = 3000 || process.env.PORT;
 
 app.use(express.json());
-//app.use(express.urlencoded());
-
+// app.use(express.urlencoded());
 
 app.use('/', router);
 
