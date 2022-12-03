@@ -3,6 +3,7 @@ import Reviews from './Reviews.jsx';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+import '../styles.css';
 
 function App() {
 
@@ -34,12 +35,12 @@ function App() {
   useEffect(() => {
 
     /// This effect inciates page with data
-    //grabInfo(40344);
+    grabInfo(40344);
 
   },[]);
 
 
-
+  // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
       <header className="primary-header container group" style={{backgroundColor: 'blue'}}>
@@ -51,8 +52,8 @@ function App() {
         <h3 className="tagline">_______________ Search</h3>
 
       </header>
-      {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews}/>}
-      <FontAwesomeIcon icon={regular('star')} size="6x" />
+      {productData !== null && <Reviews metaData={productData.meta} reviewData={productData.reviews}/>}
+
   </div>
 
   );

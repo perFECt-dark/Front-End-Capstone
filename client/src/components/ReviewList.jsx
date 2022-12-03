@@ -75,33 +75,32 @@ const ReviewList = (props) => {
 
   return (
 
-    <li style={{borderTop: '1px solid grey'}}>
-      <div style={gridSyle}>
+    <li style={{borderTop: '1px solid grey', paddingTop: '10px'}}>
 
-        <div style={colUser}>
 
-          <h1 style={{paddingTop: '10px'}}>{props.reviewItem.reviewer_name}</h1><br></br>
+        <div className="col-1-5">
+
+          <h3 style={{paddingTop: '10px'}}>{props.reviewItem.reviewer_name}</h3><br></br>
           <p>{props.reviewItem.date}</p>
 
-        </div><aside style={colReview}>
+        </div><aside className="col-1-3" style={{overflow: 'hidden'}}>
 
-          <h1>{stars}</h1>
-          <h1>{props.reviewItem.summary}</h1>
+          <h3>{stars}</h3>
+          <h3>{props.reviewItem.summary}</h3>
           <p>{props.reviewItem.body}</p>
 
 
-        </aside><aside style={colImage}>
+        </aside><aside className="col-1-3">
 
           {props.reviewItem.photos.length !== 0 && props.reviewItem.photos.map(photoObj =>
             <ReviewImage photo={photoObj} key={photoObj.id} />
             )}
 
-        </aside><aside style={colHelp}>
+        </aside><aside className="col-1-10">
 
           <p>👍 Helpful &#40;3&#41;</p>
         </aside>
 
-      </div>
     </li>
 
   )

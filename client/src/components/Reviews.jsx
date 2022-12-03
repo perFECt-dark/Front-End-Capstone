@@ -17,8 +17,8 @@ const Reviews = (props) => {
   }
 
 
-  const [reviews, setReviews] = useState({results: []});
-  const [meta, setMeta] = useState([]);
+  const [reviews, setReviews] = useState(props.reviewData);
+  const [meta, setMeta] = useState(props.metaData);
   const [stars, setStars] = useState({sizeStar: 'null',
     comfortStar: 'null',
     qualityStar: 'null'});
@@ -87,30 +87,34 @@ const Reviews = (props) => {
 
 
   return (
-  <section className="row" style={rowStyle}>
+  <section className="row">
 
-    <div className="grid giveBorder" style={gridSyle}>
+    <div className="grid" >
 
         <h2>Ratings and Reviews</h2>
 
         <section className="giveGrey" style={{backgroundColor: 'grey'}}>
 
-          <div className="col-1-3 verticalText" style={col23}>
+          <div className="col-1-3" style={{paddingTop: '20px'}}>
 
-              <h1 style={{paddingTop: '20px'}}>Average Rating</h1>
-              <h1>⭐⭐⭐ 3.5 Stars</h1>
+              <h2>Average Rating</h2>
+              <h2>⭐⭐⭐ 3.5 Stars</h2>
 
-          </div><aside className="col-1-3 verticalText" style={col13}>
+          </div><aside className="col-1-3">
 
-                    <h1>Size  <span>{stars.sizeStar}</span></h1>
-                    <h1>Comfort  <span>{stars.comfortStar}</span></h1>
-                    <h1>Quality  <span>{stars.qualityStar}</span></h1>
+
+
+            </aside><aside className="col-1-3" style={{paddingTop: '20px'}}>
+
+                    <h4>Size  <span>{stars.sizeStar}</span></h4>
+                    <h4>Comfort  <span>{stars.comfortStar}</span></h4>
+                    <h4>Quality  <span>{stars.qualityStar}</span></h4>
 
                 </aside>
 
         </section>
-        <section>
-          <ul style={{listStyle: 'none', padding:'0px 0px 0px 0px'}}>
+        <section style={{paddingTop: '10px'}}>
+          <ul>
             {reviews.results.length !== 0 && reviews.results.map(review =>
                   <ReviewList reviewItem={review} key={review.review_id}/>
               )}
@@ -119,12 +123,12 @@ const Reviews = (props) => {
         </section>
         <section style={{borderTop: '1px solid grey'}}>
 
-          <div className="col-1-3 verticalText" style={col23}>
+          <div className="col-1-3">
 
             <p style={addReview}>Add a Review</p>
 
 
-          </div><aside className="col-1-3 verticalText" style={pageNum}>
+          </div><aside className="col-1-3">
 
             <p>&#60; <span style={{fontWeight: 'bold'}}>1</span> 2 3 4 5 6 7 8 &#62;</p>
 
