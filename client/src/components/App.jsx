@@ -26,7 +26,7 @@ function App() {
   // });
 
   function grabInfo(productId) {
-    const newUrl = `http://localhost:3000/item/${ productId }`;
+    const newUrl = `http://localhost:3000/item/${productId}`;
     axios
       .get(newUrl)
       .then((update) => {
@@ -64,7 +64,7 @@ function App() {
         <Reviews metaData={productData.meta} reviewData={productData.reviews} />
       )}
       <FontAwesomeIcon icon={regular('star')} size="6x" />
-      <Card product={productData} />
+      {/* <Card product={productData.meta} /> */}
     </div>
   );
 }
