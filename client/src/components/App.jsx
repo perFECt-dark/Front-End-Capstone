@@ -39,6 +39,7 @@ function App() {
   },[]);
 
 
+
   return (
     <div>
       <header className="primary-header container group" style={{backgroundColor: 'blue'}}>
@@ -53,6 +54,7 @@ function App() {
       {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews}/>}
       <FontAwesomeIcon icon={regular('star')} size="6x" />
   </div>
+
   );
 }
 
