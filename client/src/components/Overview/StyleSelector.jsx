@@ -6,19 +6,8 @@ import StyleEntry from './renderOne/StyleEntry.jsx';
 
 const StyleSelector = () => {
   const selected = 'SELECTED STYLE';
-  const placeholder = {
-    position: 'relative',
-    float: 'left',
-    maxHeight: '200px',
-    width: '30%',
-    padding: '15px',
-    border: '2px solid black',
-    topBorder: '0px',
-    margin: '0 10px',
-    flexWrap: 'wrap',
-  };
   return (
-    <div style={placeholder} id="selection-box" className="right-col">
+    <div id="selection-box" className="right-col">
       <h4>
         Style:
         {selected}

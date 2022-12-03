@@ -31,7 +31,7 @@ const Overview = () => {
   const [currentProduct, setCurrentProduct] = useState([]);
   // incoming data
   return (
-    <div>
+    <div id="overview-container">
       <Gallery current={currentProduct} />
       <div className="right-col-container">
         <Information />
