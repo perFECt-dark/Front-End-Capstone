@@ -22,21 +22,12 @@ const Gallery = ({ current }) => {
     </div>
   );
   const [currentPhoto, setCurrentPhoto] = useState('');
-  let image = '';
-  useEffect(() => {
-    console.log('this is current: ', current);
-    if (Array.isArray(current) === false) {
-      image = current.results[0].photos[0].thumbnail_url;
-      console.log('image url: ', image);
-      setCurrentPhoto(image);
-    }
-  }, []);
   return (
-    <div className="gallery-area">
-      <div id="main-image" style={{ backgroundImage: `${currentPhoto}` }}>
+    <div className="gallery-area" style={{ backgroundSize: 'cover' }}>
+      <div id="main-image" style={{ }}>
         {/* <img className="loadedimage" src={image} alt="" /> */}
         {thumbnails}
-        <div className="leftrightarrows">
+        <div className="">
           {left}
           {right}
         </div>

@@ -9,7 +9,7 @@ import Information from './Information.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 
-const Overview = ({ info, styles }) => {
+const Overview = (props) => {
   /* need a usestate for current selected style
   FOR SELECTED STYLE I NEED TO SHOW
     IMAGE
@@ -51,39 +51,66 @@ const Overview = ({ info, styles }) => {
        }, ...
       ]
   */
-  const [currentProduct, setCurrentProduct] = useState([]);
+  const [currentProduct, setCurrentProduct] = useState({
+    product_id: 'null',
+    results: [],
+  });
+  const [currentInfo, setCurrentInfo] = useState({
+    category: 'null',
+    default_price: 'null',
+    description: 'null',
+    features: [],
+    name: 'null',
+    slogan: 'null',
+  });
+  const [meta, setMeta] = useState([]);
 
-  useEffect(() => {
-    const currentStyle = styles.results[0].style_id;
-    setCurrentProduct(styles);
-  }, [styles]);
-
+  useEffect(() => { }, [meta]);
+  const largePic = {
+    width: '50%',
+    height: '800px',
+    backgroundSize: '100% 100%',
+    // backgroundImage: 'url("https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80")',
+    backgroundImage: 'url("https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80")',
+  };
   // incoming data
   return (
-    <div id="overview-container">
-      <Gallery current={currentProduct} />
-      <div className="right-col-container">
-        <Information info={info} />
-        <StyleSelector style={currentProduct} />
-        <AddToCart />
+    <section className="row">
+      <div className="grid">
+        <section>
+          <div className="col-2-3" style={largePic}>
+            <Gallery current={currentProduct} />
+          </div>
+          <aside className="col-1-3" style={{ height: '800px', position: 'relative', float: 'right' }}>
+            <Information info={currentInfo} />
+            <StyleSelector style={currentProduct} />
+            <AddToCart />
+          </aside>
+        </section>
+        <section style={{ paddingTop: '20px' }}>
+          <div className="col-2-3">
+            <h3>{currentInfo.slogan}</h3>
+            <p>{currentInfo.description}</p>
+          </div>
+          <aside className="col-1-3">
+            <p>Features I will put</p>
+            {currentInfo.features.length !== 0 && currentInfo.features.map((feat) => (
+              <p>
+                {feat.feature}
+                -
+                {feat.value}
+              </p>
+            ))}
+            <div>
+              Share to:
+              <div className="facebook" />
+              <div className="instagram" />
+              <div className="pinterest" />
+            </div>
+          </aside>
+        </section>
       </div>
-      <div id="description-box">
-        <h3>{info.slogan}</h3>
-        <p>{info.description}</p>
-      </div>
-      <div id="features-box">
-        <p>Features I will put</p>
-        {/* info.features.map((ft) => (
-          <p>ft.feature - ft.value</p>
-          */}
-      </div>
-      <div id="share-buttons">
-        Share to:
-        <div className="facebook" />
-        <div className="instagram" />
-        <div className="pinterest" />
-      </div>
-    </div>
+    </section>
   );
 };
 
