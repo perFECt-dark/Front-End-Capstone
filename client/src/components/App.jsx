@@ -1,16 +1,12 @@
+import './Overview/overview.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-  icon,
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Reviews from './Reviews';
+import Overview from './Overview/Overview';
 import Card from './Card';
 // if you have the css file in another place, make sure to update the path and it's name if needed
-import '../styles.css';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -26,9 +22,8 @@ function App() {
   // });
 
   function grabInfo(productId) {
-    const newUrl = `http://localhost:3000/item/${ productId }`;
-    axios
-      .get(newUrl)
+    const newUrl = `http://localhost:3000/item/${productId}`;
+    axios.get(newUrl)
       .then((update) => {
         console.log('Here is our grabinfo: ', update.data);
         setProductData(update.data);
@@ -60,12 +55,11 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
-      {productData === 'Dont Render' && (
-        <Reviews metaData={productData.meta} reviewData={productData.reviews} />
-      )}
-      <FontAwesomeIcon icon={regular('star')} size="6x" />
-      <Card product={productData} />
+      {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
+      {productData !== null
+      && <Overview info={productData.productInfo} styles={productData.productStyles} />}
     </div>
+
   );
 }
 
