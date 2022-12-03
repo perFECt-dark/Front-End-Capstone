@@ -1,4 +1,4 @@
-//import propTypes from 'prop-types';
+import propTypes from 'prop-types';
 import React from 'react';
 
 function Card({ product }) {
@@ -21,8 +21,8 @@ function Card({ product }) {
   );
 }
 
-// Card.propTypes = {
-//   product: propTypes.objectOf(propTypes.object()).isRequired,
-// };
+Card.propTypes = {
+  product: propTypes.objectOf(propTypes.object()).isRequired,
+};
 
 export default Card;

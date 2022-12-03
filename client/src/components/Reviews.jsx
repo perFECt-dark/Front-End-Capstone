@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
 import axios from 'axios';
 
