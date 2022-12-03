@@ -54,13 +54,15 @@ OVER VIEW CSS ELEMENTS
 #overview-container{
   position: relative;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .gallery-area {
   display: inline-flex;
-  min-width: 50%;
-  max-width: 50%;
+  min-width: 40%;
+  width: 50%;
+  max-width: 70%;
   padding: auto;
   margin: auto;
 }
@@ -85,15 +87,13 @@ OVER VIEW CSS ELEMENTS
   flex-flow: column nowrap;
   border: 2px solid black;
   order: 2;
+  align-items: center;
 }
 
 #info-box {
-  position: relative;
   display: inline-flex;
   max-height: 100px;
-  width: 30%;
-  min-width: 300px;
-  max-width: calc(400px - 1.5rem);
+  width: 85%;
   padding: 15px;
   border: 2px solid black;
   margin: 10px 10px 10px 10px;
@@ -105,8 +105,7 @@ OVER VIEW CSS ELEMENTS
   display: inline-flex;
   max-height: 200px;
   min-width: 300px;
-  width: 30%;
-  max-width: calc(400px - 1.5rem);
+  width: 85%;
   padding: 15px;
   border: 2px solid black;
   margin: 10px;
@@ -117,7 +116,7 @@ OVER VIEW CSS ELEMENTS
   position: relative;
   max-height: 100px;
   min-width: 300px;
-  max-width: calc(400px - 1.5rem);
+  width: 85%;
   padding: 15px;
   border: 2px solid black;
   margin: 10px 10px 10px 10px;
@@ -154,33 +153,35 @@ OVER VIEW CSS ELEMENTS
   height: 50px;
   width: 50px;
   border: 2px solid black;
-  background-image: url("https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png");
+  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
 }
 
 .instagram {
   height: 50px;
   width: 50px;
   border: 2px solid black;
-  background-image: url("https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png");
+  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
 }
 
 .pinterest {
   height: 50px;
   width: 50px;
   border: 2px solid black;
-  background-image: url("https://cdn3.iconfinder.com/data/icons/free-social-icons/67/facebook_circle_color-512.png");
+  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
 }
 
 .leftrightarrows {
   display: inline-flex;
-  border: 2px solid black;
   justify-content: space-between;
+  width: 100%;
+  gap: 80%;
   align-items: center;
 }
 
 .expand {
-  display: flex;
-  align-items: flex-end;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
 }
 
 .thumbnails {
