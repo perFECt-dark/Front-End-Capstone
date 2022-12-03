@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Reviews from './Reviews.jsx';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 function App() {
 
@@ -32,7 +34,7 @@ function App() {
   useEffect(() => {
 
     /// This effect inciates page with data
-    grabInfo(40344);
+    //grabInfo(40344);
 
   },[]);
 
@@ -49,6 +51,7 @@ function App() {
 
       </header>
       {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews}/>}
+      <FontAwesomeIcon icon={regular('star')} size="6x" />
   </div>
   );
 }

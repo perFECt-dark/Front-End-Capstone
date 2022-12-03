@@ -16,9 +16,6 @@ const Reviews = (props) => {
 
   }
 
-  // var sizeStar = '';
-  // var comfortStar = '';
-  // var qualityStar = '';
 
   const [reviews, setReviews] = useState({results: []});
   const [meta, setMeta] = useState([]);
