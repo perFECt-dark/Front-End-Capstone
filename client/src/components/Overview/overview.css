@@ -199,3 +199,7 @@ OVER VIEW CSS ELEMENTS
   background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
   border: 1px solid black;
 }
+
+.loadedimage {
+  display: inline-flex;
+}

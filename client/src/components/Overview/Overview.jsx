@@ -1,14 +1,15 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Gallery from './Gallery.jsx';
 import Information from './Information.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 
-const Overview = () => {
+const Overview = ({ info, styles }) => {
   /* need a usestate for current selected style
   FOR SELECTED STYLE I NEED TO SHOW
     IMAGE
@@ -27,8 +28,36 @@ const Overview = () => {
       QUANTITY DROPDOWN
       ADD TO CART BUTTON
     */
-  // going to get product when we fetch from the api
+  /*
+  info has
+    category
+    price
+    description
+    id
+    name
+    slogan
+
+  styles has
+    product_id
+    results
+      [
+        { style_id: 240500,
+        name: 'Forest Green & Black',
+        original_price: '140.00',
+        sale_price: null,
+        default?: true,
+        photos: [ { thumbnail_url: like 5 unsplash photos }],
+        skus: 1394769: {quantity: 8, size: 'XS'},
+       }, ...
+      ]
+  */
   const [currentProduct, setCurrentProduct] = useState([]);
+
+  useEffect(() => {
+    const currentStyle = styles.results[0].style_id;
+    setCurrentProduct(styles);
+  }, []);
+
   // incoming data
   return (
     <div id="overview-container">

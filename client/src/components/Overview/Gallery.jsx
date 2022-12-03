@@ -4,7 +4,7 @@
 import React from 'react';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
-const Gallery = () => {
+const Gallery = ({ current }) => {
   const left = <button className="left">←</button>;
   const right = <button className="right">→</button>;
   const down = <button className="down">↓</button>;
@@ -21,9 +21,16 @@ const Gallery = () => {
       {down}
     </div>
   );
+  console.log('this is current: ', current);
+  let image = '';
+  if (Array.isArray(current) === false) {
+    image = current.results[0].photos[0].thumbnail_url;
+    console.log('image url: ', image);
+  }
   return (
     <div className="gallery-area">
       <div id="main-image">
+        {/* <img className="loadedimage" src={image} alt="" /> */}
         {thumbnails}
         <div className="leftrightarrows">
           {left}

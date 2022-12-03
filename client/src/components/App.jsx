@@ -55,7 +55,6 @@ function App() {
       {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
       {productData !== null
       && <Overview info={productData.productInfo} styles={productData.productStyles} />}
-      <FontAwesomeIcon icon={regular('star')} size="6x" />
     </div>
 
   );
