@@ -3,6 +3,9 @@ import Reviews from './Reviews.jsx';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
+import React from 'react';
+// if you have the css file in another place, make sure to update the path and it's name if needed
+import '../../dist/styles.css';
 
 function App() {
 
