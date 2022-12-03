@@ -1,8 +1,21 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import ReviewImage from './ReviewImage.jsx';
 
 
 const ReviewList = (props) => {
+
+
+  const findStars = () => {
+
+    if (props.reviewItem.rating === 1) {return '⭐'}
+    if (props.reviewItem.rating === 2) {return '⭐⭐'}
+    if (props.reviewItem.rating === 3) {return '⭐⭐⭐'}
+    if (props.reviewItem.rating === 4) {return '⭐⭐⭐⭐'}
+    if (props.reviewItem.rating === 5) {return '⭐⭐⭐⭐⭐'}
+
+  };
+
+  const stars = findStars();
 
   const rowStyle = {
 
@@ -24,7 +37,8 @@ const ReviewList = (props) => {
     display: 'inline-block',
     verticalAlign: 'top',
     paddingLeft: '5px',
-    paddingRight: '5px'
+    paddingRight: '5px',
+    overflow: 'hidden'
   }
 
   const colUser = {
@@ -66,24 +80,22 @@ const ReviewList = (props) => {
 
         <div style={colUser}>
 
-          <h1 style={{paddingTop: '10px'}}>Username</h1><br></br>
-          <p>Poseted on 1/16/2022</p>
+          <h1 style={{paddingTop: '10px'}}>{props.reviewItem.reviewer_name}</h1><br></br>
+          <p>{props.reviewItem.date}</p>
 
         </div><aside style={colReview}>
 
-          <h1>⭐⭐⭐</h1>
-          <h1>Here is the title of the review</h1>
-          <p>Here is the inner info of the review. I thought the product was alrught. Was feeling it, but the price was
-            not cool.
-          </p>
+          <h1>{stars}</h1>
+          <h1>{props.reviewItem.summary}</h1>
+          <p>{props.reviewItem.body}</p>
 
 
         </aside><aside style={colImage}>
 
-          <ReviewImage />
-          <ReviewImage />
-          <ReviewImage />
-          <ReviewImage />
+          {props.reviewItem.photos.length !== 0 && props.reviewItem.photos.map(photoObj =>
+            <ReviewImage photo={photoObj} key={photoObj.id} />
+            )}
+
         </aside><aside style={colHelp}>
 
           <p>👍 Helpful &#40;3&#41;</p>
@@ -94,7 +106,7 @@ const ReviewList = (props) => {
 
   )
 
-}
+};
 
 
 export default ReviewList;

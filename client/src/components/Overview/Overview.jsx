@@ -6,9 +6,6 @@ const Overview = () => {
   I guess the general idea of my component is the largest display of:
      images, product info, styles and the ability to add to cart
   */
-  return (
-
-  );
 };
 
 export default Overview;

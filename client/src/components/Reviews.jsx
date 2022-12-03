@@ -1,12 +1,35 @@
 import React, {useState, useEffect} from 'react';
 import ReviewList from './ReviewList.jsx';
+import axios from 'axios';
 
 
 const Reviews = (props) => {
 
 
+  const getStars = (rating) => {
+
+    if (rating < 2) {return '⭐'}
+    else if (rating < 3) {return '⭐⭐'}
+    else if (rating < 4) {return '⭐⭐⭐'}
+    else if (rating < 5) {return '⭐⭐⭐⭐'}
+    else {return '⭐⭐⭐⭐⭐'}
+
+  }
+
+  // var sizeStar = '';
+  // var comfortStar = '';
+  // var qualityStar = '';
+
+  const [reviews, setReviews] = useState({results: []});
+  const [meta, setMeta] = useState([]);
+  const [stars, setStars] = useState({sizeStar: 'null',
+    comfortStar: 'null',
+    qualityStar: 'null'});
 
 
+  useEffect(() => {
+
+  },[meta]);
 
 
   //// Styles go here ////
@@ -77,23 +100,24 @@ const Reviews = (props) => {
 
           <div className="col-1-3 verticalText" style={col23}>
 
-              <h1>Average Rating</h1>
+              <h1 style={{paddingTop: '20px'}}>Average Rating</h1>
               <h1>⭐⭐⭐ 3.5 Stars</h1>
 
           </div><aside className="col-1-3 verticalText" style={col13}>
 
-                    <h1>Size  <span>⭐⭐⭐</span></h1>
-                    <h1>Comfort  <span>⭐⭐</span></h1>
+                    <h1>Size  <span>{stars.sizeStar}</span></h1>
+                    <h1>Comfort  <span>{stars.comfortStar}</span></h1>
+                    <h1>Quality  <span>{stars.qualityStar}</span></h1>
 
                 </aside>
 
         </section>
         <section>
           <ul style={{listStyle: 'none', padding:'0px 0px 0px 0px'}}>
-              <ReviewList />
-              <ReviewList />
-              <ReviewList />
-              <ReviewList />
+            {reviews.results.length !== 0 && reviews.results.map(review =>
+                  <ReviewList reviewItem={review} key={review.review_id}/>
+              )}
+
           </ul>
         </section>
         <section style={{borderTop: '1px solid grey'}}>

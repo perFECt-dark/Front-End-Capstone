@@ -6,6 +6,7 @@ import React, {useState, useEffect} from 'react';
 
 const ReviewImage = (props) => {
 
+  var url = 'url("' + props.photo.url + '")'
 
 const Image = {
 
@@ -13,7 +14,7 @@ const Image = {
     width:  '100px',
     height: '100px',
     backgroundSize: 'cover',
-    backgroundImage: 'url("https://pbs.twimg.com/media/EAmr-PAWsAEoiWR.jpg")'
+    backgroundImage: url
 }
 
 return (
