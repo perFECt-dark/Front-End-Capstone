@@ -1,6 +1,5 @@
-const controllers = require('./controllers/movies.js');
-const router = require('/express').Router();
+const controllers = require('./controllers');
+const router = require('express').Router();
 
-router.get('/', controllers.get);
-
+router.get('/item/:product_id', controllers.item.get);
 module.exports = router;
