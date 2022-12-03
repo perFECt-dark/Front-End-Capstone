@@ -1,7 +1,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
 const Gallery = ({ current }) => {
@@ -21,15 +21,19 @@ const Gallery = ({ current }) => {
       {down}
     </div>
   );
-  console.log('this is current: ', current);
+  const [currentPhoto, setCurrentPhoto] = useState('');
   let image = '';
-  if (Array.isArray(current) === false) {
-    image = current.results[0].photos[0].thumbnail_url;
-    console.log('image url: ', image);
-  }
+  useEffect(() => {
+    console.log('this is current: ', current);
+    if (Array.isArray(current) === false) {
+      image = current.results[0].photos[0].thumbnail_url;
+      console.log('image url: ', image);
+      setCurrentPhoto(image);
+    }
+  }, []);
   return (
     <div className="gallery-area">
-      <div id="main-image">
+      <div id="main-image" style={{ backgroundImage: `${currentPhoto}` }}>
         {/* <img className="loadedimage" src={image} alt="" /> */}
         {thumbnails}
         <div className="leftrightarrows">

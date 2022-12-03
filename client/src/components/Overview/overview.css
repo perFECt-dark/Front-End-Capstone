@@ -46,11 +46,12 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/*
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-OVER VIEW CSS ELEMENTS
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-*/
+
+/*******************************************************************************
+
+OVER CSS ELEMENTS
+
+********************************************************************************/
 #overview-container{
   position: relative;
   justify-content: center;
@@ -75,8 +76,14 @@ OVER VIEW CSS ELEMENTS
   padding: 30px;
   border: 2px solid black;
   margin: 10px;
-  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=600");
+  /* background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=600"); */
 }
+
+/*******************************************************************************
+
+Right container properties
+
+********************************************************************************/
 
 .right-col-container {
   position: relative;
@@ -122,15 +129,22 @@ OVER VIEW CSS ELEMENTS
   margin: 10px 10px 10px 10px;
 }
 
+/*******************************************************************************
+
+Specific items
+
+********************************************************************************/
+
 #description-box {
   position: relative;
   display: inline-flex;
   height: 100px;
-  min-width: calc(80% + 88px);
-  max-width: 90%;
+  min-width: calc(40% + 88px);
+  max-width: 50%;
   padding: 15px;
   border: 2px solid black;
   margin: 10px;
+  flex-flow: column wrap;
 }
 
 .style-icons {
@@ -203,3 +217,79 @@ OVER VIEW CSS ELEMENTS
 .loadedimage {
   display: inline-flex;
 }
+p {
+  margin-bottom: 5px;
+}
+
+/*******************************************************************************
+
+Keeping Style consistent with Reviews
+
+********************************************************************************/
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 44px;
+}
+h3 {
+  font-size: 21px;
+}
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+h6 {
+  font-size: 11px;
+}
+
+.tagline {
+  margin: 66px 0 22px 0;
+  text-align: right;
+}
+
+.logo {
+  border-top: 4px solid #648880;
+  float: left;
+  font-size: 48px;
+  font-weight: 100;
+  letter-spacing: .5px;
+  line-height: 44px;
+  padding: 20px 0 22px 0;
+  text-transform: uppercase;
+}
+.container,
+.grid {
+  margin: 0 auto;
+  width: 100%;
+}
+/* .container {
+  padding-left: 30px;
+  padding-right: 30px;
+} */
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+/*******************************************************************************
+
+Keeping Style consistent with Reviews
+
+********************************************************************************/

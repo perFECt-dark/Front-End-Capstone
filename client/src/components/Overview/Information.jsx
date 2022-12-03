@@ -2,13 +2,15 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 
-const Information = () => {
+const Information = ({ info }) => {
+  console.log('all the information: ', info);
+
   return (
     <div id="info-box">
-      <h6> ⭐⭐⭐⭐⭐ Read all (#) Reviews </h6>
-      <h5> Category </h5>
-      <h3> Product Name </h3>
-      Price
+      <p> ⭐⭐⭐⭐⭐ Read all (#) Reviews </p>
+      <h5> {info.category} </h5>
+      <h1> {info.name} </h1>
+      <h5>{info.default_price} </h5>
     </div>
   );
 };

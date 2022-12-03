@@ -4,21 +4,16 @@
 import React from 'react';
 import StyleEntry from './renderOne/StyleEntry.jsx';
 
-const StyleSelector = () => {
-  const selected = 'SELECTED STYLE';
+const StyleSelector = ({ style }) => {
+  var current = '';
+  if (Array.isArray(style) === false) {
+    current = style.results[0].name;
+  }
   return (
     <div id="selection-box" className="right-col">
-      <h4>
-        Style:
-        {selected}
-      </h4>
-      <StyleEntry />
-      <StyleEntry />
-      <StyleEntry />
-      <StyleEntry />
-      <StyleEntry />
-      <StyleEntry />
-
+      <h4> Style > {current} </h4>
+      {/* {style.results.length !== 0 && style.results.map((item) =>
+        (<StyleEntry />))} */}
     </div>
   );
 };

@@ -56,19 +56,26 @@ const Overview = ({ info, styles }) => {
   useEffect(() => {
     const currentStyle = styles.results[0].style_id;
     setCurrentProduct(styles);
-  }, []);
+  }, [styles]);
 
   // incoming data
   return (
     <div id="overview-container">
       <Gallery current={currentProduct} />
       <div className="right-col-container">
-        <Information />
-        <StyleSelector />
+        <Information info={info} />
+        <StyleSelector style={currentProduct} />
         <AddToCart />
       </div>
       <div id="description-box">
-        Description
+        <h3>{info.slogan}</h3>
+        <p>{info.description}</p>
+      </div>
+      <div id="features-box">
+        <p>Features I will put</p>
+        {/* info.features.map((ft) => (
+          <p>ft.feature - ft.value</p>
+          */}
       </div>
       <div id="share-buttons">
         Share to:
