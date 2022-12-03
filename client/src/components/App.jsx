@@ -1,16 +1,12 @@
+import './Overview/overview.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-  icon,
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Reviews from './Reviews';
+import Overview from './Overview/Overview';
 import Card from './Card';
 // if you have the css file in another place, make sure to update the path and it's name if needed
-import '../styles.css';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -64,8 +60,9 @@ function App() {
         <Reviews metaData={productData.meta} reviewData={productData.reviews} />
       )}
       <FontAwesomeIcon icon={regular('star')} size="6x" />
-      {/* <Card product={productData.meta} /> */}
+      <Card product={productData} />
     </div>
+
   );
 }
 
