@@ -4,6 +4,7 @@
 /* eslint-disable no-var */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Thumbnail = ({ url, click }) => {
   // for selected image...
@@ -16,6 +17,10 @@ const Thumbnail = ({ url, click }) => {
       onClick={(e) => { click(e); }}
     />
   );
+};
+Thumbnail.propTypes = {
+  url: PropTypes.string.isRequired,
+  click: PropTypes.func.isRequired,
 };
 
 export default Thumbnail;

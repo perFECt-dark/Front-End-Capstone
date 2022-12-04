@@ -4,8 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Information = ({ info, reviews }) => {
-  console.log('all the information: ', info);
-
   return (
     <div id="info-box">
       <p>

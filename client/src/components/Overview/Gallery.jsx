@@ -2,6 +2,7 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
+import PropTypes from 'prop-types';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
 const Gallery = ({ current, click }) => {
@@ -46,6 +47,10 @@ const Gallery = ({ current, click }) => {
       </aside>
     </section>
   );
+};
+Gallery.propTypes = {
+  current: PropTypes.shape().isRequired,
+  click: PropTypes.func.isRequired,
 };
 
 export default Gallery;
