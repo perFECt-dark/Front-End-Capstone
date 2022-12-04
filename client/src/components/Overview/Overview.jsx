@@ -45,8 +45,8 @@ const Overview = ({ info, styles, reviews }) => {
   return (
     <section className="row">
       <div className="grid">
-        <section className="main-image">
-          <div className="col-2-3" style={largePic}>
+        <section>
+          <div className="col-2-3 main-image" style={largePic}>
             <Gallery current={styles.results[0]} />
           </div>
           <aside className="col-1-3" style={{ height: '800px', position: 'relative', float: 'right' }}>
