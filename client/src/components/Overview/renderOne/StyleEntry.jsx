@@ -2,9 +2,9 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 
-const StyleEntry = () => {
+const StyleEntry = ({ item }) => {
   return (
-    <div className="style-icons">Icons</div>
+    <img className="style-icons" src={item.photos[0].thumbnail_url} alt="" />
   );
 };
 

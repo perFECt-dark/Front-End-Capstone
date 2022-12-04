@@ -57,7 +57,13 @@ function App() {
       </header>
       {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
       {productData !== null
-      && <Overview info={productData.productInfo} styles={productData.productStyles} />}
+      && (
+      <Overview
+        info={productData.productInfo}
+        styles={productData.productStyles}
+        reviews={productData.reviews}
+      />
+      )}
     </div>
 
   );

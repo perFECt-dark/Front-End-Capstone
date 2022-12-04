@@ -3,11 +3,11 @@
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 
-const Thumbnail = () => {
+const Thumbnail = ({ url }) => {
   // for selected image...
   // highlight/outline/add some kind of checkmark
   return (
-    <div className="thumbnail-icon" />
+    <img className="thumbnail-icon" src={url} alt="" />
   );
 };
 

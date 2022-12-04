@@ -1,275 +1,3 @@
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-#overview-container{
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.gallery-area {
-  display: inline-flex;
-  min-width: 40%;
-  width: 50%;
-  max-width: 70%;
-  padding: auto;
-  margin: auto;
-}
-
-#main-image {
-  position: relative;
-  display: flex;
-  height: 500px;
-  width: 100%;
-  padding: 30px;
-  border: 2px solid black;
-  margin: 10px;
-  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=600");
-}
-
-
-.right-col-container {
-  position: relative;
-  display: inline-flex;
-  min-width: 30%;
-  max-width: calc(400px - 1.5rem);
-  max-height: 464px;
-  flex-flow: column nowrap;
-  border: 2px solid black;
-  order: 2;
-  align-items: center;
-}
-
-#info-box {
-  display: inline-flex;
-  max-height: 100px;
-  width: 85%;
-  padding: 15px;
-  border: 2px solid black;
-  margin: 10px 10px 10px 10px;
-  flex-flow: column wrap;
-}
-
-
-#selection-box {
-  display: inline-flex;
-  max-height: 200px;
-  min-width: 300px;
-  width: 85%;
-  padding: 15px;
-  border: 2px solid black;
-  margin: 10px;
-  flex-flow: row wrap;
-}
-
-#cart-box {
-  position: relative;
-  max-height: 100px;
-  min-width: 300px;
-  width: 85%;
-  padding: 15px;
-  border: 2px solid black;
-  margin: 10px 10px 10px 10px;
-}
-
-#description-box {
-  position: relative;
-  display: inline-flex;
-  height: 100px;
-  min-width: calc(40% + 88px);
-  max-width: 50%;
-  padding: 15px;
-  border: 2px solid black;
-  margin: 10px;
-  flex-flow: column wrap;
-}
-
-.style-icons {
-  display: flex;
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;
-  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
-}
-
-#share-buttons {
-  display: flex;
-  flex-flow: row nowrap;
-  width: 40%;
-  position: relative;
-  border: 2px solid black;
-}
-
-.facebook {
-  height: 50px;
-  width: 50px;
-  border: 2px solid black;
-  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
-}
-
-.instagram {
-  height: 50px;
-  width: 50px;
-  border: 2px solid black;
-  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
-}
-
-.pinterest {
-  height: 50px;
-  width: 50px;
-  border: 2px solid black;
-  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
-}
-
-.leftrightarrows {
-  display: inline-flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 80%;
-  align-items: center;
-}
-
-.expand {
-  display: inline-flex;
-  width: 20px;
-  height: 20px;
-}
-
-.thumbnails {
-  display: inline-flex;
-  justify-content: center;
-  flex-flow: column wrap;
-  position: relative;
-  border: 1px solid black;
-}
-
-.thumbnail-icon {
-  height: 50px;
-  width: 50px;
-  margin: 2px;
-  background-image: url("https://image.uniqlo.com/UQ/ST3/WesternCommon/imagesgoods/422992/sub/goods_422992_sub14.jpg?width=50");
-  border: 1px solid black;
-}
-
-.loadedimage {
-  display: inline-flex;
-}
-p {
-  margin-bottom: 5px;
-}
-
-h1 {
-  font-size: 36px;
-  line-height: 44px;
-}
-h2 {
-  font-size: 24px;
-  line-height: 44px;
-}
-h3 {
-  font-size: 21px;
-}
-h4 {
-  font-size: 18px;
-}
-
-h5 {
-  color: #a9b2b9;
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-h6 {
-  font-size: 11px;
-}
-
-.tagline {
-  margin: 66px 0 22px 0;
-  text-align: right;
-}
-
-.logo {
-  border-top: 4px solid #648880;
-  float: left;
-  font-size: 48px;
-  font-weight: 100;
-  letter-spacing: .5px;
-  line-height: 44px;
-  padding: 20px 0 22px 0;
-  text-transform: uppercase;
-}
-.container,
-.grid {
-  margin: 0 auto;
-  width: 100%;
-}
-.container {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-.group:before,
-.group:after {
-  content: "";
-  display: table;
-}
-.group:after {
-  clear: both;
-}
-.group {
-  clear: both;
-  *zoom: 1;
-}
-
-Keeping Style consistent with Reviews */
-
 /* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
   License: none (public domain)
 */
@@ -593,7 +321,12 @@ h1, h3, h4, h5, p {
   Column sizes
   ========================================
 */
-
+.col-7-10 {
+  width: 70%;
+}
+.col-1-10 {
+  width: 10%;
+}
 .col-1-3 {
   width: 33.33%;
 }
@@ -601,14 +334,18 @@ h1, h3, h4, h5, p {
   width: 66.66%;
 }
 
+.col-1-10,
 .col-1-3,
+.col-7-10,
 .col-2-3 {
   display: inline-block;
   vertical-align: top;
 }
 
 .grid,
+.col-1-10,
 .col-1-3,
+.col-7-10,
 .col-2-3 {
   padding-left: 15px;
   padding-right: 15px;
@@ -676,3 +413,49 @@ h1, h3, h4, h5, p {
 /* #main-image {
   background-image: url("https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
 } */
+
+.style-icons {
+  padding: 3px;
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+}
+
+.thumbnail-icon {
+  height: 70px;
+  width: 70px;
+  border-radius: 20%;
+  border: 1px solid black;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 400px;
+}
+
+button {
+  color: red;
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.main-image :hover {
+  cursor: zoom-in;
+}
+
+.thumbnails :hover {
+  cursor: pointer;
+}
+
+.arrows :hover {
+  color: blue;
+  cursor: pointer;
+}
+
+.expand :hover {
+  color: blue;
+  cursor: nesw-resize;
+}
