@@ -2,8 +2,7 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState} from 'react';
 import Gallery from './Gallery.jsx';
 import Information from './Information.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -33,21 +32,38 @@ const Overview = ({ info, styles, reviews }) => {
        }, ...
       ]
   */
+  // incoming data
+  /*
+  expansion - setting new width of image with own set of features such as
+  a hover, a zoom feature, and disabling some other things
+  click handlers - States I need to keep track of/ things that change:
+  the current style that is selected
+  the set of thumbnails based off of the style selected
+  the main image
+  */
+  const [currentStyle, setCurrentStyle] = useState(0);
+  const [currentImage, setCurrentImage] = useState('"https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"');
+  const styleClickHandler = () => {};
+  const thumbnailClickHandler = (event) => {
+    const clicked = event.target.src;
+    console.log(clicked);
+    setCurrentImage(clicked);
+  };
+
   const largePic = {
     width: '50%',
     height: '800px',
     backgroundSize: '100% 100%',
     // backgroundImage: 'url("https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80")',
-    backgroundImage: 'url("https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80")',
+    backgroundImage: `url(${currentImage})`,
     marginLeft: '90px',
   };
-  // incoming data
   return (
     <section className="row">
       <div className="grid">
         <section className="main-image">
           <div className="col-2-3" style={largePic}>
-            <Gallery current={styles.results[0]} />
+            <Gallery current={styles.results[currentStyle]} click={thumbnailClickHandler} />
           </div>
           <aside className="col-1-3" style={{ height: '800px', position: 'relative', float: 'right' }}>
             <Information info={info} reviews={reviews} />

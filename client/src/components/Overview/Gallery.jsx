@@ -4,7 +4,7 @@
 import React from 'react';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
-const Gallery = ({ current }) => {
+const Gallery = ({ current, click }) => {
   const left = <button className="left">←</button>;
   const right = <button className="right">→</button>;
   let down = <button className="down">↓</button>;
@@ -25,7 +25,11 @@ const Gallery = ({ current }) => {
         style={thumbnailColStyles}
       >
         {current.photos.map((pic) => (
-          <Thumbnail url={pic.thumbnail_url} key={pic.thumbnail_url} />
+          <Thumbnail
+            url={pic.thumbnail_url}
+            key={pic.thumbnail_url}
+            click={click}
+          />
         ))}
         {down}
       </div>
