@@ -58,7 +58,6 @@ const Overview = ({ info, styles, reviews }) => {
     width: '50%',
     height: '800px',
     backgroundSize: '100% 100%',
-    // backgroundImage: 'url("https://images.unsplash.com/photo-1549831243-a69a0b3d39e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80")',
     backgroundImage: `url(${currentImage})`,
     marginLeft: '90px',
   };
@@ -70,8 +69,8 @@ const Overview = ({ info, styles, reviews }) => {
             <Gallery current={styles.results[currentStyle]} click={thumbnailClickHandler} />
           </div>
           <aside className="col-1-3" style={{ height: '800px', position: 'relative', float: 'right' }}>
-            <Information info={info} reviews={reviews} />
-            <StyleSelector style={styles} click={styleClickHandler} />
+            <Information info={info} current={styles.results[currentStyle]} reviews={reviews} />
+            <StyleSelector style={styles} click={styleClickHandler} currentStyle={currentStyle} />
             <AddToCart />
           </aside>
         </section>

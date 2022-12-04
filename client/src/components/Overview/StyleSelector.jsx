@@ -5,13 +5,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import StyleEntry from './renderOne/StyleEntry.jsx';
 
-const StyleSelector = ({ style, click }) => {
+const StyleSelector = ({ style, click, currentStyle }) => {
   return (
     <div id="selection-box" className="right-col">
       <h5>
         Style
         {' > '}
-        {style.results[0].name}
+        {style.results[currentStyle].name}
       </h5>
       {style.results.length !== 0
       && style.results.map((item, index) => {

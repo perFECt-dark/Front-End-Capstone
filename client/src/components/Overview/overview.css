@@ -459,3 +459,8 @@ button {
   color: blue;
   cursor: nesw-resize;
 }
+
+.discounted {
+  color:red;
+  text-decoration: line-through;
+}
