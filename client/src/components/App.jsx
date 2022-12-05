@@ -59,10 +59,17 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
-      {productData !== null && <Overview info={productData.productInfo} styles={productData.productStyles} />}
-      {productData !== null && <Reviews metaData={productData.meta} reviewData={productData.reviews}/>}
-
-  </div>
+      {productData !== null
+      && (
+      <Overview
+        info={productData.productInfo}
+        styles={productData.productStyles}
+        reviews={productData.reviews}
+      />
+      )} 
+      
+      {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
+    </div>
 
   );
 }

@@ -34,7 +34,7 @@ const AddToCart = () => {
         onChange={setAmount}
         options={quantity}
       />
-      <button className="button">Add to Cart</button>
+      <button className="cart">Add to Cart</button>
     </div>
   );
 };
