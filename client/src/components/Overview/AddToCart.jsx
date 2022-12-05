@@ -22,8 +22,9 @@ const AddToCart = () => {
   }
   const [size, setSize] = React.useState(sizes[0]);
   const [amount, setAmount] = React.useState(quantity[0]);
+  // trying to move this box to the bottom of the container
   return (
-    <div id="cart-box" className="right-col">
+    <div id="cart-box">
       <Select
         defaultValue={size}
         onChange={setSize}

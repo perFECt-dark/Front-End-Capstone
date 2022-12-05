@@ -2,7 +2,7 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Gallery from './Gallery.jsx';
 import Information from './Information.jsx';
 import StyleSelector from './StyleSelector.jsx';
@@ -61,6 +61,11 @@ const Overview = ({ info, styles, reviews }) => {
     backgroundImage: `url(${currentImage})`,
     marginLeft: '90px',
   };
+  const rightSide = {
+    height: '800px',
+    position: 'relative',
+    float: 'right',
+  };
   return (
     <section className="row">
       <div className="grid">
@@ -68,7 +73,7 @@ const Overview = ({ info, styles, reviews }) => {
           <div className="col-2-3 main-image" style={largePic}>
             <Gallery current={styles.results[currentStyle]} click={thumbnailClickHandler} />
           </div>
-          <aside className="col-1-3" style={{ height: '800px', position: 'relative', float: 'right' }}>
+          <aside className="col-1-3" style={rightSide}>
             <Information info={info} current={styles.results[currentStyle]} reviews={reviews} />
             <StyleSelector style={styles} click={styleClickHandler} currentStyle={currentStyle} />
             <AddToCart />

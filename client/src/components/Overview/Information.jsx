@@ -4,17 +4,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Information = ({ info, current, reviews }) => {
-  let price = info.default_price;
+  let price = (
+    <h5>
+      $
+      {info.default_price}
+    </h5>
+  );
   if (current.sale_price) {
     price = (
       <div>
+        <h5 style={{ float: 'left', paddingRight: '10px' }}>
+          $
+          {current.sale_price}
+        </h5>
         <h5 className="discounted">
           $
           {current.original_price}
-        </h5>
-        <h5>
-          $
-          {current.sale_price}
         </h5>
       </div>
     );
@@ -38,7 +43,7 @@ const Information = ({ info, current, reviews }) => {
     );
   }
   return (
-    <div id="info-box">
+    <div>
       {reviewCount}
       <h5>
         {info.category}
