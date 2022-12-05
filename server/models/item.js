@@ -5,7 +5,7 @@ module.exports = {
 
   getAll: function (cb, product_id) {
 
-    console.log('here is product id: ', product_id);
+
     var loadedData = {
       meta: null,
       reviews: null,
@@ -21,11 +21,11 @@ module.exports = {
       },
       params: {
         page: 1,
-        count: 5,
+        count: 2,
         sort: 'relevant',
         product_id: product_id
       }
-    }
+    };
 
     let optionsProduct = {
 
@@ -35,95 +35,34 @@ module.exports = {
       params: {
         product_id: product_id
       }
-    }
+    };
 
-    //// All the get requests that happen
+    let url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
 
-    //// Grabs Review meta
-    axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/meta', optionsProduct)
-    .then((meta) => {
+    const reviewMetaData = axios.get(url + 'reviews/meta', optionsProduct);
+    const reviews = axios.get(url + 'reviews', optionsReviews);
+    const productInfo = axios.get(url + 'products/' + product_id, optionsProduct);
+    const productStyles = axios.get(url + 'products/' + product_id + '/styles', optionsProduct);
+    const relatedProducts = axios.get(url + 'products/' + product_id + '/related', optionsProduct);
+    const questions = axios.get(url + 'qa/questions', optionsProduct);
 
-      console.log('Reviews Meta Data for id: '+ product_id +' Success!');
-      loadedData.meta = meta.data;
+    Promise.all([reviewMetaData, reviews, productInfo, productStyles, relatedProducts, questions])
+    .then(function(values) {
 
-      //// then grabs Reviews
-       axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', optionsReviews)
-      .then((reviews) => {
-
-        console.log('Reviews Data for id: '+ product_id +' Success!');
-        loadedData.reviews = reviews.data;
-
-        //// then grabs product info
-        axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/' + product_id, optionsProduct)
-      .then((productInfo) => {
-
-        console.log('ProductInfo Data for id: '+ product_id +' Success!');
-        loadedData.productInfo = productInfo.data;
-
-        // then grabs productStyles
-        axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/' + product_id + '/styles', optionsProduct)
-        .then((productStyles) => {
-
-          console.log('ProductStyles Data for id: '+ product_id +' Success!');
-          loadedData.productStyles = productStyles.data;
-
-          // then grabs relatedProducts
-        axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/products/' + product_id + '/related', optionsProduct)
-        .then((relatedProducts) => {
-
-          console.log('relatedProducts Data for id: '+ product_id +' Success!');
-          loadedData.relatedProducts = relatedProducts.data;
-
-            // then grabs questions
-        axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', optionsProduct)
-        .then((questions) => {
-
-          console.log('questions Data for id: '+ product_id +' Success!');
-          loadedData.questions = questions.data;
-
-          cb(null, loadedData);
+      loadedData.meta = values[0].data;
+      loadedData.reviews = values[1].data;
+      loadedData.productInfo = values[2].data;
+      loadedData.productStyles = values[3].data;
+      loadedData.relatedProducts = values[4].data;
+      loadedData.questions = values[5].data;
 
 
-        })
-        .catch((err) => {
-          console.log('We did not get Reviews data');
-          cb(err);
-        });
-
-
-        })
-        .catch((err) => {
-          console.log('We did not get Reviews data');
-          cb(err);
-        });
-
-
-        })
-        .catch((err) => {
-          console.log('We did not get Reviews data');
-          cb(err);
-        });
-
-
-      })
-      .catch((err) => {
-        console.log('We did not get Reviews data');
-        cb(err);
-
-      });
-
-
-      })
-      .catch((err) => {
-        console.log('We did not get Reviews data');
-        cb(err);
-
-      });
+      cb(null, loadedData);
     })
-    .catch((err) => {
-      console.log('We did not get Reviews Meta data');
+    .catch(function(err) {
+
       cb(err);
     });
-  }
 
+  }
 };

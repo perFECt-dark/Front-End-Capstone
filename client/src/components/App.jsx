@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
-import Reviews from './Reviews';
+import '../styles.css';
+import Reviews from './Review/Reviews';
 import Overview from './Overview/Overview';
 import Card from './Card';
 // if you have the css file in another place, make sure to update the path and it's name if needed
@@ -37,8 +38,11 @@ function App() {
   useEffect(() => {
     /// This effect inciates page with data
     grabInfo(40344);
-  }, []);
 
+  },[]);
+
+
+  // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
       <header
@@ -55,7 +59,6 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
-      {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
       {productData !== null
       && (
       <Overview
@@ -63,7 +66,9 @@ function App() {
         styles={productData.productStyles}
         reviews={productData.reviews}
       />
-      )}
+      )} 
+      
+      {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
     </div>
 
   );
