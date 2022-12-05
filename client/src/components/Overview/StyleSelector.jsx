@@ -2,20 +2,33 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
+import PropTypes from 'prop-types';
 import StyleEntry from './renderOne/StyleEntry.jsx';
 
-const StyleSelector = ({ style }) => {
-  console.log('style input: ', style);
+const StyleSelector = ({ style, click, currentStyle }) => {
   return (
     <div id="selection-box" className="right-col">
-      <h4>
+      <h5>
         Style
-        {'>'}
-      </h4>
-      {/* {style.results.length !== 0 && style.results.map((item) =>
-        (<StyleEntry />))} */}
+        {' > '}
+        {style.results[currentStyle].name}
+      </h5>
+      {style.results.length !== 0
+      && style.results.map((item, index) => {
+        return (
+          <StyleEntry
+            index={index}
+            key={item.style_id}
+            item={item}
+            click={click}
+          />
+        );
+      })}
     </div>
   );
 };
-
+StyleSelector.propTypes = {
+  style: PropTypes.shape().isRequired,
+  click: PropTypes.func.isRequired,
+};
 export default StyleSelector;
