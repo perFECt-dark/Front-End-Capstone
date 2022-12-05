@@ -17,6 +17,7 @@ import './RelatedItems/relatedItems.css';
 
 function App() {
   const [productData, setProductData] = useState(null);
+  const [AnotherProductData, setAnotherProductData] = useState(null);
   const [relatedProductData, setRelatedProductData] = useState([]);
   // format of productData
   // const [productData, setProductData] = useState({
@@ -49,16 +50,34 @@ function App() {
       .get(newUrl)
       .then((infoToReturn) => {
         console.log('Here is our info being returned in getInfofromId: ', infoToReturn.data);
-        setRelatedProductData(infoToReturn.data);
+        setAnotherProductData(infoToReturn.data);
+        return infoToReturn.data;
       })
       .catch((err) => {
         console.log(err);
       });
   }
   // this return an array of all the related products as objects
-  function getRelatedProductsInfo(productId) {
-    const relatedProductArr = getInfoFromId(productId).relatedProducts;
-    return relatedProductArr.map((currentProductId) => getInfoFromId(currentProductId));
+  function getRelatedProductsInfo() {
+    const relatedProductsId = productData.relatedProducts;
+    const relatedProducts = [];
+    console.log('This is from getRelatedProductsInfo', relatedProductsId);
+    // relatedProductsId.map((currentProductId) => { return getInfoFromId(currentProductId) })
+
+    // relatedProductsId.forEach((currentId) => {
+    //   const newUrl = `http://localhost:3000/item/${currentId}`;
+    //   axios
+    //     .get(newUrl)
+    //     .then((infoToReturn) => {
+    //       console.log('Here is our info being returned in getInfofromId: ', infoToReturn.data);
+    //       relatedProducts.push(infoToReturn.data);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // });
+
+    setRelatedProductData(relatedProducts);
   }
 
   // use this to grab initial data
@@ -66,11 +85,8 @@ function App() {
     /// This effect inciates page with data
     const initialProduct = 40344;
     grabInfo(initialProduct);
-    getInfoFromId(initialProduct);
-    //getRelatedProductsInfo(initialProduct);
+    //getInfoFromId(productData.relatedProducts[0]);
   }, []);
-
-  //console.log
 
   return (
     <div>
@@ -99,11 +115,11 @@ function App() {
       )}
 
       {/* Related Items */}
-      {productData !== null
-      && <CardList cards={[productData.productInfo, productData.productInfo]} />}
+      {AnotherProductData !== null
+      && <CardList cards={[AnotherProductData.productInfo, AnotherProductData.productInfo]} />}
 
       {/* {productData !== null
-      && console.log('TEST', getInfoFromId(relatedProductData.productInfo))} */}
+      && console.log('TEST', getInfoFromId(40344))} */}
 
       {/* Review */}
       {productData !== null
