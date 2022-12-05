@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReviewImage from './ReviewImage.jsx';
 
 
 const ReviewList = (props) => {
+
+  const [toggle, setToggle] = useState('none');
 
 
   const findStars = () => {
@@ -17,60 +19,20 @@ const ReviewList = (props) => {
 
   const stars = findStars();
 
-  const rowStyle = {
+  const yesStyle = {
 
-    minWidth: '960px',
-    background: '#fff',
-    padding: '36px 0 14px 0'
+    fontSize: '12px',
+    cursor: 'pointer',
+    color: toggle === 'yes' ? 'blue' : '#888'
   }
 
-  const gridSyle = {
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    margin: '0 auto',
-    width: '1200px'
+  const noStyle = {
+
+    fontSize: '12px',
+    cursor: 'pointer',
+    color: toggle === 'no' ? 'blue' : '#888'
   }
 
-  const colReview = {
-
-    width: '35%',
-    display: 'inline-block',
-    verticalAlign: 'top',
-    paddingLeft: '5px',
-    paddingRight: '5px',
-    overflow: 'hidden'
-  }
-
-  const colUser = {
-
-    width: '15%',
-    display: 'inline-block',
-    verticalAlign: 'top',
-    paddingLeft: '5px',
-    paddingRight: '5px'
-
-  }
-
-  const colImage = {
-
-    width: '35%',
-    display: 'inline-block',
-    verticalAlign: 'top',
-    paddingLeft: '5px',
-    paddingRight: '5px',
-    paddingTop: '30px'
-  }
-
-  const colHelp = {
-
-
-    width: '10%',
-    display: 'inline-block',
-    verticalAlign: 'top',
-    paddingLeft: '5px',
-    paddingRight: '5px',
-    paddingTop: '40px'
-  }
 
 
   return (
@@ -80,8 +42,9 @@ const ReviewList = (props) => {
 
         <div className="col-1-5">
 
-          <h3 style={{paddingTop: '10px'}}>{props.reviewItem.reviewer_name}</h3><br></br>
-          <p>{props.reviewItem.date}</p>
+          <h3 style={{paddingTop: '10px'}}>{props.reviewItem.reviewer_name}</h3>
+          {props.reviewItem.recommend && <p style={{fontSize: '12px', color: 'green'}}>✓ I recommend this product</p>}
+          <p style={{fontSize: '12px'}}>{props.reviewItem.date}</p>
 
         </div><aside className="col-1-3" style={{overflow: 'hidden'}}>
 
@@ -98,7 +61,8 @@ const ReviewList = (props) => {
 
         </aside><aside className="col-1-10">
 
-          <p>👍 Helpful &#40;3&#41;</p>
+          <p>👍 Helpful?</p>
+          <p><span onClick={() => setToggle('yes')} style={yesStyle}>Yes&#40;{props.reviewItem.helpfulness}&#41; </span><span onClick={() => setToggle('no')} style={noStyle}>No&#40;23&#41;</span></p>
         </aside>
 
     </li>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList';
+import axios from 'axios';
 
 function Reviews(props) {
+
   function getStars(rating) {
     if (rating < 2) {
       return '⭐';
@@ -26,57 +28,30 @@ function Reviews(props) {
     qualityStar: 'null',
   });
 
-  useEffect(() => {}, [meta]);
+
+  //useEffect(() => {}, [meta]);
+
+  const moreReviews = () => {
+
+    var newCount = reviews.count += 2;
+    console.log('New list: ', newCount);
+    console.log(reviews.product);
+    const newUrl = `http://localhost:3000/item/${reviews.product}/reviews/${newCount}`;
+
+    axios.get(newUrl)
+    .then((reviewData) => {
+
+      console.log('This should not trigger');
+      setReviews(reviewData.data);
+
+    })
+    .catch((err) => {
+      console.log(err);
+      console.log('unable to grab data');
+    });
+  }
 
   // Styles go here //
-
-  const rowStyle = {
-    minWidth: '960px',
-    background: '#fff',
-    padding: '36px 0 14px 0',
-  };
-
-  const gridSyle = {
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    margin: '0 auto',
-    width: '1200px',
-  };
-
-  const col23 = {
-    width: '50%',
-    display: 'inline-block',
-    verticalAlign: 'top',
-    paddingLeft: '15px',
-    paddingRight: '15px',
-  };
-
-  const col13 = {
-    width: '30%',
-    display: 'inline-block',
-    verticalAlign: 'top',
-    paddingLeft: '15px',
-    paddingRight: '15px',
-  };
-
-  const pageNum = {
-    width: '45%',
-    display: 'inline-block',
-    verticalAlign: 'top',
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    textAlign: 'right',
-  };
-
-  const addReview = {
-    borderRadius: '5px',
-    color: 'black',
-    cursor: 'pointer',
-    display: 'inline-block',
-    fontWeight: 'bold',
-    letterSpacing: '.5px',
-    textTransform: 'uppercase',
-  };
 
   return (
   <section className="row">
@@ -113,16 +88,16 @@ function Reviews(props) {
 
           </ul>
         </section>
-        <section style={{borderTop: '1px solid grey'}}>
+        <section style={{borderTop: '1px solid grey', paddingTop: '10px'}}>
 
-          <div className="col-1-3">
+          <div className="col-2-3">
 
-            <p style={addReview}>Add a Review</p>
+            <div className="btn">Add a Review</div>
 
 
-          </div><aside className="col-1-3">
+          </div><aside className="col-1-3" style={{textAlign: 'right'}}>
 
-            <p>&#60; <span style={{fontWeight: 'bold'}}>1</span> 2 3 4 5 6 7 8 &#62;</p>
+          <div className="btn" onClick={moreReviews}>More Reviews</div>
 
           </aside>
         </section>

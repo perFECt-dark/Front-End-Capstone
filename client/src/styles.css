@@ -215,6 +215,7 @@ h1, h3, h4, h5, p {
   letter-spacing: .5px;
   margin: 0;
   text-transform: uppercase;
+  border: 1px solid black;
 }
 
 .btn-alt {
@@ -341,7 +342,7 @@ h1, h3, h4, h5, p {
 
 .col-1-10 {
 
-  width: 10%;
+  width: 12%;
 }
 
 .col-1-5 {

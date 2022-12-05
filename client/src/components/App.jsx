@@ -4,7 +4,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro';
 import '../styles.css';
-import Reviews from './Reviews';
+import Reviews from './Review/Reviews';
 import Overview from './Overview/Overview';
 import Card from './Card';
 // if you have the css file in another place, make sure to update the path and it's name if needed
