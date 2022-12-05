@@ -9,7 +9,7 @@ import Information from './Information.jsx';
 import StyleSelector from './StyleSelector.jsx';
 import AddToCart from './AddToCart.jsx';
 
-const Overview = (props) => {
+const Overview = ({info, styles}) => {
   /* need a usestate for current selected style
   FOR SELECTED STYLE I NEED TO SHOW
     IMAGE
@@ -82,19 +82,19 @@ const Overview = (props) => {
             <Gallery current={currentProduct} />
           </div>
           <aside className="col-1-3" style={{ height: '800px', position: 'relative', float: 'right' }}>
-            <Information info={currentInfo} />
-            <StyleSelector style={currentProduct} />
+            <Information info={info} />
+            <StyleSelector style={styles} />
             <AddToCart />
           </aside>
         </section>
         <section style={{ paddingTop: '20px' }}>
           <div className="col-2-3">
-            <h3>{currentInfo.slogan}</h3>
-            <p>{currentInfo.description}</p>
+            <h3>{info.slogan}</h3>
+            <p>{info.description}</p>
           </div>
           <aside className="col-1-3">
             <p>Features I will put</p>
-            {currentInfo.features.length !== 0 && currentInfo.features.map((feat) => (
+            {info.features.length !== 0 && info.features.map((feat) => (
               <p>
                 {feat.feature}
                 -
