@@ -53,5 +53,6 @@ const Information = ({ info, current, reviews }) => {
 Information.propTypes = {
   info: PropTypes.shape().isRequired,
   reviews: PropTypes.shape().isRequired,
+  current: PropTypes.shape().isRequired,
 };
 export default Information;
