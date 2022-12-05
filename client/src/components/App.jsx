@@ -90,7 +90,13 @@ function App() {
       </header>
       {/* Overview */}
       {productData !== null
-      && <Overview info={productData.productInfo} styles={productData.productStyles} />}
+      && (
+      <Overview
+        info={productData.productInfo}
+        styles={productData.productStyles}
+        reviews={productData.reviews}
+      />
+      )}
 
       {/* Related Items */}
       {productData !== null
