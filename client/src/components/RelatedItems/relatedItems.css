@@ -6,7 +6,8 @@
 
 .card {
   display: inline-block;
-  padding-right: 30px;
+  border-width: 10px;
+  border-style: outset;
 }
 .card-title {
   font-size: 24px;
@@ -18,6 +19,16 @@
   font-size: 16px;
 }
 .card-image-object{
-  height: 300px;
-  width: 200px;
+  height: 375px;
+  width: 250px;
+}
+.card-action-button{
+  opacity: 0.4;
+  position: absolute;
+}
+.card-default-strikeout{
+  padding-left: 5px;
+  color: red;
+  text-decoration: line-through;
+  display: inline;
 }
