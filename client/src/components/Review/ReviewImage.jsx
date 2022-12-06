@@ -11,9 +11,9 @@ const ReviewImage = (props) => {
 const Image = {
 
     float: 'left',
-    width:  '100px',
-    height: '100px',
-    backgroundSize: 'cover',
+    width:  '50px',
+    height: '60px',
+    backgroundSize: '100% 100%',
     backgroundImage: url
 }
 
