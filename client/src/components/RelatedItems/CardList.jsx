@@ -1,5 +1,5 @@
 import propTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Card from './Card';
 // takes an array of cards
 function CardList({ cards }) {
@@ -11,7 +11,7 @@ function CardList({ cards }) {
           <div className="card-title">
             Temp title of list here
           </div>
-          { cards.map((currentCard) => <Card info={currentCard} />) }
+          { cards.map((someCardId) => <Card relatedCardId={someCardId} />) }
         </section>
       </div>
     </section>
@@ -19,7 +19,7 @@ function CardList({ cards }) {
 }
 
 CardList.propTypes = {
-  cards: propTypes.arrayOf(propTypes.shape()).isRequired,
+  cards: propTypes.arrayOf(propTypes.number).isRequired,
 };
 
 export default CardList;
