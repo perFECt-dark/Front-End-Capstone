@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/button-has-type */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
@@ -6,37 +8,28 @@ import PropTypes from 'prop-types';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
 const Gallery = ({
-  current, click, leftClick, rightClick, first, last,
+  current, click, leftClick, rightClick, first, last, currentImage, expandClick,
 }) => {
   let left;
   if (first) {
-    left = <button className="hidden">←</button>;
+    left = <button className="hidden arrows">←</button>;
   } else {
-    left = <button onClick={() => leftClick()} className="left">←</button>;
+    left = <button onClick={() => leftClick()} className="left arrows">←</button>;
   }
   let right;
   if (last) {
-    right = <button className="hidden">→</button>;
+    right = <button className="hidden arrows">→</button>;
   } else {
-    right = <button onClick={() => rightClick()} className="right">→</button>;
+    right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
   let down = <button className="down">↓</button>;
   if (current.photos.length < 8) {
     down = <button className="hidden">↓</button>;
   }
   const expand = <button className="expand">⤢</button>;
-  const thumbnailColStyles = {
-    height: '800px',
-    paddingTop: '20px',
-    width: '100px',
-    textAlign: 'center',
-  };
   return (
-    <section>
-      <div
-        className="col-1-3 thumbnails"
-        style={thumbnailColStyles}
-      >
+    <section className="carousel">
+      <div className="col-1-3 thumbnails">
         {current.photos.map((pic, index) => (
           <Thumbnail
             index={index}
@@ -47,17 +40,12 @@ const Gallery = ({
         ))}
         {down}
       </div>
-      <aside className="col-7-10" style={{ height: '800px', alignContent: 'center' }}>
-        <div className="arrows">
-          {left}
-          {right}
-        </div>
+      <aside className="col-7-10 around-image">
+        {left}
+        <img id="selected-image" alt="" src={current.photos[currentImage].url} onClick={() => expandClick()} />
+        {right}
       </aside>
-      <aside className="col-1-10" style={{ height: '800px', float: 'right' }}>
-        <div className="expand">
-          {expand}
-        </div>
-      </aside>
+      {expand}
     </section>
   );
 };
@@ -68,6 +56,7 @@ Gallery.propTypes = {
   rightClick: PropTypes.func.isRequired,
   first: PropTypes.bool.isRequired,
   last: PropTypes.bool.isRequired,
+  currentImage: PropTypes.number.isRequired,
 };
 
 export default Gallery;

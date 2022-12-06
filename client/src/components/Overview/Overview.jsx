@@ -45,6 +45,7 @@ const Overview = ({ info, styles, reviews }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [first, setFirst] = useState(true);
   const [last, setLast] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const checkFirstAndLast = () => {
     if (currentImage === 0) {
       setFirst(true);
@@ -104,33 +105,51 @@ const Overview = ({ info, styles, reviews }) => {
       setCurrentImage(rightIndex);
     }
   };
-
-  const largePic = {
-    width: '55%',
-    height: '800px',
+  const expandClick = () => {
+    if (expanded) {
+      setExpanded(false);
+    } else {
+      setExpanded(true);
+    }
+  };
+  const expandStyle = {
+    width: '100%',
+    height: '700px',
     backgroundSize: '90% auto',
     backgroundColor: 'rgb(230, 230, 230)',
     backgroundImage: `url(${styles.results[currentStyle].photos[currentImage].url})`,
-    marginLeft: '90px',
     backgroundRepeat: 'no-repeat',
+  };
+
+  const defaultPic = {
+    width: '60%',
+    height: '700px',
   };
   const rightSide = {
     height: '800px',
     position: 'relative',
     float: 'right',
   };
+  let mainStyle;
+  if (expanded === true) {
+    mainStyle = expandStyle;
+  } else {
+    mainStyle = defaultPic;
+  }
   return (
     <section className="row">
       <div className="grid">
         <section>
-          <div className="col-2-3 main-image" style={largePic}>
+          <div className="col-2-3" style={mainStyle}>
             <Gallery
               current={styles.results[currentStyle]}
+              currentImage={currentImage}
               click={thumbnailClickHandler}
               leftClick={leftClick}
               rightClick={rightClick}
               first={first}
               last={last}
+              expandClick={expandClick}
             />
           </div>
           <aside className="col-1-3" style={rightSide}>

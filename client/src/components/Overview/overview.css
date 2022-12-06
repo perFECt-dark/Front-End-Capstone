@@ -410,9 +410,6 @@ h1, h3, h4, h5, p {
   ========================================
 */
 
-.main-image {
-  background-position: center;
-}
 
 .style-icons {
   padding: 3px;
@@ -430,23 +427,25 @@ h1, h3, h4, h5, p {
 
 .arrows {
   display: flex;
-  justify-content: space-between;
-  padding-top: 400px;
+  margin: auto;
+  font-size: 30px;
+  border: none;
 }
 
 .left,
 .right,
 .expand {
-  color: yellow;
-  font-size: 30px;
+  color: black;
   border: none;
   background-color: transparent;
-  z-index: 1;
-  padding-top: 10px;
 }
 
-.main-image :hover {
-  cursor: zoom-in;
+.thumbnails {
+  max-height: 700px;
+  padding-top: 15px;
+  max-width: 100px;
+  text-align: center;
+  position: relative;
 }
 
 .thumbnails :hover {
@@ -458,9 +457,15 @@ h1, h3, h4, h5, p {
   cursor: pointer;
 }
 
+.expand {
+  float: right;
+  font-size: 30px;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+
 .expand :hover {
-  color: blue;
-  cursor: nesw-resize;
+  color: red;
 }
 
 .discounted {
@@ -470,4 +475,31 @@ h1, h3, h4, h5, p {
 
 .hidden {
   visibility: hidden;
+}
+
+#selected-image {
+  height: auto;
+  width: 100%;
+  max-height: 700px;
+  position: relative;
+  margin: auto;
+}
+
+#selected-image :hover {
+  cursor: zoom-in;
+}
+
+.carousel {
+  vertical-align: middle;
+  background-position: center;
+  background-color: rgb(230, 230, 230);
+  justify-content: space-evenly;
+}
+
+.around-image {
+  width: 65%;
+  height: 700px;
+  display: inline-flex;
+  flex-flow: row;
+  text-align: center;
 }
