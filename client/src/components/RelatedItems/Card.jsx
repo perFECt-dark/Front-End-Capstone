@@ -17,17 +17,6 @@ function Card({ relatedCardId }) {
       .catch((err) => {
         console.log(err);
       });
-
-      const newStyleUrl = `http://localhost:3000/item/${relatedCardId}`;
-      axios
-      .get(newStyleUrl)
-      .then((infoToReturn) => {
-        console.log('This is what info style data is: ', infoToReturn.data);
-        setRelatedProductStyle(infoToReturn.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   }, []);
 
   return (
@@ -36,9 +25,9 @@ function Card({ relatedCardId }) {
         <div>
           <div className="image-card">
             <img
-              className="image-object"
-              alt={`for ${relatedProductData.productInfo}`}
-              src="https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+              className="card-image-object"
+              alt={`for ${relatedProductData.productInfo.name}`}
+              src={`${relatedProductData.productStyles.results[0].photos[0].url}`}
             />
           </div>
           <div className="card-info">

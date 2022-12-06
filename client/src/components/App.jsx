@@ -66,14 +66,14 @@ function App() {
         <h3 className="tagline">_______________ Search</h3>
       </header>
       {/* Overview */}
-      {/* {productData !== null
+      {productData !== null
       && (
       <Overview
         info={productData.productInfo}
         styles={productData.productStyles}
         reviews={productData.reviews}
       />
-      )} */}
+      )}
 
       {/* Related Items */}
       {productData !== null

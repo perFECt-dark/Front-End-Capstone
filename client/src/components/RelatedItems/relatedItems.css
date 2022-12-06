@@ -17,6 +17,7 @@
 .card-info {
   font-size: 16px;
 }
-.image-object{
-  height: 500px;
+.card-image-object{
+  height: 300px;
+  width: 200px;
 }
