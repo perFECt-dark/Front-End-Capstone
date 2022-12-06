@@ -126,7 +126,7 @@ const Overview = ({ info, styles, reviews }) => {
     height: '700px',
   };
   const rightSide = {
-    height: '800px',
+    height: '700px',
     position: 'relative',
     float: 'right',
   };
