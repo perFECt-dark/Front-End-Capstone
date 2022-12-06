@@ -38,10 +38,7 @@ function App() {
   useEffect(() => {
     /// This effect inciates page with data
     grabInfo(40344);
-
-  },[]);
-
-
+  }, []);
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
@@ -60,16 +57,15 @@ function App() {
         <h3 className="tagline">_______________ Search</h3>
       </header>
       {productData !== null
-      && (
-      <Overview
-        info={productData.productInfo}
-        styles={productData.productStyles}
-        reviews={productData.reviews}
-      />
-      )}
+        && (
+          <Overview
+            info={productData.productInfo}
+            styles={productData.productStyles}
+            reviews={productData.reviews}
+          />
+        )}
       {productData !== null
-      && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
-      )} 
+        && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
     </div>
 
   );

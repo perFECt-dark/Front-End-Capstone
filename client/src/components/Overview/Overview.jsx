@@ -106,11 +106,13 @@ const Overview = ({ info, styles, reviews }) => {
   };
 
   const largePic = {
-    width: '50%',
+    width: '55%',
     height: '800px',
-    backgroundSize: '100% 100%',
+    backgroundSize: '90% auto',
+    backgroundColor: 'rgb(230, 230, 230)',
     backgroundImage: `url(${styles.results[currentStyle].photos[currentImage].url})`,
     marginLeft: '90px',
+    backgroundRepeat: 'no-repeat',
   };
   const rightSide = {
     height: '800px',
