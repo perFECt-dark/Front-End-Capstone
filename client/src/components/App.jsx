@@ -55,7 +55,6 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
-      {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
       {productData !== null
       && (
       <Overview
@@ -64,6 +63,8 @@ function App() {
         reviews={productData.reviews}
       />
       )}
+      {productData !== null
+      && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
     </div>
 
   );

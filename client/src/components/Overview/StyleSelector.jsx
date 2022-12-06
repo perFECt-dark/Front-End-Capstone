@@ -30,5 +30,6 @@ const StyleSelector = ({ style, click, currentStyle }) => {
 StyleSelector.propTypes = {
   style: PropTypes.shape().isRequired,
   click: PropTypes.func.isRequired,
+  currentStyle: PropTypes.number.isRequired,
 };
 export default StyleSelector;

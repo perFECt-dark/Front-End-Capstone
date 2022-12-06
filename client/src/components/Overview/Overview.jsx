@@ -42,23 +42,74 @@ const Overview = ({ info, styles, reviews }) => {
   the main image
   */
   const [currentStyle, setCurrentStyle] = useState(0);
-  const [currentImage, setCurrentImage] = useState('"https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"');
+  const [currentImage, setCurrentImage] = useState(0);
+  const [first, setFirst] = useState(true);
+  const [last, setLast] = useState(false);
+  const checkFirstAndLast = () => {
+    if (currentImage === 0) {
+      setFirst(true);
+    } else {
+      setFirst(false);
+    }
+    if (currentImage >= styles.results[currentStyle].photos.length - 1) {
+      setLast(true);
+    } else {
+      setLast(false);
+    }
+  };
   const styleClickHandler = (event) => {
-    const styleImage = event.target.src;
-    const styleIndex = event.target.name;
+    const styleIndex = Number(event.target.name);
+    setFirst(true);
+    setLast(false);
     setCurrentStyle(styleIndex);
-    setCurrentImage(styleImage);
+    setCurrentImage(0);
   };
   const thumbnailClickHandler = (event) => {
-    const clickedThumbnail = event.target.src;
-    setCurrentImage(clickedThumbnail);
+    const clickedIndex = Number(event.target.name);
+    checkFirstAndLast();
+    if (clickedIndex === 0) {
+      setFirst(true);
+      setLast(false);
+    } else if (clickedIndex === styles.results[currentStyle].photos.length - 1) {
+      setLast(true);
+      setFirst(false);
+      setCurrentImage(clickedIndex);
+    } else {
+      setFirst(false);
+      setLast(false);
+    }
+    setCurrentImage(clickedIndex);
+  };
+  const leftClick = () => {
+    let leftIndex = Number(currentImage);
+    checkFirstAndLast();
+    if (currentImage > 0) {
+      leftIndex = currentImage - 1;
+      if (leftIndex === 0) {
+        setFirst(true);
+      }
+      setLast(false);
+      setCurrentImage(leftIndex);
+    }
+  };
+  const rightClick = () => {
+    let rightIndex = Number(currentImage);
+    checkFirstAndLast();
+    if (rightIndex + 1 >= styles.results[currentStyle].photos.length - 1) {
+      setLast(true);
+      setCurrentImage(rightIndex + 1);
+    } else {
+      rightIndex += 1;
+      setFirst(false);
+      setCurrentImage(rightIndex);
+    }
   };
 
   const largePic = {
     width: '50%',
     height: '800px',
     backgroundSize: '100% 100%',
-    backgroundImage: `url(${currentImage})`,
+    backgroundImage: `url(${styles.results[currentStyle].photos[currentImage].url})`,
     marginLeft: '90px',
   };
   const rightSide = {
@@ -71,7 +122,14 @@ const Overview = ({ info, styles, reviews }) => {
       <div className="grid">
         <section>
           <div className="col-2-3 main-image" style={largePic}>
-            <Gallery current={styles.results[currentStyle]} click={thumbnailClickHandler} />
+            <Gallery
+              current={styles.results[currentStyle]}
+              click={thumbnailClickHandler}
+              leftClick={leftClick}
+              rightClick={rightClick}
+              first={first}
+              last={last}
+            />
           </div>
           <aside className="col-1-3" style={rightSide}>
             <Information info={info} current={styles.results[currentStyle]} reviews={reviews} />

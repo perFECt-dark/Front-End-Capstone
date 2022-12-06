@@ -20,11 +20,12 @@ const AddToCart = () => {
   for (let i = 1; i < 16; i += 1) {
     quantity.push({ value: `${i}`, label: `${i}` });
   }
+  // these update based on selected
   const [size, setSize] = React.useState(sizes[0]);
   const [amount, setAmount] = React.useState(quantity[0]);
   // trying to move this box to the bottom of the container
   return (
-    <div id="cart-box">
+    <div id="cart-box" style={{ verticalAlign: 'bottom' }}>
       <Select
         defaultValue={size}
         onChange={setSize}
