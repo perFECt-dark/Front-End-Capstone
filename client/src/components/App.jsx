@@ -66,9 +66,10 @@ function App() {
         styles={productData.productStyles}
         reviews={productData.reviews}
       />
+      )}
+      {productData !== null
+      && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
       )} 
-      
-      {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
     </div>
 
   );
