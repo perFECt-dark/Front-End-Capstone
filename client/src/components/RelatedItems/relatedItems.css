@@ -8,6 +8,9 @@
   display: inline-block;
   border-width: 10px;
   border-style: outset;
+  /*
+  box-shadow: 10px 5px 5px blue;
+  */
 }
 .card-title {
   font-size: 24px;
@@ -18,17 +21,63 @@
 .card-info {
   font-size: 16px;
 }
-.card-image-object{
+.card-image-object {
   height: 375px;
   width: 250px;
 }
-.card-action-button{
+.card-action-button {
   opacity: 0.4;
   position: absolute;
 }
-.card-default-strikeout{
+.card-default-strikeout {
   padding-left: 5px;
   color: red;
   text-decoration: line-through;
   display: inline;
+}
+.card-row {
+  min-width: 960px;
+  background: #fff;
+  padding: 36px 0 14px 0;
+}
+.card-grid {
+  background: #fff;
+  margin: 0 auto;
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/*
+  ========================================
+  Modals
+  ========================================
+*/
+.related-products-modal {
+  /* background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute; */
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* margin: 0;
+  padding: 0;
+
+  height: 100%;
+  width: 100%;
+
+  z-index: 99999;
+  pointer-events: none;
+  overflow-x: auto; */
+  background-color: rgba(0, 0, 0, 0.25);
+}
+.related-products-modal-content {
+  color: black;
+  text-align: center;
 }

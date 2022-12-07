@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Reviews from './Review/Reviews';
 import Overview from './Overview/Overview';
-import CardList from './RelatedItems/CardList';
+import RelatedProductsList from './RelatedItems/RelatedProductsList';
 // if you have the css file in another place, make sure to update the path and it's name if needed
 import '../styles.css';
 import './RelatedItems/relatedItems.css';
@@ -77,7 +77,7 @@ function App() {
 
       {/* Related Items */}
       {productData !== null
-      && <CardList cards={productData.relatedProducts} />}
+      && <RelatedProductsList cards={productData.relatedProducts} />}
 
       {/* {productData !== null
       && console.log('TEST', getInfoFromId(40344))} */}

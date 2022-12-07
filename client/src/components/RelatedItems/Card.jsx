@@ -1,10 +1,11 @@
 import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import RelatedProductsModal from './RelatedProductsModal';
 
 function Card({ relatedCardId }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
-  const [relatedProductStyle, setRelatedProductStyle] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const newUrl = `http://localhost:3000/item/${relatedCardId}`;
@@ -23,7 +24,8 @@ function Card({ relatedCardId }) {
       {relatedProductData !== null && (
         <div>
           <div className="image-card">
-          <button className='card-action-button'>Button</button>
+            <button className="card-action-button" onClick={() => {setIsOpen(true)}}>Button</button>
+            {isOpen && <RelatedProductsModal setIsOpen={setIsOpen} />}
             <img
               className="card-image-object"
               alt={`for ${relatedProductData.productInfo.name}`}
@@ -52,6 +54,7 @@ function Card({ relatedCardId }) {
 
 Card.propTypes = {
   relatedCardId: propTypes.number.isRequired,
+  // actionButton: propTypes.func.isRequired,
 };
 
 export default Card;
