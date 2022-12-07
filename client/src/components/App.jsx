@@ -7,6 +7,8 @@ import '../styles.css';
 import Reviews from './Review/Reviews';
 import Overview from './Overview/Overview';
 import Card from './Card';
+import StarRating from './StarRating';
+import StarDisplay from './StarDisplay';
 // if you have the css file in another place, make sure to update the path and it's name if needed
 
 function App() {
@@ -59,9 +61,8 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
+      {productData !== null && <Reviews metaData={productData.meta} reviewData={productData.reviews} title={productData.productInfo.name}/>}
       {productData !== null && <Overview info={productData.productInfo} styles={productData.productStyles} />}
-      {productData !== null && <Reviews metaData={productData.meta} reviewData={productData.reviews}/>}
-
   </div>
 
   );
