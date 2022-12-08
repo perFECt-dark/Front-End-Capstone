@@ -89,7 +89,7 @@ const Expanded = ({
       <aside className="col-7-10 expanded-container" onMouseMove={(e) => zoomHandler(e)}>
         {left}
         <input id="zoom" type="checkbox" />
-        <label htmlFor="zoom" className="zoom-background" onMouseMove={(e) => zoomHandler(e)} onClick={(e) => zoomHandler(e)} style={zoomStyle}>
+        <label htmlFor="zoom" className="zoom-background" onMouseMove={(e) => zoomHandler(e)} onFocus={(e) => zoomHandler(e)} onMouseOver={(e) => zoomHandler(e)} style={zoomStyle}>
           <img id="expanded-image" alt="" src={current.photos[currentImage].url} onClick={(e) => zoomHandler(e)} />
         </label>
         {right}
