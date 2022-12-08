@@ -10,22 +10,26 @@ import Thumbnail from './renderOne/Thumbnail.jsx';
 const Gallery = ({
   current, click, leftClick, rightClick, first, last, currentImage, expandClick,
 }) => {
+  // left arrow should exist, render it, else hide
   let left;
   if (first) {
     left = <button className="hidden arrows">←</button>;
   } else {
     left = <button onClick={() => leftClick()} className="left arrows">←</button>;
   }
+  // if right arrow should exist, render it, else hide
   let right;
   if (last) {
     right = <button className="hidden arrows">→</button>;
   } else {
     right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
+  // render down button if there are more than 7 thumbnails
   let down = <button className="down">↓</button>;
   if (current.photos.length < 8) {
     down = <button className="hidden">↓</button>;
   }
+  // render button to set to expand
   const expand = <button className="expand" onClick={() => expandClick()}>⤢</button>;
   return (
     <section className="carousel">
@@ -36,6 +40,7 @@ const Gallery = ({
             url={pic.thumbnail_url}
             key={pic.thumbnail_url}
             click={click}
+            currentImage={currentImage}
           />
         ))}
         {down}

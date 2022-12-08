@@ -11,39 +11,46 @@ import Thumbnail from './renderOne/Thumbnail.jsx';
 const Expanded = ({
   current, click, leftClick, rightClick, first, last, currentImage,
 }) => {
+  // left arrow should exist, render it, else hide
   let left;
   if (first) {
     left = <button className="hidden arrows">←</button>;
   } else {
     left = <button onClick={() => leftClick()} className="left arrows">←</button>;
   }
+  // if right arrow should exist, render it, else hide
   let right;
   if (last) {
     right = <button className="hidden arrows">→</button>;
   } else {
     right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
+  // render down button if there are more than 7 thumbnails
   let down = <button className="down">↓</button>;
   if (current.photos.length < 8) {
     down = <button className="hidden">↓</button>;
   }
+  // background for zoom handler
   const zoomStyle = {
     backgroundImage: `url(${current.photos[currentImage].url})`,
   };
+  // 2.5x zoom handler
   const zoomHandler = (event) => {
     if (event.target.htmlFor !== 'zoom') {
       return;
     }
-    // 2.5x zoom feature
+    // set target to be the label
     const zoomTo = event.target;
     let offsetX;
     let offsetY;
+    // if there is an offset, set variable respectively
     if (event.nativeEvent.offsetX) {
       offsetX = event.nativeEvent.offsetX;
     }
     if (event.nativeEvent.offsetX) {
       offsetY = event.nativeEvent.offsetY;
     }
+    // calculate percentage of background to show
     const x = (offsetX / zoomTo.offsetWidth) * 100;
     const y = (offsetY / zoomTo.offsetHeight) * 100;
     zoomTo.style.backgroundPosition = `${x}% ${y}%`;

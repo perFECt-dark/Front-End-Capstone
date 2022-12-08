@@ -614,7 +614,8 @@ h1, h3, h4, h5, p {
 
 .zoom-background {
   background-size: 0 0;
-  max-height: 700;
+  max-height: 700px;
+  margin: auto;
 }
 
 #zoom:checked+label{
@@ -622,7 +623,7 @@ h1, h3, h4, h5, p {
   position: relative;
   overflow: hidden;
   cursor: zoom-out;
-  background-size: 250%;
+  background-size: 300%;
   background-repeat: no-repeat;
 }
 
