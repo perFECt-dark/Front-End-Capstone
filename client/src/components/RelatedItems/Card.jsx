@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProductsModal from './RelatedProductsModal';
 
-function Card({ relatedCardId }) {
+function Card({
+  productName, styles, relatedCardId, characteristics
+}) {
   const [relatedProductData, setRelatedProductData] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -25,7 +27,18 @@ function Card({ relatedCardId }) {
         <div>
           <div className="image-card">
             <button className="card-action-button" onClick={() => {setIsOpen(true)}}>Button</button>
-            {isOpen && <RelatedProductsModal setIsOpen={setIsOpen} />}
+            {(isOpen && characteristics !== null)
+            && (
+              <RelatedProductsModal
+                productName={productName}
+                styles={styles}
+                setIsOpen={setIsOpen}
+                currentCharacteristics={characteristics}
+                relatedName={relatedProductData.productInfo.name}
+                relatedCharacteristics={relatedProductData.meta.characteristics}
+                relatedStyles={relatedProductData.productStyles}
+              />
+            )}
             <img
               className="card-image-object"
               alt={`for ${relatedProductData.productInfo.name}`}
@@ -53,8 +66,14 @@ function Card({ relatedCardId }) {
 }
 
 Card.propTypes = {
+  productName: propTypes.string.isRequired,
+  styles: propTypes.shape().isRequired,
   relatedCardId: propTypes.number.isRequired,
+  characteristics: propTypes.shape(),
   // actionButton: propTypes.func.isRequired,
+};
+Card.defaultProps = {
+  characteristics: null,
 };
 
 export default Card;

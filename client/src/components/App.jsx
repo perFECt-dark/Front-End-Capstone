@@ -65,18 +65,25 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
-      {productData !== null
+      {/* {productData !== null
       && (
       <Overview
         info={productData.productInfo}
         styles={productData.productStyles}
         reviews={productData.reviews}
       />
-      )}
+      )} */}
 
       {/* Related Items */}
       {productData !== null
-      && <RelatedProductsList cards={productData.relatedProducts} />}
+      && (
+        <RelatedProductsList
+          productName={productData.productInfo.name}
+          styles={productData.productStyles}
+          cards={productData.relatedProducts}
+          characteristics={productData.meta.characteristics}
+        />
+      )}
 
       {/* {productData !== null
       && console.log('TEST', getInfoFromId(40344))} */}
