@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
 const Expanded = ({
-  current, click, leftClick, rightClick, first, last, currentImage,
+  current, click, leftClick, rightClick, first, last, currentImage, expanded,
 }) => {
   // left arrow should exist, render it, else hide
   let left;
@@ -36,7 +36,7 @@ const Expanded = ({
   };
   // 2.5x zoom handler
   const zoomHandler = (event) => {
-    if (event.target.htmlFor !== 'zoom') {
+    if (event.target.htmlFor !== 'zoom' && event.target.id !== 'expanded-image') {
       return;
     }
     // set target to be the label
@@ -44,17 +44,33 @@ const Expanded = ({
     let offsetX;
     let offsetY;
     // if there is an offset, set variable respectively
-    if (event.nativeEvent.offsetX) {
-      offsetX = event.nativeEvent.offsetX;
+    if (offsetX || offsetY) {
+      const x = (offsetX / zoomTo.offsetWidth) * 100;
+      const y = (offsetY / zoomTo.offsetHeight) * 100;
+      zoomTo.style.backgroundPosition = `${x}% ${y}%`;
+      return;
     }
     if (event.nativeEvent.offsetX) {
+      offsetX = event.nativeEvent.offsetX;
+    } else {
+      offsetX = event.nativeEvent.pageX;
+    }
+    if (event.nativeEvent.offsetY) {
       offsetY = event.nativeEvent.offsetY;
+    } else {
+      offsetY = event.nativeEvent.pageY;
     }
     // calculate percentage of background to show
     const x = (offsetX / zoomTo.offsetWidth) * 100;
     const y = (offsetY / zoomTo.offsetHeight) * 100;
     zoomTo.style.backgroundPosition = `${x}% ${y}%`;
   };
+  let icons;
+  if (expanded) {
+    icons = 'thumbnail-icon small-icons';
+  } else {
+    icons = 'thumbnail-icon';
+  }
   return (
     <section className="carousel">
       <div className="col-1-3 expanded-view-icons">
@@ -64,15 +80,17 @@ const Expanded = ({
             url={pic.thumbnail_url}
             key={pic.thumbnail_url}
             click={click}
+            currentImage={currentImage}
+            icons={icons}
           />
         ))}
         {down}
       </div>
-      <aside className="col-7-10 expanded-container">
+      <aside className="col-7-10 expanded-container" onMouseMove={(e) => zoomHandler(e)}>
         {left}
         <input id="zoom" type="checkbox" />
-        <label htmlFor="zoom" className="zoom-background" onMouseMove={(e) => zoomHandler(e)} style={zoomStyle}>
-          <img id="expanded-image" alt="" src={current.photos[currentImage].url} />
+        <label htmlFor="zoom" className="zoom-background" onMouseMove={(e) => zoomHandler(e)} onClick={(e) => zoomHandler(e)} style={zoomStyle}>
+          <img id="expanded-image" alt="" src={current.photos[currentImage].url} onClick={(e) => zoomHandler(e)} />
         </label>
         {right}
       </aside>
@@ -87,6 +105,7 @@ Expanded.propTypes = {
   first: PropTypes.bool.isRequired,
   last: PropTypes.bool.isRequired,
   currentImage: PropTypes.number.isRequired,
+  expanded: PropTypes.bool.isRequired,
 };
 
 export default Expanded;

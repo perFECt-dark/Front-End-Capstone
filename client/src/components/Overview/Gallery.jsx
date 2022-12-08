@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
 const Gallery = ({
-  current, click, leftClick, rightClick, first, last, currentImage, expandClick,
+  current, click, leftClick, rightClick, first, last, currentImage, expandClick, expanded,
 }) => {
   // left arrow should exist, render it, else hide
   let left;
@@ -31,6 +31,12 @@ const Gallery = ({
   }
   // render button to set to expand
   const expand = <button className="expand" onClick={() => expandClick()}>⤢</button>;
+  let icons;
+  if (expanded) {
+    icons = 'thumbnail-icon small-icons';
+  } else {
+    icons = 'thumbnail-icon';
+  }
   return (
     <section className="carousel">
       <div className="col-1-3 thumbnails">
@@ -41,6 +47,7 @@ const Gallery = ({
             key={pic.thumbnail_url}
             click={click}
             currentImage={currentImage}
+            icons={icons}
           />
         ))}
         {down}
@@ -63,6 +70,7 @@ Gallery.propTypes = {
   last: PropTypes.bool.isRequired,
   currentImage: PropTypes.number.isRequired,
   expandClick: PropTypes.func.isRequired,
+  expanded: PropTypes.bool.isRequired,
 };
 
 export default Gallery;

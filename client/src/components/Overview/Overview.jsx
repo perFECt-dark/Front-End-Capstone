@@ -4,7 +4,7 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Gallery from './Gallery';
 import Expanded from './Expanded';
 import Information from './Information';
@@ -33,7 +33,7 @@ const Overview = ({ info, styles, reviews }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [first, setFirst] = useState(true);
   const [last, setLast] = useState(false);
-  // const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const checkFirstAndLast = () => {
     if (currentImage === 0) {
       setFirst(true);
@@ -93,17 +93,21 @@ const Overview = ({ info, styles, reviews }) => {
       setCurrentImage(rightIndex);
     }
   };
+  // expand default image on click
   let overviewModal = document.getElementById('expand-modal');
   const expandClick = () => {
     if (overviewModal === null) {
       overviewModal = document.getElementById('expand-modal');
     }
+    setExpanded(true);
     overviewModal.style.display = 'block';
   };
+  // switch back to default image on click
   const expandClose = (event) => {
     if (overviewModal !== null && (event.target !== overviewModal || event.target.className === 'close-expanded')) {
       overviewModal.style.display = 'none';
     }
+    setExpanded(false);
   };
   const defaultPic = {
     width: '60%',
@@ -128,6 +132,7 @@ const Overview = ({ info, styles, reviews }) => {
               first={first}
               last={last}
               expandClick={expandClick}
+              expanded={expanded}
             />
             <div id="expand-modal" className="overview-modal">
               <div className="expanded-content" name="">
@@ -140,6 +145,7 @@ const Overview = ({ info, styles, reviews }) => {
                   rightClick={rightClick}
                   first={first}
                   last={last}
+                  expanded={expanded}
                 />
               </div>
             </div>

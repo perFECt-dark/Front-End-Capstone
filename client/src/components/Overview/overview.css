@@ -454,11 +454,18 @@ h1, h3, h4, h5, p {
 .thumbnails:hover {
   cursor: pointer;
 }
-/* setting auto so that hopefully it will conform to shape of container */
+
 .thumbnail-icon {
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 80px;
   border-radius: 20%;
+  border: 1px solid black;
+}
+
+.small-icons {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
   border: 1px solid black;
 }
 
@@ -528,10 +535,6 @@ h1, h3, h4, h5, p {
   ========================================
 */
 
-#expand-modal {
-
-}
-
 .overview-modal {
   display: none;
   position: absolute;
@@ -539,7 +542,7 @@ h1, h3, h4, h5, p {
   left:0;
   top:170px;
   width: 100%;
-  height: 100%;
+  height: 700px;
 }
 
 .expanded-content {
@@ -615,11 +618,12 @@ h1, h3, h4, h5, p {
 .zoom-background {
   background-size: 0 0;
   max-height: 700px;
+  max-width: 100%;
   margin: auto;
 }
 
 #zoom:checked+label{
-  background-position: 50% 50%;
+  /* background-position: 50% 50%; */
   position: relative;
   overflow: hidden;
   cursor: zoom-out;
@@ -628,5 +632,9 @@ h1, h3, h4, h5, p {
 }
 
 #zoom:checked+label>img {
+  visibility: hidden;
+}
+
+#zoom:checked+div{
   visibility: hidden;
 }

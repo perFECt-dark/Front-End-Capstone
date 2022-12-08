@@ -21,6 +21,7 @@ const StyleSelector = ({ style, click, currentStyle }) => {
             key={item.style_id}
             item={item}
             click={click}
+            currentStyle={currentStyle}
           />
         );
       })}

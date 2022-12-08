@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Thumbnail = ({
-  url, click, index, currentImage,
+  url, click, index, currentImage, icons,
 }) => {
   // for selected image...
   // highlight/outline/add some kind of checkmark
@@ -15,7 +15,7 @@ const Thumbnail = ({
   if (index === currentImage) {
     highlight = (
       <img
-        className="thumbnail-icon "
+        className={icons}
         name={index}
         src={url}
         alt=""
@@ -26,7 +26,7 @@ const Thumbnail = ({
   } else {
     highlight = (
       <img
-        className="thumbnail-icon "
+        className={icons}
         name={index}
         src={url}
         alt=""
@@ -34,9 +34,7 @@ const Thumbnail = ({
       />
     );
   }
-  return (
-    highlight
-  );
+  return (highlight);
 };
 Thumbnail.propTypes = {
   url: PropTypes.string.isRequired,
