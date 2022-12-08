@@ -22,7 +22,7 @@ function Card({
       });
   }, []);
   return (
-    <aside className="card">
+    <aside className="card" onClick={() => console.log('Hello')}>
       {relatedProductData !== null && (
         <div>
           <div className="image-card">
