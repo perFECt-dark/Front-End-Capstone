@@ -7,7 +7,7 @@ const Information = ({ info, current, reviews }) => {
   let price = (
     <h5>
       $
-      {info.default_price}
+      {current.original_price}
     </h5>
   );
   // temporary star review indicator
@@ -29,7 +29,7 @@ const Information = ({ info, current, reviews }) => {
     showStar = '⭐☆☆☆☆ ';
   }
   // temporary star review indicator
-  if (current.sale_price) {
+  if (current.sale_price !== null) {
     price = (
       <div>
         <h5 className="sale-price">
