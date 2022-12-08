@@ -4,7 +4,7 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Gallery from './Gallery';
 import Expanded from './Expanded';
 import Information from './Information';
@@ -22,7 +22,7 @@ const Overview = ({ info, styles, reviews }) => {
         original_price: '140.00',
         sale_price: null,
         default?: true,
-        photos: [ { thumbnail_url: like 5 unsplash photos }],
+        photos: [ { thumbnail_url: }],
         skus: 1394769: {quantity: 8, size: 'XS'},
        }, ...
       ]
@@ -34,6 +34,15 @@ const Overview = ({ info, styles, reviews }) => {
   const [first, setFirst] = useState(true);
   const [last, setLast] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  // setting to default style first
+  useEffect(() => {
+    styles.results.forEach((style, index) => {
+      if (style['default?'] === true) {
+        setCurrentStyle(index);
+      }
+    });
+  }, []);
+  // function to check what the current image is for arrows
   const checkFirstAndLast = () => {
     if (currentImage === 0) {
       setFirst(true);
@@ -46,6 +55,7 @@ const Overview = ({ info, styles, reviews }) => {
       setLast(false);
     }
   };
+  // function for clicking on new style to change current style and image
   const styleClickHandler = (event) => {
     const styleIndex = Number(event.target.name);
     setFirst(true);
@@ -53,6 +63,7 @@ const Overview = ({ info, styles, reviews }) => {
     setCurrentStyle(styleIndex);
     setCurrentImage(0);
   };
+  // function for clicking on a thumbnail to change current default image
   const thumbnailClickHandler = (event) => {
     const clickedIndex = Number(event.target.name);
     checkFirstAndLast();
@@ -62,7 +73,6 @@ const Overview = ({ info, styles, reviews }) => {
     } else if (clickedIndex === styles.results[currentStyle].photos.length - 1) {
       setLast(true);
       setFirst(false);
-      setCurrentImage(clickedIndex);
     } else {
       setFirst(false);
       setLast(false);

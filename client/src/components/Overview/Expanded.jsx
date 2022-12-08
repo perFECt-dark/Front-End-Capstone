@@ -74,16 +74,19 @@ const Expanded = ({
   return (
     <section className="carousel">
       <div className="col-1-3 expanded-view-icons">
-        {current.photos.map((pic, index) => (
-          <Thumbnail
-            index={index}
-            url={pic.thumbnail_url}
-            key={pic.thumbnail_url}
-            click={click}
-            currentImage={currentImage}
-            icons={icons}
-          />
-        ))}
+        {current.photos.map((pic, index) => {
+          const key = pic.thumbnail_url + index;
+          return (
+            <Thumbnail
+              index={index}
+              url={pic.thumbnail_url}
+              key={key}
+              click={click}
+              currentImage={currentImage}
+              icons={icons}
+            />
+          );
+        })}
         {down}
       </div>
       <aside className="col-7-10 expanded-container" onMouseMove={(e) => zoomHandler(e)}>
