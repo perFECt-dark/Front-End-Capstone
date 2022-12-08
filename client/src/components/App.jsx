@@ -1,4 +1,4 @@
-import './Overview/overview.css';
+// import './Overview/overview.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +6,7 @@ import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/
 import Reviews from './Reviews';
 import Overview from './Overview/Overview';
 import Card from './Card';
+import QA from './QA/QA'
 // if you have the css file in another place, make sure to update the path and it's name if needed
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
 
   return (
     <div>
-      <header
+      {/* <header
         className="primary-header container group"
         style={{ backgroundColor: 'blue' }}
       >
@@ -52,7 +53,7 @@ function App() {
             Dark
           </a>
         </h1>
-        {/* placeholder search */}
+        placeholder search
         <h3 className="tagline">_______________ Search</h3>
       </header>
       {productData === 'Dont Render' && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
@@ -63,7 +64,10 @@ function App() {
         styles={productData.productStyles}
         reviews={productData.reviews}
       />
-      )}
+      )} */}
+      <div>
+        <QA />
+      </div>
     </div>
 
   );
