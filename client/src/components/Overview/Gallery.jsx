@@ -40,7 +40,7 @@ const Gallery = ({
   return (
     <section className="carousel">
       <div className="col-1-3 thumbnails">
-        {current.photos.map((pic, index) => {
+        {current.photos.slice(0, 7).map((pic, index) => {
           const key = pic.thumbnail_url + index;
           return (
             <Thumbnail
