@@ -406,39 +406,41 @@ h1, h3, h4, h5, p {
 
 /*
   ========================================
-  Gallery elements
+  Gallery containers
   ========================================
 */
 
-
-.style-icons {
-  margin: 3px;
-  width: 75px;
-  height: 75px;
-  border-radius: 100%;
-  border: 1px solid black;
+.carousel {
+  vertical-align: middle;
+  background-position: center;
+  background-color: rgb(230, 230, 230);
+  justify-content: space-between;
 }
 
-.thumbnail-icon {
-  height: 70px;
-  width: 70px;
-  border-radius: 20%;
-  border: 1px solid black;
+.around-image {
+  width: 65%;
+  height: 700px;
+  display: inline-flex;
+  flex-flow: row;
+  text-align: center;
 }
 
-.arrows {
-  display: flex;
+/*
+  ========================================
+  Inside carousel/gallery
+  ========================================
+*/
+
+#selected-image {
+  height: auto;
+  width: 100%;
+  max-height: 700px;
+  position: relative;
   margin: auto;
-  font-size: 30px;
-  border: none;
 }
 
-.left,
-.right,
-.expand {
-  color: black;
-  border: none;
-  background-color: transparent;
+#selected-image:hover {
+  cursor: zoom-in;
 }
 
 .thumbnails {
@@ -449,12 +451,34 @@ h1, h3, h4, h5, p {
   position: relative;
 }
 
-.thumbnails :hover {
+.thumbnails:hover {
   cursor: pointer;
 }
+/* setting auto so that hopefully it will conform to shape of container */
+.thumbnail-icon {
+  height: 70px;
+  width: 70px;
+  border-radius: 20%;
+  border: 1px solid black;
+}
 
-.arrows :hover {
-  color: blue;
+.left,
+.right,
+.expand {
+  color: black;
+  border: none;
+  background-color: transparent;
+}
+
+.arrows {
+  display: flex;
+  margin: auto;
+  font-size: 30px;
+  border: none;
+}
+
+.arrows:hover {
+  color: rgb(142, 142, 142);
   cursor: pointer;
 }
 
@@ -465,42 +489,143 @@ h1, h3, h4, h5, p {
   padding-top: 10px;
 }
 
-.expand :hover {
-  color: red;
+.expand:hover {
+  color: grey;
+  cursor: pointer;
+}
+
+/*
+  ========================================
+  Info elements
+  ========================================
+*/
+
+.style-icons {
+  margin: 3px;
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  border: 1px solid black;
 }
 
 .discounted {
-  color:red;
   text-decoration: line-through;
+}
+
+.sale-price {
+  float: left;
+  padding-right: 10px;
+  color: red;
 }
 
 .hidden {
   visibility: hidden;
 }
 
-#selected-image {
-  height: auto;
+/*
+  ========================================
+  Expanded Modal
+  ========================================
+*/
+
+#expand-modal {
+
+}
+
+.overview-modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left:0;
+  top:170px;
   width: 100%;
+  height: 100%;
+}
+
+.expanded-content {
+  background-color: rgb(230, 230, 230);
+  margin: 0;
+  width: 100%;
+}
+
+.close-expanded {
+  color: rgb(109, 114, 117);
+  float: right;
+  margin: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close-expanded:hover,.close-expanded:focus{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
+  ========================================
+  Expanded Gallery elements
+  ========================================
+*/
+
+.expanded-container {
+  width: 80%;
+  height: 700px;
+  display: inline-flex;
+  flex-flow: row;
+  text-align: center;
+  justify-content: space-between;
+}
+
+#expanded-image {
+  height: auto;
+  width: auto;
+  max-width: 100%;
   max-height: 700px;
   position: relative;
   margin: auto;
 }
 
-#selected-image :hover {
-  cursor: zoom-in;
+#expanded-image:hover {
+  cursor: crosshair;
 }
 
-.carousel {
-  vertical-align: middle;
-  background-position: center;
-  background-color: rgb(230, 230, 230);
-  justify-content: space-evenly;
-}
-
-.around-image {
-  width: 65%;
-  height: 700px;
-  display: inline-flex;
-  flex-flow: row;
+.expanded-view-icons {
+  max-height: 700px;
+  padding-top: 15px;
+  max-width: 75px;
   text-align: center;
+  position: relative;
+}
+
+.expanded-view-icons:hover {
+  cursor: pointer;
+}
+
+/*
+  ========================================
+  Zoom 2.5x elements
+  ========================================
+*/
+
+#zoom {
+  display: none;
+}
+
+.zoom-background {
+  background-size: 0 0;
+  max-height: 700;
+}
+
+#zoom:checked+label{
+  background-position: 50% 50%;
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-out;
+  background-size: 250%;
+  background-repeat: no-repeat;
+}
+
+#zoom:checked+label>img {
+  visibility: hidden;
 }

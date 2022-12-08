@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/button-has-type */
@@ -7,8 +8,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
-const Gallery = ({
-  current, click, leftClick, rightClick, first, last, currentImage, expandClick,
+const Expanded = ({
+  current, click, leftClick, rightClick, first, last, currentImage,
 }) => {
   let left;
   if (first) {
@@ -26,10 +27,30 @@ const Gallery = ({
   if (current.photos.length < 8) {
     down = <button className="hidden">↓</button>;
   }
-  const expand = <button className="expand" onClick={() => expandClick()}>⤢</button>;
+  const zoomStyle = {
+    backgroundImage: `url(${current.photos[currentImage].url})`,
+  };
+  const zoomHandler = (event) => {
+    if (event.target.htmlFor !== 'zoom') {
+      return;
+    }
+    // 2.5x zoom feature
+    const zoomTo = event.target;
+    let offsetX;
+    let offsetY;
+    if (event.nativeEvent.offsetX) {
+      offsetX = event.nativeEvent.offsetX;
+    }
+    if (event.nativeEvent.offsetX) {
+      offsetY = event.nativeEvent.offsetY;
+    }
+    const x = (offsetX / zoomTo.offsetWidth) * 100;
+    const y = (offsetY / zoomTo.offsetHeight) * 100;
+    zoomTo.style.backgroundPosition = `${x}% ${y}%`;
+  };
   return (
     <section className="carousel">
-      <div className="col-1-3 thumbnails">
+      <div className="col-1-3 expanded-view-icons">
         {current.photos.map((pic, index) => (
           <Thumbnail
             index={index}
@@ -40,16 +61,18 @@ const Gallery = ({
         ))}
         {down}
       </div>
-      <aside className="col-7-10 around-image">
+      <aside className="col-7-10 expanded-container">
         {left}
-        <img id="selected-image" alt="" src={current.photos[currentImage].url} onClick={() => expandClick()} />
+        <input id="zoom" type="checkbox" />
+        <label htmlFor="zoom" className="zoom-background" onMouseMove={(e) => zoomHandler(e)} style={zoomStyle}>
+          <img id="expanded-image" alt="" src={current.photos[currentImage].url} />
+        </label>
         {right}
       </aside>
-      {expand}
     </section>
   );
 };
-Gallery.propTypes = {
+Expanded.propTypes = {
   current: PropTypes.shape().isRequired,
   click: PropTypes.func.isRequired,
   leftClick: PropTypes.func.isRequired,
@@ -57,7 +80,6 @@ Gallery.propTypes = {
   first: PropTypes.bool.isRequired,
   last: PropTypes.bool.isRequired,
   currentImage: PropTypes.number.isRequired,
-  expandClick: PropTypes.func.isRequired,
 };
 
-export default Gallery;
+export default Expanded;
