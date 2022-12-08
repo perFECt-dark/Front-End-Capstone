@@ -163,17 +163,17 @@ const Overview = ({ info, styles, reviews }) => {
           </div>
           <aside className="col-1-3">
             {info.features.length !== 0 && info.features.map((feat) => (
-              <p key={feat.feature}>
-                {feat.feature}
-                :
-                {feat.value}
-              </p>
+              <section className="item-features" key={feat.feature}>
+                <p className="item-feature">{feat.feature}</p>
+                -
+                <p className="item-feature" style={{ marginLeft: '15px' }}>{feat.value}</p>
+              </section>
             ))}
             <div>
               Share to:
-              <div className="facebook" />
-              <div className="instagram" />
-              <div className="pinterest" />
+              <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="fb" className="shared-icons" />
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="insta" className="shared-icons" />
+              <img src="https://cdn-icons-png.flaticon.com/512/3536/3536559.png" alt="pin" className="shared-icons" />
             </div>
           </aside>
         </section>
