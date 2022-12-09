@@ -25,11 +25,6 @@ const Expanded = ({
   } else {
     right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
-  // render down button if there are more than 7 thumbnails
-  let down = <button className="down">↓</button>;
-  if (current.photos.length < 8) {
-    down = <button className="hidden">↓</button>;
-  }
   // background for zoom handler
   const zoomStyle = {
     backgroundImage: `url(${current.photos[currentImage].url})`,
@@ -87,7 +82,6 @@ const Expanded = ({
             />
           );
         })}
-        {down}
       </div>
       <aside className="col-7-10 expanded-container" onMouseMove={(e) => zoomHandler(e)}>
         {left}

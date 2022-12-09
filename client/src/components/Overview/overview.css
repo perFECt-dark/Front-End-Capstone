@@ -444,12 +444,13 @@ h1, h3, h4, h5, p {
 }
 
 #thumbnails {
-  max-height: 630px;
+  max-height: 615px;
   padding-top: 15px;
   max-width: 100px;
   text-align: center;
   position: relative;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 #thumbnails:hover {

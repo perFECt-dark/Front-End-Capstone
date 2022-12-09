@@ -22,6 +22,7 @@ const Thumbnail = ({
     highlight = (
       <img
         className={icons}
+        id="focused"
         name={index}
         src={url}
         alt=""

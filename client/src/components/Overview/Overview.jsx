@@ -62,6 +62,8 @@ const Overview = ({ info, styles, reviews }) => {
     setLast(false);
     setCurrentStyle(styleIndex);
     setCurrentImage(0);
+    const scroll = document.getElementById('thumbnails');
+    scroll.scrollTo(0, 0);
   };
   // function for clicking on a thumbnail to change current default image
   const thumbnailClickHandler = (event) => {
@@ -77,6 +79,16 @@ const Overview = ({ info, styles, reviews }) => {
       setFirst(false);
       setLast(false);
     }
+    // function to move scroll wheel on change
+    // scrolls to bottom past the first 7
+    // if there were more than 14 thumbnails then would need to refactor
+    if (clickedIndex <= 6) {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 0);
+    } else {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 10000);
+    }
     setCurrentImage(clickedIndex);
   };
   const leftClick = () => {
@@ -90,17 +102,26 @@ const Overview = ({ info, styles, reviews }) => {
       setLast(false);
       setCurrentImage(leftIndex);
     }
+    if (leftIndex <= 6) {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 0);
+    }
   };
   const rightClick = () => {
     let rightIndex = Number(currentImage);
     checkFirstAndLast();
     if (rightIndex + 1 >= styles.results[currentStyle].photos.length - 1) {
+      rightIndex += 1;
       setLast(true);
-      setCurrentImage(rightIndex + 1);
+      setCurrentImage(rightIndex);
     } else {
       rightIndex += 1;
       setFirst(false);
       setCurrentImage(rightIndex);
+    }
+    if (rightIndex > 6) {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 10000);
     }
   };
   // expand default image on click
