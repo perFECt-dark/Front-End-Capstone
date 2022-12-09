@@ -7,7 +7,7 @@ import QuestionModal from './QuestionModal.jsx';
 
 const { useState, useEffect } = React;
 
-function QA() {
+function QA({ productInfo }) {
   const [showQ, setShowQ] = useState(false);
   const [showA, setShowA] = useState(false);
   const [numQ, setNumQ] = useState(2);
@@ -51,10 +51,10 @@ function QA() {
             <Search />
           </div>
           <div>
-            { questionData !== null ? <QAList questionData={questionData} showA={showA} setShowA={setShowA}/> : null }
+            { curQuestions !== null ? <QAList curQuestions={curQuestions} showA={showA} setShowA={setShowA} product={productInfo.name}/> : null }
           </div>
           <div>
-            <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} />
+            <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
           </div>
           <div>
             <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>

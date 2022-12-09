@@ -24,7 +24,7 @@ function Search() {
     <div>
       <form className="search-bar" onSubmit={handleSubmit}>
         <input className="search" type="text" name="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={handleChange} />
-        <input type="submit" name="Search" value="Search"></input>
+        <input type="submit" name="Search" value="Search" />
       </form>
     </div>
   );
