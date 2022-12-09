@@ -14,6 +14,7 @@ import RelatedProductsList from './RelatedItems/RelatedProductsList';
 // if you have the css file in another place, make sure to update the path and it's name if needed
 import '../styles.css';
 import './RelatedItems/relatedItems.css';
+import YourOutfitCard from './RelatedItems/YourOutfitCard';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -93,12 +94,15 @@ function App() {
       {/* Related Items */}
       {productData !== null
       && (
-        <RelatedProductsList
-          productName={productData.productInfo.name}
-          styles={productData.productStyles}
-          cards={productData.relatedProducts}
-          characteristics={productData.meta.characteristics}
-        />
+        <div>
+          <RelatedProductsList
+            productName={productData.productInfo.name}
+            styles={productData.productStyles}
+            cards={productData.relatedProducts}
+            characteristics={productData.meta.characteristics}
+          />
+          <YourOutfitCard yourOutfitId={40344} />
+        </div>
       )}
 
       {/* {productData !== null
