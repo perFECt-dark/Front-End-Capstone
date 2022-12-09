@@ -7,7 +7,6 @@ function Search() {
   const [searchedFor, setSearchedFor] = useState([]);
   function handleChange(event) {
     if (event.target.value.length < 3) {
-      // now we have data
       const array = [];
       for (let i = 0; i < event.target.value.length; i + 1) {
         array.push(event.target.value);
