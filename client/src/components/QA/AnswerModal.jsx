@@ -3,9 +3,6 @@ import axios from 'axios';
 import './styles.css';
 
 function AnswerModal({showA, onCloseA, product, curQuestion }) {
-  console.log('cur question is ', curQuestion);
-  console.log('cur question id is ', curQuestion.question_id)
-  console.log('cur quesiton body is ', curQuestion.question_body)
   if (!showA) {
     return null;
   }
@@ -27,11 +24,9 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
   }
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('clicked');
     const answer = e.target.answer.value;
     const name = e.target.nickname.value;
     const email = e.target.email.value;
-    console.log(answer, name, email);
     addAnswer(answer, name, email);
     onCloseA();
   };
