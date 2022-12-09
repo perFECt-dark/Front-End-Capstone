@@ -8,6 +8,7 @@ const { useState } = React;
 
 function QAListEntry({ curQuestion, product }) {
   const [showA, setShowA] = useState(false);
+  const [disableHelp, setDisableHelp] = useState(false);
   const array = [];
   if (curQuestion !== null) {
     const answersList = curQuestion.answers;
@@ -31,6 +32,10 @@ function QAListEntry({ curQuestion, product }) {
   }
   function handleQHelpful(e) {
     e.preventDefault();
+    if (disableHelp) {
+      return;
+    }
+    setDisableHelp(true);
     const url = `http://localhost:3000/qa/questions/${curQuestion.question_id}/helpful`;
     axios.put(url, {
       question_id: curQuestion.question_id,
@@ -51,7 +56,7 @@ function QAListEntry({ curQuestion, product }) {
               <a className="q-tag">Q:</a>
               <a className="q-body">{curQuestion.question_body}</a>
               <a className="q-helpful">Helpful?</a>
-              <u className="yes" onClick={handleQHelpful}>Yes</u>
+              {disableHelp === false ? <u className="yes" onClick={handleQHelpful}>Yes</u> : <u className="yes">Yes</u>}
               <a className="yes-count">
                 (
                 {curQuestion.question_helpfulness}
