@@ -7,7 +7,6 @@ function QuestionModal({showQ, onCloseQ, product}) {
     return null;
   }
   function addQuestion(q, n, e) {
-    console.log('data i want ', q, n, e);
     const url = 'http://localhost:3000/qa/questions';
     axios.post(url, {
       body: q,
@@ -22,14 +21,11 @@ function QuestionModal({showQ, onCloseQ, product}) {
         console.log(err);
       });
   }
-  console.log('random something');
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('clicked');
     const question = e.target.question.value;
     const nickname = e.target.nickname.value;
     const email = e.target.email.value;
-    console.log(question, nickname, email);
     addQuestion(question, nickname, email);
     onCloseQ();
   };
