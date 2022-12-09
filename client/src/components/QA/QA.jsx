@@ -9,7 +9,7 @@ const { useState, useEffect } = React;
 
 function QA({ productInfo }) {
   const [showQ, setShowQ] = useState(false);
-  const [showA, setShowA] = useState(false);
+  // const [showA, setShowA] = useState(false);
   const [numQ, setNumQ] = useState(2);
   const [questionData, setQuestionData] = useState(null);
   const [curQuestions, setCurQuestions] = useState(null);
@@ -51,7 +51,7 @@ function QA({ productInfo }) {
             <Search />
           </div>
           <div>
-            { curQuestions !== null ? <QAList curQuestions={curQuestions} showA={showA} setShowA={setShowA} product={productInfo.name}/> : null }
+            { curQuestions !== null ? <QAList curQuestions={curQuestions} product={productInfo.name}/> : null }
           </div>
           <div>
             <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
