@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 function AnswerListEntry({ curAnswer }) {
-  console.log('cur answer', curAnswer.id);
+  // console.log('cur answer', curAnswer.id);
   function handleAHelpful(e) {
     e.preventDefault();
     console.log('clicked');
