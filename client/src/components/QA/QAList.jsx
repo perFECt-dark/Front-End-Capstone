@@ -3,7 +3,7 @@ import './styles.css';
 import QAListEntry from './QAListEntry.jsx';
 
 function QAList({
-  curQuestions, showA, setShowA, product
+  curQuestions, product
 }) {
   console.log('current questions are', curQuestions);
   return (
@@ -12,8 +12,6 @@ function QAList({
         ? curQuestions.map((curQuestion) => (
           <QAListEntry
             curQuestion={curQuestion}
-            showA={showA}
-            setShowA={setShowA}
             product={product}
           />
         ))

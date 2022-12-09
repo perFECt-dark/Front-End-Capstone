@@ -6,38 +6,31 @@ import AnswerModal from './AnswerModal.jsx';
 
 const { useState } = React;
 
-function QAListEntry({ curQuestion, showA, setShowA, product }) {
-  // console.log('cur question ', curQuestion);
-  // console.log('cur question ', curQuestion.question_id);
+function QAListEntry({ curQuestion, product }) {
+  const [showA, setShowA] = useState(false);
   const array = [];
   if (curQuestion !== null) {
     const answersList = curQuestion.answers;
     const keyList = Object.keys(answersList);
     for (let i = 0; i < keyList.length; i += 1) {
-      // console.log('ideally this gives answers ', answersList[keyList[i]]);
       array.push(answersList[keyList[i]]);
     }
   }
   const [numAnswers, setNumAnswers] = useState(2);
   const [curAnswers, setCurAnswers] = useState(array.slice(0, 2));
   function addMoreAnswers(num) {
-    // console.log('array of answers', array);
     const sizedList = array.slice(0, num);
-    // console.log('current list of answers to show ', sizedList);
     setCurAnswers(sizedList);
   }
   function handleLoadMoreA(e) {
     e.preventDefault();
-    // console.log('clicked');
     let newNum = numAnswers;
     newNum += 2;
     setNumAnswers(newNum);
-    // console.log(numQ);
     addMoreAnswers(numAnswers);
   }
   function handleQHelpful(e) {
     e.preventDefault();
-    // console.log('clicked');
     const url = `http://localhost:3000/qa/questions/${curQuestion.question_id}/helpful`;
     axios.put(url, {
       question_id: curQuestion.question_id,
@@ -51,7 +44,7 @@ function QAListEntry({ curQuestion, showA, setShowA, product }) {
   }
   return (
     <div>
-      {curQuestion !== null
+      {curAnswers !== null
         ? (
           <div>
             <div>
