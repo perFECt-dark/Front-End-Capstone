@@ -24,11 +24,6 @@ const Gallery = ({
   } else {
     right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
-  // render down button if there are more than 7 thumbnails
-  let down = <button className="down">↓</button>;
-  if (current.photos.length < 8) {
-    down = <button className="hidden">↓</button>;
-  }
   // render button to set to expand
   const expand = <button className="expand" onClick={() => expandClick()}>⤢</button>;
   let icons;
@@ -39,8 +34,8 @@ const Gallery = ({
   }
   return (
     <section className="carousel">
-      <div className="col-1-3 thumbnails">
-        {current.photos.slice(0, 7).map((pic, index) => {
+      <div className="col-1-3" id="thumbnails">
+        {current.photos.map((pic, index) => {
           const key = pic.thumbnail_url + index;
           return (
             <Thumbnail
@@ -53,7 +48,6 @@ const Gallery = ({
             />
           );
         })}
-        {down}
       </div>
       <aside className="col-7-10 around-image">
         {left}

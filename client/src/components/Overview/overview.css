@@ -443,15 +443,16 @@ h1, h3, h4, h5, p {
   cursor: zoom-in;
 }
 
-.thumbnails {
-  max-height: 700px;
+#thumbnails {
+  max-height: 630px;
   padding-top: 15px;
   max-width: 100px;
   text-align: center;
   position: relative;
+  overflow: scroll;
 }
 
-.thumbnails:hover {
+#thumbnails:hover {
   cursor: pointer;
 }
 
