@@ -2,7 +2,6 @@ import React from 'react';
 import axios from 'axios';
 
 function AnswerListEntry({ curAnswer }) {
-  // console.log('cur answer', curAnswer.id);
   function handleAHelpful(e) {
     e.preventDefault();
     console.log('clicked');
@@ -39,7 +38,7 @@ function AnswerListEntry({ curAnswer }) {
       </div>
       <div>
         <a className="user">by {curAnswer.answerer_name}, </a>
-        <a className="date"> {curAnswer.date}</a>
+        <a className="date"> {new Date(curAnswer.date).toString().slice(4,16)}</a>
         <a className="a-helpful">Helpful?</a>
         <u className="yes" onClick={handleAHelpful}>Yes</u>
         <a className="yes-count">({curAnswer.helpfulness})</a>
