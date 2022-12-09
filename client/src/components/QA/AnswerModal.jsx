@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import './styles.css';
 
+const { useState } = React;
+
 function AnswerModal({showA, onCloseA, product, curQuestion }) {
+  const [warning, setWarning] = useState(false);
   if (!showA) {
     return null;
   }
@@ -22,11 +25,27 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
         console.log(err);
       });
   }
+  function validateEmail(email) {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  }
+  console.log('validation ', validateEmail('hey.com@gmail'));
   const handleSubmit = (e) => {
     e.preventDefault();
     const answer = e.target.answer.value;
     const name = e.target.nickname.value;
     const email = e.target.email.value;
+    if (!answer || !name || !email) {
+      setWarning(true);
+      return;
+    }
+    if (!Array.isArray(validateEmail(email))) {
+      setWarning(true);
+      return;
+    }
     addAnswer(answer, name, email);
     onCloseA();
   };
@@ -40,6 +59,7 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
       </div>
       <div className="modal-content" />
       <div className="modal-body">
+        {warning ? <a className="warning">You Must Enter The Following</a> : null}
         <form onSubmit={handleSubmit}>
           <div>
             <textarea className="modal-input" type="text" name="answer" maxLength="1000" />
