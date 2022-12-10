@@ -78,15 +78,10 @@ function App() {
       {/* Related Items */}
       {productData !== null
       && <CardList cards={productData.relatedProducts} />}
-
-      {/* {productData !== null
-      && console.log('TEST', getInfoFromId(40344))} */}
-
       {/* Review */}
-      {/* {productData !== null
-      && <Reviews metaData={productData.meta} reviewData={productData.reviews} />} */}
+      {productData !== null
+      && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
     </div>
-
   );
 }
 
