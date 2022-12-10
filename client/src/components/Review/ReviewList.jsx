@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReviewImage from './ReviewImage.jsx';
+import StarDisplay from '../StarDisplay';
 
 
 const ReviewList = (props) => {
@@ -48,7 +49,7 @@ const ReviewList = (props) => {
 
         </div><aside className="col-1-3" style={{overflow: 'hidden'}}>
 
-          <h3>{stars}</h3>
+          <StarDisplay size={15} val={props.reviewItem.rating}/>
           <h3>{props.reviewItem.summary}</h3>
           <p>{props.reviewItem.body}</p>
 
@@ -62,7 +63,7 @@ const ReviewList = (props) => {
         </aside><aside className="col-1-10">
 
           <p>👍 Helpful?</p>
-          <p><span onClick={() => setToggle('yes')} style={yesStyle}>Yes&#40;{props.reviewItem.helpfulness}&#41; </span><span onClick={() => setToggle('no')} style={noStyle}>No&#40;23&#41;</span></p>
+          <p><span onClick={() => setToggle('yes')} style={yesStyle}>Yes&#40;{props.reviewItem.helpfulness}&#41; </span><span onClick={() => setToggle('no')} style={noStyle}>No&#40;#&#41;</span></p>
         </aside>
 
     </li>

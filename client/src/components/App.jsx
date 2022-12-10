@@ -1,4 +1,3 @@
-import './Overview/overview.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,9 +9,12 @@ import {
 } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Reviews from './Review/Reviews';
 import Overview from './Overview/Overview';
+import StarRating from './StarRating';
+import StarDisplay from './StarDisplay';
 import RelatedProductsList from './RelatedItems/RelatedProductsList';
 // if you have the css file in another place, make sure to update the path and it's name if needed
 import '../styles.css';
+import './Overview/overview.css';
 import './RelatedItems/relatedItems.css';
 
 function App() {
@@ -80,7 +82,8 @@ function App() {
       
       {/* Review */}
       {productData !== null
-      && <Reviews metaData={productData.meta} reviewData={productData.reviews} />}
+      && <Reviews metaData={productData.meta} reviewData={productData.reviews} title={productData.productInfo.name} />}
+      )} 
     </div>
   );
 }
