@@ -5,12 +5,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Thumbnail from './renderOne/Thumbnail.jsx';
 
-const Gallery = ({ current, click }) => {
-  const left = <button className="left">←</button>;
-  const right = <button className="right">→</button>;
+const Gallery = ({
+  current, click, leftClick, rightClick, first, last,
+}) => {
+  let left;
+  if (first) {
+    left = <button className="hidden">←</button>;
+  } else {
+    left = <button onClick={() => leftClick()} className="left">←</button>;
+  }
+  let right;
+  if (last) {
+    right = <button className="hidden">→</button>;
+  } else {
+    right = <button onClick={() => rightClick()} className="right">→</button>;
+  }
   let down = <button className="down">↓</button>;
   if (current.photos.length < 8) {
-    down = <button style={{ display: 'none' }}>↓</button>;
+    down = <button className="hidden">↓</button>;
   }
   const expand = <button className="expand">⤢</button>;
   const thumbnailColStyles = {
@@ -25,8 +37,9 @@ const Gallery = ({ current, click }) => {
         className="col-1-3 thumbnails"
         style={thumbnailColStyles}
       >
-        {current.photos.map((pic) => (
+        {current.photos.map((pic, index) => (
           <Thumbnail
+            index={index}
             url={pic.thumbnail_url}
             key={pic.thumbnail_url}
             click={click}
@@ -51,6 +64,10 @@ const Gallery = ({ current, click }) => {
 Gallery.propTypes = {
   current: PropTypes.shape().isRequired,
   click: PropTypes.func.isRequired,
+  leftClick: PropTypes.func.isRequired,
+  rightClick: PropTypes.func.isRequired,
+  first: PropTypes.bool.isRequired,
+  last: PropTypes.bool.isRequired,
 };
 
 export default Gallery;
