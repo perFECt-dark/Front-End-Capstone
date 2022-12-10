@@ -18,29 +18,27 @@ function Card({ relatedCardId }) {
         console.log(err);
       });
   }, []);
-
   return (
     <aside className="card">
       {relatedProductData !== null && (
         <div>
           <div className="image-card">
+          <button className='card-action-button'>Button</button>
             <img
               className="card-image-object"
               alt={`for ${relatedProductData.productInfo.name}`}
-              src={`${relatedProductData.productStyles.results[0].photos[0].url}`}
+              src={relatedProductData.productStyles.results[0].photos[0].url ? `${relatedProductData.productStyles.results[0].photos[0].url}` : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}
             />
           </div>
           <div className="card-info">
-            Category:
             {relatedProductData.productInfo.category}
             <br />
-            Name:
             {relatedProductData.productInfo.name}
             <br />
             Price: $
             {relatedProductData.productInfo.default_price}
             <br />
-            Rating: ⭐⭐⭐⭐ (Just for show)
+            ⭐⭐⭐⭐ (implement)
           </div>
         </div>
       )}
@@ -53,3 +51,15 @@ Card.propTypes = {
 };
 
 export default Card;
+
+// { relatedProductData.productStyles.results[0].sale_price)
+// }
+// {relatedProductData.productStyles.results[0].sale_price === null
+//   ? (
+//     {relatedProductData.productStyles.results[0].sale_price}
+
+//     <aside className="card-sale-price">
+//       {relatedProductData.productInfo.default_price}
+//     </aside>
+//   )
+//   : relatedProductData.productInfo.default_price }
