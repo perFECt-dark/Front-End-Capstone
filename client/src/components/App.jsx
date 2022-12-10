@@ -79,11 +79,11 @@ function App() {
       {/* Related Items */}
       {productData !== null
       && <RelatedProductsList cards={productData.relatedProducts} />}
-      
+
       {/* Review */}
       {productData !== null
       && <Reviews metaData={productData.meta} reviewData={productData.reviews} title={productData.productInfo.name} />}
-      )} 
+      )}
     </div>
   );
 }
