@@ -39,7 +39,10 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    grabInfo(40344);
+    grabInfo(40352);
+    /// item ids
+    //40350 40344
+    //40352
 
   },[]);
 
@@ -62,7 +65,7 @@ function App() {
         <h3 className="tagline">_______________ Search</h3>
       </header>
       {productData !== null && <Reviews metaData={productData.meta} reviewData={productData.reviews} title={productData.productInfo.name}/>}
-      {productData !== null && <Overview info={productData.productInfo} styles={productData.productStyles} />}
+      {productData === 'Dont Render' && <Overview info={productData.productInfo} styles={productData.productStyles} />}
   </div>
 
   );

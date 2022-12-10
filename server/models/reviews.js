@@ -30,5 +30,25 @@ module.exports = {
 
      });
 
+  },
+
+  PostReview: function (cb, reviewPost) {
+
+    let options = {
+      headers: {
+        Authorization: process.env.AUTH
+      }
+    };
+
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', reviewPost, options)
+    .then((response) => {
+
+      cb(null, response.data);
+    })
+    .catch((err) => {
+
+      cb(err);
+    });
+
   }
 };
