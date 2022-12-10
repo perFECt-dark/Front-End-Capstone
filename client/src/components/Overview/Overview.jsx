@@ -41,6 +41,9 @@ const Overview = ({ info, styles, reviews }) => {
         setCurrentStyle(index);
       }
     });
+    if (styles.results[currentStyle].photos.length === 1) {
+      setLast(true);
+    }
   }, []);
   // function to check what the current image is for arrows
   const checkFirstAndLast = () => {
@@ -59,7 +62,11 @@ const Overview = ({ info, styles, reviews }) => {
   const styleClickHandler = (event) => {
     const styleIndex = Number(event.target.name);
     setFirst(true);
-    setLast(false);
+    if (styles.results[currentStyle].photos.length === 1) {
+      setLast(true);
+    } else {
+      setLast(false);
+    }
     setCurrentStyle(styleIndex);
     setCurrentImage(0);
     const scroll = document.getElementById('thumbnails');
@@ -184,7 +191,7 @@ const Overview = ({ info, styles, reviews }) => {
           <aside className="col-1-3" style={rightSide}>
             <Information info={info} current={styles.results[currentStyle]} reviews={reviews} />
             <StyleSelector style={styles} click={styleClickHandler} currentStyle={currentStyle} />
-            <AddToCart />
+            <AddToCart info={info} current={styles.results[currentStyle]} />
           </aside>
         </section>
         <section style={{ paddingTop: '20px' }} onClick={(e) => expandClose(e)}>
