@@ -36,7 +36,11 @@ function Card({ relatedCardId }) {
             {relatedProductData.productInfo.name}
             <br />
             Price: $
-            {relatedProductData.productInfo.default_price}
+            {relatedProductData.productStyles.results[0].sale_price !== null
+              ? relatedProductData.productStyles.results[0].sale_price
+              : relatedProductData.productStyles.results[0].original_price}
+            {relatedProductData.productStyles.results[0].sale_price
+              && <aside className="card-default-strikeout">{relatedProductData.productStyles.results[0].original_price}</aside>}
             <br />
             ⭐⭐⭐⭐ (implement)
           </div>
