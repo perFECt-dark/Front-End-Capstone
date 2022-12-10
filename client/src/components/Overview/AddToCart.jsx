@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const AddToCart = ({ current, info }) => {
-  const sizes = [{ key: 'select', size: 'Select Size...' }];
+  const sizes = [{ key: 'select', size: 'Select Size...', amount: 'null' }];
   const quantity = [];
   let currentQuantity = 0;
   Object.entries(current.skus).map((unit) => {
@@ -38,6 +38,12 @@ const AddToCart = ({ current, info }) => {
     }
   };
   // console.log(cart); if I want to see what is inside the cart
+  let cartButton;
+  if (sizes.every((item) => item.amount === 'null')) {
+    cartButton = <h3 style={{ float: 'left' }}>Out of Stock</h3>;
+  } else {
+    cartButton = <button className="cart" onClick={(e) => cartHandler(e)}>Add to Cart</button>;
+  }
   return (
     <div id="cart-box" style={{ verticalAlign: 'bottom' }}>
       <form>
@@ -71,7 +77,7 @@ const AddToCart = ({ current, info }) => {
           </select>
         </label>
       </form>
-      <button className="cart" onClick={(e) => cartHandler(e)}>Add to Cart</button>
+      {cartButton}
     </div>
   );
 };
