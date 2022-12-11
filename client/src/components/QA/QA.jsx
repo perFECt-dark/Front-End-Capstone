@@ -38,6 +38,11 @@ function QA({ productInfo }) {
     // console.log(numQ);
     addMoreQuestions(numQ);
   }
+  function collapseQuestions() {
+    const questionList = questionData.slice(0, 2);
+    setCurQuestions(questionList);
+    setNumQ(questionList.length);
+  }
   useEffect(() => {
   /// This effect inciates page with data
     getQuestion();
@@ -51,22 +56,34 @@ function QA({ productInfo }) {
             <Search />
           </div>
           <div>
-            { curQuestions !== null ? <QAList curQuestions={curQuestions} product={productInfo.name}/> : null }
+            { curQuestions !== null
+              ? <QAList curQuestions={curQuestions} product={productInfo.name}/> : null }
           </div>
-          <div>
-          { questionData === null || questionData.length <= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
-          </div>
+          {/* <div>
+            { questionData === null || questionData.length <= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
+          </div> */}
           <div>
             <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
           </div>
           <div>
-            {curQuestions !== null && curQuestions.length !== questionData.length ? <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <button type="button" className="more-q">COLLAPSE QUESTIONS</button>}
+            {curQuestions !== null && curQuestions.length !== questionData.length ? <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <button type="button" className="more-q" onClick={collapseQuestions}>COLLAPSE QUESTIONS</button>}
             {curQuestions !== null && curQuestions.length >= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
           </div>
         </div>
       )
         // : <div>Loading</div> }
-        : <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> }
+        : (
+          <div>
+            <h3>QUESTIONS & ANSWERS</h3>
+            <div>
+              <Search />
+            </div>
+            <div>
+              <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
+            </div>
+            <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button>
+          </div>
+        )}
     </div>
   );
 }
