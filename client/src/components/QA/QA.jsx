@@ -54,15 +54,19 @@ function QA({ productInfo }) {
             { curQuestions !== null ? <QAList curQuestions={curQuestions} product={productInfo.name}/> : null }
           </div>
           <div>
+          { questionData === null || questionData.length <= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
+          </div>
+          <div>
             <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
           </div>
           <div>
-            <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button>
-            <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button>
+            {curQuestions !== null && curQuestions.length !== questionData.length ? <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <button type="button" className="more-q">COLLAPSE QUESTIONS</button>}
+            {curQuestions !== null && curQuestions.length >= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
           </div>
         </div>
       )
-        : <div>Loading</div> }
+        // : <div>Loading</div> }
+        : <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> }
     </div>
   );
 }
