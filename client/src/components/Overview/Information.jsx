@@ -3,7 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Information = ({ info, current, reviews }) => {
+const Information = ({
+  info, current, reviews, meta,
+}) => {
   let price = (
     <h5>
       $
@@ -12,22 +14,9 @@ const Information = ({ info, current, reviews }) => {
   );
   // temporary star review indicator
   let rating = 0;
-  reviews.results.forEach((rev) => {
-    rating += rev.rating;
-  });
-  rating /= reviews.results.length;
-  let showStar = '☆☆☆☆☆';
-  if (rating >= 5) {
-    showStar = '⭐⭐⭐⭐⭐ ';
-  } else if (rating >= 4) {
-    showStar = '⭐⭐⭐⭐☆ ';
-  } else if (rating >= 3) {
-    showStar = '⭐⭐⭐☆☆ ';
-  } else if (rating >= 2) {
-    showStar = '⭐⭐☆☆☆ ';
-  } else if (rating >= 1) {
-    showStar = '⭐☆☆☆☆ ';
-  }
+  rating += (Number(meta.ratings['1']) + (Number(meta.ratings['2']) * 2) + (Number(meta.ratings['3']) * 3) + (Number(meta.ratings['4']) * 4) + (Number(meta.ratings['5']) * 5));
+  rating /= (Number(meta.ratings['1']) + Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) + Number(meta.ratings['5']));
+  // <StarDisplay size={15} val={rating}
   // temporary star review indicator
   if (current.sale_price !== null) {
     price = (
@@ -47,7 +36,7 @@ const Information = ({ info, current, reviews }) => {
   if (reviews.count === 1) {
     reviewCount = (
       <p>
-        {showStar}
+        {/* {showStar} */}
         Read [
         {reviews.count}
         ] review!
@@ -56,7 +45,7 @@ const Information = ({ info, current, reviews }) => {
   } else if (reviews.count > 1) {
     reviewCount = (
       <p>
-        {showStar}
+        {/* {showStar} */}
         Read all [
         {reviews.count}
         ] reviews!
@@ -80,5 +69,6 @@ Information.propTypes = {
   info: PropTypes.shape().isRequired,
   reviews: PropTypes.shape().isRequired,
   current: PropTypes.shape().isRequired,
+  meta: PropTypes.shape().isRequired,
 };
 export default Information;

@@ -62,6 +62,7 @@ function App() {
             info={productData.productInfo}
             styles={productData.productStyles}
             reviews={productData.reviews}
+            meta={productData.meta}
           />
         )}
       {productData !== null
