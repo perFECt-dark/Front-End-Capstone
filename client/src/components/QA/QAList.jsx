@@ -7,7 +7,7 @@ function QAList({
 }) {
   console.log('current questions are', curQuestions);
   return (
-    <div>
+    <div className="questions-list">
       {curQuestions !== null
         ? curQuestions.map((curQuestion) => (
           <QAListEntry
