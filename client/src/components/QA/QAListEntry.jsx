@@ -10,11 +10,13 @@ function QAListEntry({ curQuestion, product }) {
   const [showA, setShowA] = useState(false);
   const [disableHelp, setDisableHelp] = useState(false);
   const array = [];
+  let answerCount = 0;
   if (curQuestion !== null) {
     const answersList = curQuestion.answers;
     const keyList = Object.keys(answersList);
     for (let i = 0; i < keyList.length; i += 1) {
       array.push(answersList[keyList[i]]);
+      answerCount += 1;
     }
   }
   const [numAnswers, setNumAnswers] = useState(2);
@@ -47,6 +49,12 @@ function QAListEntry({ curQuestion, product }) {
         console.log(err);
       });
   }
+  function collapseAnswers(e) {
+    e.preventDefault();
+    const answerList = curAnswers.slice(0, 2);
+    setCurAnswers(answerList);
+    setNumAnswers(answerList.length);
+  }
   return (
     <div>
       {curAnswers !== null
@@ -72,8 +80,10 @@ function QAListEntry({ curQuestion, product }) {
               <AnswerList curAnswers={curAnswers} numAnswers={numAnswers} />
             </div>
             <div>
-              <p onClick={handleLoadMoreA}><b>LOAD MORE ANSWERS</b></p>
+              {answerCount >= 2 && answerCount !== curAnswers.length ? <p onClick={handleLoadMoreA}><b>LOAD MORE ANSWERS</b></p> : null}
             </div>
+            {answerCount >= 3 && answerCount === curAnswers.length
+              ? <p onClick={collapseAnswers}><b>COLLAPSE ANSWERS</b></p> : null}
           </div>
         )
         : <div>Loading</div> }
