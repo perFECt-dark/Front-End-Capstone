@@ -68,14 +68,14 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
-      {/* {productData !== null
+      {productData !== null
       && (
       <Overview
         info={productData.productInfo}
         styles={productData.productStyles}
         reviews={productData.reviews}
       />
-      )} */}
+      )}
 
       {/* Related Items */}
       {productData !== null
@@ -94,8 +94,12 @@ function App() {
 
       {/* Review */}
       {productData !== null
-      && <Reviews metaData={productData.meta} reviewData={productData.reviews} title={productData.productInfo.name} />}
-      )}
+      && (
+        <Reviews
+        metaData={productData.meta}
+        reviewData={productData.reviews}
+        title={productData.productInfo.name}
+      /> )}
     </div>
   );
 }

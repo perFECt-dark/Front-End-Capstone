@@ -2,6 +2,7 @@ import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import RelatedProductsModal from './RelatedProductsModal';
+import StarDisplay from '../StarDisplay';
 
 function Card({
   productName, styles, relatedCardId, characteristics, grabInfo,
@@ -9,6 +10,26 @@ function Card({
   const [relatedProductData, setRelatedProductData] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  function findAverageRating(ratings) {
+    const totalRatings = Number(ratings['1'])
+    + Number(ratings['2'])
+    + Number(ratings['3'])
+    + Number(ratings['4'])
+    + Number(ratings['5']);
+    let total = (Number(ratings['1']) * 1)
+    + (Number(ratings['2']) * 2)
+    + (Number(ratings['3']) * 3)
+    + (Number(ratings['4']) * 4)
+    + (Number(ratings['5']) * 5);
+
+    total /= totalRatings;
+    total = Math.round(total * 10) / 10;
+
+    // console.log('total ratings: ', totalRatings);
+    // console.log('total ',total);
+
+    return total;
+  }
   useEffect(() => {
     const newUrl = `http://localhost:3000/item/${relatedCardId}`;
     axios
@@ -57,7 +78,7 @@ function Card({
             {relatedProductData.productStyles.results[0].sale_price
               && <aside className="card-default-strikeout">{relatedProductData.productStyles.results[0].original_price}</aside>}
             <br />
-            ⭐⭐⭐⭐ (implement)
+            <StarDisplay size={16} val={findAverageRating(relatedProductData.meta.ratings)} />
           </div>
         </div>
       )}
@@ -70,7 +91,7 @@ Card.propTypes = {
   styles: propTypes.shape().isRequired,
   relatedCardId: propTypes.number.isRequired,
   characteristics: propTypes.shape(),
-  // actionButton: propTypes.func.isRequired,
+  grabInfo: propTypes.func.isRequired,
 };
 Card.defaultProps = {
   characteristics: null,
