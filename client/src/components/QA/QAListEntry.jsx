@@ -9,6 +9,7 @@ const { useState } = React;
 function QAListEntry({ curQuestion, product }) {
   const [showA, setShowA] = useState(false);
   const [disableHelp, setDisableHelp] = useState(false);
+  // const [totalAnswers, setTotalAnswers] = useState(null);
   const array = [];
   let answerCount = 0;
   if (curQuestion !== null) {
@@ -80,7 +81,8 @@ function QAListEntry({ curQuestion, product }) {
               <AnswerList curAnswers={curAnswers} numAnswers={numAnswers} />
             </div>
             <div>
-              {answerCount >= 2 && answerCount !== curAnswers.length ? <p onClick={handleLoadMoreA}><b>LOAD MORE ANSWERS</b></p> : null}
+              {answerCount >= 2 && answerCount !== curAnswers.length
+                ? <p onClick={handleLoadMoreA}><b>LOAD MORE ANSWERS</b></p> : null}
             </div>
             {answerCount >= 3 && answerCount === curAnswers.length
               ? <p onClick={collapseAnswers}><b>COLLAPSE ANSWERS</b></p> : null}
