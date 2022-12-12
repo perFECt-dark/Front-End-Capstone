@@ -9,13 +9,21 @@ function Reviews(props) {
 
 
   const [sortList, setSortList] = useState(['Relevant', 'Helpful', 'Newest']);
-  const[hoverOne, setHoverOne] = useState(false);
+  const [hoverOne, setHoverOne] = useState(false);
   const [hoverTwo, setHoverTwo] = useState(false);
   const [reviews, setReviews] = useState(props.reviewData);
   const [displayForm, setDisplayForm] = useState(false);
   const meta = props.metaData;
   const productTitle = props.title;
+  const characteristics = Object.keys(meta.characteristics);
+  const [scroll, setScroll] = useState(false);
 
+  useEffect(() => {
+
+    if (reviews.results.length >= 6) {
+      setScroll(true);
+    }
+  }, [reviews])
 
 
   const findAverageRating = (ratings) => {
@@ -32,8 +40,8 @@ function Reviews(props) {
     total = total / totalRatings;
     total = Math.round(total * 10) / 10;
 
-    console.log('total ratings: ', totalRatings);
-    console.log('total ',total);
+    // console.log('total ratings: ', totalRatings);
+    // console.log('total ',total);
 
     return total;
   }
@@ -75,6 +83,46 @@ function Reviews(props) {
     });
   }
 
+  const sendReview = () => {
+
+    var sauce = {
+      product_id: 40350,
+      rating: 3,
+      summary: 'Great product with a perfect fit!',
+      body: 'This product is so great but I am only giving it 3 stars because it makes me look fat.',
+      recommend: true,
+      name: 'BrosBeforeTrolls123',
+      email: 'ilovebros123@gmail.com',
+      photos: ['https://i.ibb.co/Y7bBBSx/bros1.jpg', 'https://i.ibb.co/r4Zz5J3/bros2.jpg', 'https://i.ibb.co/BCkqKLN/coolguy.png'],
+      characteristics: {
+        '135242': 5,
+        '135243': 4,
+        '135240': 3,
+        '135241': 5
+      }
+    }
+    console.log(sauce);
+
+    //console.log(JSON.stringify(sauce));
+
+    let options = {
+
+      headers: {
+        Authorization: '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'
+      }
+    };
+
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', sauce, options)
+    .then((response) => {
+
+      console.log('yay!',response.data);
+    })
+    .catch((err) => {
+
+      console.log('we got an error!', err);
+    });
+  }
+
   // Styles go here //
   const listOne = {
     backgroundColor: hoverOne ? '#ebebeb' : 'white'
@@ -84,6 +132,13 @@ function Reviews(props) {
     backgroundColor: hoverTwo ? '#ebebeb' : 'white'
   }
 
+  const listScroll = {
+    paddingTop: '10px',
+    height: scroll ? '500px' : 'auto',
+    overflowY: scroll ? 'auto' : 'visible'
+
+  }
+
   return (
   <section className="row">
 
@@ -91,22 +146,44 @@ function Reviews(props) {
 
         <h2>Ratings and Reviews</h2>
 
-        <section className="giveGrey" style={{backgroundColor: 'grey'}}>
+        <section className="ratingBox">
 
-          <div className="col-1-3" style={{paddingTop: '10px'}}>
+          <div className="col-1-2" style={{paddingTop: '12px'}}>
 
-              <h2>Average Rating</h2>
-              <div><StarDisplay size={20} val={3.67}/></div><aside><h2>{averageRating}<span> Stars</span></h2></aside>
+              <div style={{paddingLeft: '30px'}}><h2>Average Rating</h2></div>
+              <div className="col-1-3" style={{paddingRight: '0px', textAlign: 'center'}}>
+                <StarDisplay size={20} val={averageRating}/>
+              </div><aside className="col-1-3" style={{paddingLeft: '0px', paddingBottom:'15px'}}>
+                <span style={{fontSize: '20px'}}>{averageRating} Stars</span>
+              </aside>
 
-          </div><aside className="col-1-3">
+          </div><aside className="col-1-2" style={{paddingTop: '8px'}}>
 
+              <div className="col-1-3">
 
+                {characteristics.length > 0 &&
+                <h4>{characteristics[0]}  <StarDisplay size={15} val={meta.characteristics[characteristics[0]].value}/></h4>}
 
-            </aside><aside className="col-1-3" style={{paddingTop: '5px'}}>
+                {characteristics.length > 3 &&
+                <h4>{characteristics[3]}  <StarDisplay size={15} val={meta.characteristics[characteristics[3]].value}/></h4>}
 
-                    <h4>Size  <StarDisplay size={15} val={meta.characteristics.Fit.value}/></h4>
-                    <h4>Comfort  <StarDisplay size={15} val={meta.characteristics.Comfort.value}/></h4>
-                    <h4>Quality  <StarDisplay size={15} val={meta.characteristics.Quality.value}/></h4>
+              </div><aside className="col-1-3">
+
+                {characteristics.length > 1 &&
+                <h4>{characteristics[1]}  <StarDisplay size={15} val={meta.characteristics[characteristics[1]].value}/></h4>}
+
+                {characteristics.length > 4 &&
+                <h4>{characteristics[4]}  <StarDisplay size={15} val={meta.characteristics[characteristics[4]].value}/></h4>}
+
+              </aside><aside className="col-1-3">
+
+                {characteristics.length > 2 &&
+                <h4>{characteristics[2]}  <StarDisplay size={15} val={meta.characteristics[characteristics[2]].value}/></h4>}
+
+                {characteristics.length > 5 &&
+                <h4>{characteristics[5]}  <StarDisplay size={15} val={meta.characteristics[characteristics[5]].value}/></h4>}
+
+              </aside>
 
                 </aside>
 
@@ -123,7 +200,7 @@ function Reviews(props) {
 
               <div className="dropdown" style={{textAlign: 'left'}}>
                 <span className="btn">{sortList[0]}</span>
-                <div class="dropdown-content" style={{cursor: 'pointer'}}>
+                <div className="dropdown-content" style={{cursor: 'pointer'}}>
                   <p onClick={() => filterReviews(sortList[1])}
                    onMouseEnter={() => setHoverOne(true)}
                    onMouseLeave={() => setHoverOne(false)}
@@ -140,7 +217,7 @@ function Reviews(props) {
           </aside>
 
         </section>
-        <section style={{paddingTop: '10px'}}>
+        <section style={listScroll}>
           <ul>
             {reviews.results.length !== 0 && reviews.results.map(review =>
                   <ReviewList reviewItem={review} key={review.review_id}/>
@@ -162,7 +239,12 @@ function Reviews(props) {
           </aside>
         </section>
         <section>
-        {displayForm && <ReviewModal title={productTitle} close={setDisplayForm}/>}
+        {displayForm && <ReviewModal
+        title={productTitle}
+        close={setDisplayForm}
+        chars={characteristics}
+        charsID={meta.characteristics}
+        pId={Number(meta.product_id)}/>}
         </section>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReviewImage from './ReviewImage.jsx';
 import StarDisplay from '../StarDisplay';
 
@@ -6,19 +6,18 @@ import StarDisplay from '../StarDisplay';
 const ReviewList = (props) => {
 
   const [toggle, setToggle] = useState('none');
+  const [read, setRead] = useState(false);
+  const [readText, setReadText] = useState('read more')
 
+  useEffect(() => {
 
-  const findStars = () => {
+    if (read) {
+      setReadText('read less');
+    } else {
+      setReadText('read more');
+    }
 
-    if (props.reviewItem.rating === 1) {return '⭐'}
-    if (props.reviewItem.rating === 2) {return '⭐⭐'}
-    if (props.reviewItem.rating === 3) {return '⭐⭐⭐'}
-    if (props.reviewItem.rating === 4) {return '⭐⭐⭐⭐'}
-    if (props.reviewItem.rating === 5) {return '⭐⭐⭐⭐⭐'}
-
-  };
-
-  const stars = findStars();
+  }, [read]);
 
   const yesStyle = {
 
@@ -41,7 +40,7 @@ const ReviewList = (props) => {
     <li style={{borderTop: '1px solid grey', paddingTop: '10px'}}>
 
 
-        <div className="col-1-5">
+        <div className="col-1-5" style={{overflow: 'hidden'}}>
 
           <h3 style={{paddingTop: '10px'}}>{props.reviewItem.reviewer_name}</h3>
           {props.reviewItem.recommend && <p style={{fontSize: '12px', color: 'green'}}>✓ I recommend this product</p>}
@@ -51,7 +50,11 @@ const ReviewList = (props) => {
 
           <StarDisplay size={15} val={props.reviewItem.rating}/>
           <h3>{props.reviewItem.summary}</h3>
-          <p>{props.reviewItem.body}</p>
+          {!read && props.reviewItem.body.length > 70 && <p>{props.reviewItem.body.slice(0, 70) + '...'}</p>}
+          {!read && props.reviewItem.body.length <= 70 && <p>{props.reviewItem.body.slice(0, 70)}</p>}
+          {read && <p>{props.reviewItem.body}</p>}
+          {props.reviewItem.body.length > 70 && <span style={{fontStyle: 'italic', fontSize: '14px', color: 'blue', cursor: 'pointer'}}
+          onClick={() => setRead(!read)}>{readText}</span>}
 
 
         </aside><aside className="col-1-3">

@@ -552,7 +552,15 @@ h1, h3, h4, h5, p {
   display: block;
 }
 
-.ReviewModalBody input, .ReviewModalBody textarea, .ReviewModalBody select {
+.labelModal span {
+  float: right;
+  font-size: 14px;
+  padding-right: 6px;
+  font-style: italic;
+
+}
+
+.ReviewModalBody textarea, .ReviewModalBody select {
 
   width: 100%;
   padding: 6px 10px;
@@ -561,6 +569,17 @@ h1, h3, h4, h5, p {
   box-sizing: border-box;
   display: block;
 }
+
+.ReviewModalBody-Input {
+
+  width: 100%;
+  padding: 6px 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  display: block;
+}
+
 
 .starAlign input, .starAlign label {
 
@@ -607,6 +626,36 @@ display: inline;
   cursor: pointer;
 }
 
+#uploadText {
+
+  margin: 13px;
+}
+
+.ratingBox {
+  background-color: #adadac;
+  border-radius: 2px;
+}
+
+.ratingBox h2, .ratingBox h4, .ratingBox span {
+  color: white;
+}
+
+.submitTextPass {
+  padding-top: 250px;
+}
+
+.submitTextPass h2 {
+  color: green;
+}
+
+.submitTextFail {
+  padding-top: 250px;
+}
+
+.submitTextFail h2 {
+  color: red;
+}
+
 
 
 /*
@@ -618,5 +667,13 @@ display: inline;
 .linear-gradient-template {
   width: 0;
   height: 0;
+}
+
+.input-hidden{
+
+  position: relative;
+  bottom: 28px;
+  left: 4px;
+  opacity: 0;
 }
 

@@ -23,7 +23,7 @@ const Image = {
 
     border: '1px solid grey',
     borderRadius: '3px',
-    float: 'left',
+    display: 'inline-block',
     width:  '80px',
     height: '120px',
     margin: '5px 5px',
@@ -34,7 +34,7 @@ const Image = {
 
 return (
 
-  <div style={Image}><button className="deleteImg" onClick={deleteImg}> X </button></div>
+  <div style={Image}><button type="button" className="deleteImg" onClick={deleteImg}> X </button></div>
 )
 
 }
