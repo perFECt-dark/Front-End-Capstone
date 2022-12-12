@@ -1,6 +1,24 @@
 /*
   ========================================
-  Card in list
+  List
+  ========================================
+*/
+.card-row {
+  min-width: 960px;
+  background: #fff;
+  padding: 36px 0 14px 0;
+  overflow: auto;
+}
+.card-grid {
+  background: #fff;
+  margin: 0 auto;
+  width: 1200px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/*
+  ========================================
+  Card
   ========================================
 */
 
@@ -35,18 +53,6 @@
   text-decoration: line-through;
   display: inline;
 }
-.card-row {
-  min-width: 960px;
-  background: #fff;
-  padding: 36px 0 14px 0;
-}
-.card-grid {
-  background: #fff;
-  margin: 0 auto;
-  width: 1200px;
-  padding-left: 15px;
-  padding-right: 15px;
-}
 
 /*
   ========================================
@@ -80,4 +86,21 @@
 .related-products-modal-content {
   color: black;
   text-align: center;
+  background-color: white;
+}
+.related-products-modal-title {
+  font-size: 48px;
+  padding-bottom: 40px;
+}
+.related-products-modal-current-product-section {
+  display: inline-block;
+  left: 0px;
+}
+.related-products-modal-current-product-section {
+  display: inline-block;
+  left: 0px;
+}
+.related-products-modal-current-product-section {
+  display: inline-block;
+  right: 0px;
 }
