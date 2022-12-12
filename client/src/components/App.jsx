@@ -47,10 +47,8 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    const initialProduct = 40344;
-    grabInfo(initialProduct);
+    grabInfo(40344);
   }, []);
-
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
