@@ -44,14 +44,19 @@ function QA({ productInfo }) {
     setNumQ(questionList.length);
   }
   function filterQuestions(text) {
-    const copy = curQuestions.slice();
+    // const copy = curQuestions.slice();
+    const copy = questionData.slice();
     const result = [];
-    for (let i = 0; i < copy.length; i += 1) {
-      if (copy[i].question_body.toLowerCase().includes(text.toLowerCase())) {
-        result.push(copy[i]);
+    if (text) {
+      for (let i = 0; i < copy.length; i += 1) {
+        if (copy[i].question_body.toLowerCase().includes(text.toLowerCase())) {
+          result.push(copy[i]);
+        }
       }
+      setCurQuestions(result);
+    } else {
+      setCurQuestions(questionData.slice(0, 2));
     }
-    setCurQuestions(result);
   }
   useEffect(() => {
   /// This effect inciates page with data
@@ -63,7 +68,7 @@ function QA({ productInfo }) {
         <div>
           <h3>QUESTIONS & ANSWERS</h3>
           <div>
-            <Search filterQuestions={filterQuestions}/>
+            <Search filterQuestions={filterQuestions} />
           </div>
           <div>
             { curQuestions !== null
