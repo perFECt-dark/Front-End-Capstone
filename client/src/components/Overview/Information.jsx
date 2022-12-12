@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Information = ({
-  info, current, reviews, meta,
+  info, current, reviews, meta, StarDisplay,
 }) => {
   let price = (
     <h5>
@@ -16,7 +16,7 @@ const Information = ({
   let rating = 0;
   rating += (Number(meta.ratings['1']) + (Number(meta.ratings['2']) * 2) + (Number(meta.ratings['3']) * 3) + (Number(meta.ratings['4']) * 4) + (Number(meta.ratings['5']) * 5));
   rating /= (Number(meta.ratings['1']) + Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) + Number(meta.ratings['5']));
-  // <StarDisplay size={15} val={rating}
+  const showStar = <StarDisplay size={20} val={rating} />;
   // temporary star review indicator
   if (current.sale_price !== null) {
     price = (
@@ -36,7 +36,7 @@ const Information = ({
   if (reviews.count === 1) {
     reviewCount = (
       <p>
-        {/* {showStar} */}
+        {showStar}
         Read [
         {reviews.count}
         ] review!
@@ -45,7 +45,7 @@ const Information = ({
   } else if (reviews.count > 1) {
     reviewCount = (
       <p>
-        {/* {showStar} */}
+        {showStar}
         Read all [
         {reviews.count}
         ] reviews!

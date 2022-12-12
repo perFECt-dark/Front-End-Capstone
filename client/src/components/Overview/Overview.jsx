@@ -12,7 +12,7 @@ import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 
 const Overview = ({
-  info, styles, reviews, meta,
+  info, styles, reviews, meta, StarDisplay,
 }) => {
   /*
   styles has
@@ -196,6 +196,7 @@ const Overview = ({
               current={styles.results[currentStyle]}
               reviews={reviews}
               meta={meta}
+              StarDisplay={StarDisplay}
             />
             <StyleSelector style={styles} click={styleClickHandler} currentStyle={currentStyle} />
             <AddToCart info={info} current={styles.results[currentStyle]} />

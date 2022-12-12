@@ -446,11 +446,11 @@ h1, h3, h4, h5, p {
 #thumbnails {
   max-height: 615px;
   padding-top: 15px;
-  max-width: 100px;
+  max-width: 120px;
   text-align: center;
   position: relative;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 #thumbnails:hover {
@@ -596,7 +596,6 @@ h1, h3, h4, h5, p {
 }
 
 .expanded-view-icons {
-  display: flex;
   max-height: 700px;
   padding-top: 15px;
   max-width: 75px;

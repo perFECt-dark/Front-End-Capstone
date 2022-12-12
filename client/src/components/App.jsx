@@ -74,6 +74,7 @@ function App() {
             styles={productData.productStyles}
             reviews={productData.reviews}
             meta={productData.meta}
+            StarDisplay={StarDisplay}
           />
         )}
 
