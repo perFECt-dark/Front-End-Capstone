@@ -16,6 +16,7 @@ import RelatedProductsList from './RelatedItems/RelatedProductsList';
 import '../styles.css';
 import './Overview/overview.css';
 import './RelatedItems/relatedItems.css';
+import YourOutfitList from './RelatedItems/YourOutfitList';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -46,10 +47,8 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    const initialProduct = 40344;
-    grabInfo(initialProduct);
+    grabInfo(40344);
   }, []);
-
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
@@ -80,7 +79,18 @@ function App() {
 
       {/* Related Items */}
       {productData !== null
-      && <RelatedProductsList cards={productData.relatedProducts} />}
+      && (
+        <div>
+          <RelatedProductsList
+            productName={productData.productInfo.name}
+            styles={productData.productStyles}
+            cards={productData.relatedProducts}
+            characteristics={productData.meta.characteristics}
+            grabInfo={grabInfo}
+          />
+          <YourOutfitList />
+        </div>
+      )}
 
       {/* Review */}
       {productData !== null
