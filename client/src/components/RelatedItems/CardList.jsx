@@ -3,7 +3,7 @@ import React from 'react';
 import Card from './Card';
 // takes an array of cards
 function CardList({
-  productName, styles, cards, listTitle, characteristics,
+  productName, styles, cards, listTitle, characteristics, grabInfo,
 }) {
   // incoming data
   return (
@@ -19,6 +19,7 @@ function CardList({
               styles={styles}
               relatedCardId={someCardId}
               characteristics={characteristics}
+              grabInfo={grabInfo}
             />
           ))}
         </section>
@@ -33,6 +34,7 @@ CardList.propTypes = {
   cards: propTypes.arrayOf(propTypes.number).isRequired,
   listTitle: propTypes.string.isRequired,
   characteristics: propTypes.shape(),
+  grabInfo: propTypes.func.isRequired,
 };
 CardList.defaultProps = {
   characteristics: null,

@@ -4,7 +4,7 @@ import axios from 'axios';
 import RelatedProductsModal from './RelatedProductsModal';
 
 function Card({
-  productName, styles, relatedCardId, characteristics
+  productName, styles, relatedCardId, characteristics, grabInfo,
 }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +22,7 @@ function Card({
       });
   }, []);
   return (
-    <aside className="card" onClick={() => console.log('Hello')}>
+    <aside className="card" onClick={() => grabInfo(relatedProductData.productInfo.id)}>
       {relatedProductData !== null && (
         <div>
           <div className="image-card">

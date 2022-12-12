@@ -2,14 +2,18 @@ import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import YourOutfitCard from './YourOutfitCard';
 
-function YourOutfitList({
-  productName, styles, cards, characteristics,
-}) {
-  const [outfits, setOutfits] = useState([]);
+function YourOutfitList() {
+  // const [outfitIds, setOutfitIds] = useState([]);
+  const outfitIds = [40344];
 
+  function addId(newProductId) {
+    outfitIds.push(newProductId);
+  }
   useEffect(() => {
+    outfitIds.push(40346);
+    console.log('These are the outfitIds', outfitIds);
+  }, []);
 
-  });
   return (
     <section className="card-row">
       <div className="card-grid">
@@ -17,12 +21,9 @@ function YourOutfitList({
           <div className="card-title">
             Your Outfit
           </div>
-          { cards.map((someCardId) => (
+          { outfitIds.map((someCardId) => (
             <YourOutfitCard
-              productName={productName}
-              styles={styles}
-              relatedCardId={someCardId}
-              characteristics={characteristics}
+              yourOutfitId={someCardId}
             />
           ))}
         </section>
@@ -32,10 +33,10 @@ function YourOutfitList({
 }
 
 YourOutfitList.propTypes = {
-  productName: propTypes.string.isRequired,
-  styles: propTypes.shape().isRequired,
-  cards: propTypes.arrayOf(propTypes.number).isRequired,
-  characteristics: propTypes.shape().isRequired,
+  // productName: propTypes.string.isRequired,
+  // styles: propTypes.shape().isRequired,
+  // cards: propTypes.arrayOf(propTypes.number).isRequired,
+  // characteristics: propTypes.shape().isRequired,
 };
 
 export default YourOutfitList;

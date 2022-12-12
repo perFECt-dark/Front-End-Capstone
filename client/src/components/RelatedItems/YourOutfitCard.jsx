@@ -11,7 +11,7 @@ function YourOutfitCard({ yourOutfitId }) {
     axios
       .get(newUrl)
       .then((infoToReturn) => {
-        console.log('This is what info data is: ', infoToReturn.data);
+        console.log('This is what related product info is: ', infoToReturn.data);
         setRelatedProductData(infoToReturn.data);
       })
       .catch((err) => {
@@ -62,15 +62,3 @@ YourOutfitCard.defaultProps = {
 };
 
 export default YourOutfitCard;
-
-// { relatedProductData.productStyles.results[0].sale_price)
-// }
-// {relatedProductData.productStyles.results[0].sale_price === null
-//   ? (
-//     {relatedProductData.productStyles.results[0].sale_price}
-
-//     <aside className="card-sale-price">
-//       {relatedProductData.productInfo.default_price}
-//     </aside>
-//   )
-//   : relatedProductData.productInfo.default_price }

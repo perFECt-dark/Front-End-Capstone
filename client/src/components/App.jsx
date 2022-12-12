@@ -14,7 +14,7 @@ import RelatedProductsList from './RelatedItems/RelatedProductsList';
 // if you have the css file in another place, make sure to update the path and it's name if needed
 import '../styles.css';
 import './RelatedItems/relatedItems.css';
-import YourOutfitCard from './RelatedItems/YourOutfitCard';
+import YourOutfitList from './RelatedItems/YourOutfitList';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -46,22 +46,6 @@ function App() {
   useEffect(() => {
     /// This effect inciates page with data
     const initialProduct = 40344;
-    // if (!productData) {
-    //   const initialProduct = 40344;
-    // } else {
-    //   initialProduct =
-    // }
-    // const newUrl = `http://localhost:3000/item/${initialProduct}`;
-    // axios
-    //   .get(newUrl)
-    //   .then((update) => {
-    //     console.log('Here is our grabinfo: ', update.data);
-    //     setProductData(update.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
-
     grabInfo(initialProduct);
   }, []);
 
@@ -100,8 +84,9 @@ function App() {
             styles={productData.productStyles}
             cards={productData.relatedProducts}
             characteristics={productData.meta.characteristics}
+            grabInfo={grabInfo}
           />
-          <YourOutfitCard yourOutfitId={40344} />
+          <YourOutfitList />
         </div>
       )}
 
