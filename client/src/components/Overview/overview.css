@@ -705,3 +705,13 @@ h1, h3, h4, h5, p {
 #no-size-error {
   visibility: hidden;
 }
+
+#read-all-reviews {
+  display: flex;
+  padding-left: 80px;
+}
+
+#read-all-reviews:hover {
+  color: blue;
+  text-decoration: underline;
+}

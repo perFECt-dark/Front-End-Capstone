@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
@@ -12,12 +14,11 @@ const Information = ({
       {current.original_price}
     </h5>
   );
-  // temporary star review indicator
+  // star review indicator
   let rating = 0;
   rating += (Number(meta.ratings['1']) + (Number(meta.ratings['2']) * 2) + (Number(meta.ratings['3']) * 3) + (Number(meta.ratings['4']) * 4) + (Number(meta.ratings['5']) * 5));
   rating /= (Number(meta.ratings['1']) + Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) + Number(meta.ratings['5']));
   const showStar = <StarDisplay size={20} val={rating} />;
-  // temporary star review indicator
   if (current.sale_price !== null) {
     price = (
       <div>
@@ -32,11 +33,13 @@ const Information = ({
       </div>
     );
   }
+  // scroll to reviews
+  const reference = document.getElementsByClassName('ratingBox');
+  const scrollHandler = () => reference[0].scrollIntoView();
   let reviewCount;
   if (reviews.count === 1) {
     reviewCount = (
-      <p>
-        {showStar}
+      <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read [
         {reviews.count}
         ] review!
@@ -44,8 +47,7 @@ const Information = ({
     );
   } else if (reviews.count > 1) {
     reviewCount = (
-      <p>
-        {showStar}
+      <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read all [
         {reviews.count}
         ] reviews!
@@ -54,7 +56,9 @@ const Information = ({
   }
   return (
     <div>
+      <div style={{ float: 'left' }}>{showStar}</div>
       {reviewCount}
+      <br />
       <h5>
         {info.category}
       </h5>
@@ -70,5 +74,6 @@ Information.propTypes = {
   reviews: PropTypes.shape().isRequired,
   current: PropTypes.shape().isRequired,
   meta: PropTypes.shape().isRequired,
+  StarDisplay: PropTypes.func.isRequired,
 };
 export default Information;
