@@ -50,7 +50,7 @@ function App() {
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
-      {/* <header
+       <header
         className="primary-header container group"
         style={{ backgroundColor: 'blue' }}
       >

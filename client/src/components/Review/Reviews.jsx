@@ -17,13 +17,23 @@ function Reviews(props) {
   const productTitle = props.title;
   const characteristics = Object.keys(meta.characteristics);
   const [scroll, setScroll] = useState(false);
+  console.log('Here is the prop data: ', props);
+  console.log('Here is the const meta', meta);
+  console.log('Here is the Reviews', reviews);
 
   useEffect(() => {
 
     if (reviews.results.length >= 6) {
       setScroll(true);
+    } else {
+      setScroll(false);
     }
-  }, [reviews])
+  }, [reviews]);
+
+  useEffect(() => {
+
+    setReviews(props.reviewData);
+  }, [props]);
 
 
   const findAverageRating = (ratings) => {
@@ -65,10 +75,11 @@ function Reviews(props) {
 
   const moreReviews = (sort, increment = 2) => {
 
+    console.log('This is item id we are searching for: ', reviews.product);
     var newCount = reviews.count + increment;
     //console.log('Here is the sort: ', sort);
     //console.log('Here is the count: ', newCount);
-    const newUrl = `http://localhost:3000/item/${reviews.product}/reviews/${newCount}/${sort}`;
+    var newUrl = `http://localhost:3000/item/${reviews.product}/reviews/${newCount}/${sort}`;
 
     axios.get(newUrl)
     .then((reviewData) => {
