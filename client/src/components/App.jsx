@@ -43,13 +43,14 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    grabInfo(40344);
+    const initialProduct = 40345;
+    grabInfo(initialProduct);
   }, []);
 
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
-      {/* <header
+       <header
         className="primary-header container group"
         style={{ backgroundColor: 'blue' }}
       >

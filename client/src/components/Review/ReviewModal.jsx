@@ -16,7 +16,9 @@ const [overallRating, setOverallRating] = useState(null);
 const [recommend, setRecommend] = useState(null);
 
 const [submitMode, setSubmitMode] = useState(false);
-const [submitText, setSubmitText] = useState('Submitting...')
+const [submitText, setSubmitText] = useState('Submitting...');
+const [emailText, setEmailText] = useState('For authentication reasons, you will not be emailed');
+const [displayBodyError, setDisplayBodyError] = useState(false);
 // const [size, setSize] = useState(null);
 // const [width, setWidth] = useState(null);
 // const [comfort, setComfort] = useState(null);
@@ -83,38 +85,82 @@ const addUpload = () => {
 
   e.preventDefault();
 
-  var reviewPost = {
-    product_id: props.pId,
-    rating: overallRating,
-    summary: summary,
-    body: body,
-    recommend: recommend,
-    name: name,
-    email: email,
-    photos: uploads,
-    characteristics: charRatings
+  var validated = true;
+
+  if (!validateEmail(email)) {
+    validated = false;
+    setEmailText('This email is not a valid email');
+    document.querySelector("#ReviewModalContainer").scrollTo(0,0);
+  } else {
+    setEmailText('For authentication reasons, you will not be emailed');
+    document.querySelector("#ReviewModalContainer").scrollTo(0,0);
   }
 
-  console.log('Here is out post obj: ', reviewPost);
-  setSubmitMode(true);
+  if (body.length < 50) {
+    validated = false;
+    setDisplayBodyError(true);
+  } else {
+    setDisplayBodyError(false);
+  }
 
-  axios.post('http://localhost:3000/review/submit', reviewPost)
-  .then((response) => {
+  if (validated) {
 
-    setSubmitText('✓ Your Review Got Posted');
-  })
-  .catch((err) => {
+    var reviewPost = {
+      product_id: props.pId,
+      rating: overallRating,
+      summary: summary,
+      body: body,
+      recommend: recommend,
+      name: name,
+      email: email,
+      photos: uploads,
+      characteristics: charRatings
+    }
 
-    setSubmitText('X Review Did not Post. Error.');
-  });
+    console.log('Here is out post obj: ', reviewPost);
+    setSubmitMode(true);
 
+    axios.post('http://localhost:3000/review/submit', reviewPost)
+    .then((response) => {
+
+      setSubmitText('✓ Your Review Got Posted');
+    })
+    .catch((err) => {
+
+      setSubmitText('X Review Did not Post. Error.');
+    });
+
+  }
+}
+
+const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+};
+
+ const emailStyle = {
+
+  color: emailText === 'This email is not a valid email' ? 'red' : 'grey'
+ }
+
+ const bodyErrorStyle = {
+
+  border: displayBodyError ? '1px solid red' : '1px solid #ddd'
+ }
+
+ const bodyCountStyle = {
+
+  textAlign: 'right',
+  marginBottom:'20px',
+  color: displayBodyError ? 'red' : 'grey'
  }
 
 return (
 
   <div className="ReviewModalBackground" >
 
-    <div className="ReviewModalContainer">
+    <div id="ReviewModalContainer">
 
       {!submitMode && <div>
       <div className="titleCloseBtn">
@@ -136,7 +182,7 @@ return (
            placeholder="Example: Best purchase ever!"
            />
           <label className="labelModal">Review Body</label>
-          <textarea
+          <textarea style={bodyErrorStyle}
           required
           maxlength="1000"
           minlength="50"
@@ -144,7 +190,7 @@ return (
           onChange={(e) => setBody(e.target.value)}
           placeholder="Why did you like the product or not?">
           </textarea>
-          <div style={{textAlign: 'right', marginBottom:'20px'}}><p>{bodyCount}</p></div>
+          <div style={bodyCountStyle}><p>{bodyCount}</p></div>
           <label className="labelModal">Display Name</label>
           <input type="text" className="ReviewModalBody-Input"
            required
@@ -160,9 +206,9 @@ return (
            required
            placeholder="Example: jackson11@email.com"
            maxlength="60"
-           style={{marginBottom: '0'}}
+           style={{marginBottom: '0', border: emailText === 'This email is not a valid email' ? '1px solid red' : '1px solid #ddd'}}
            />
-          <div style={{textAlign: 'right', marginBottom:'20px'}}><p>For authentication reasons, you will not be emailed</p></div>
+          <div style={{textAlign: 'right', marginBottom:'20px'}}><p><span style={emailStyle}>{emailText}</span></p></div>
           <label className="labelModal">Overall Rating</label>
           <div style={{textAlign: 'left'}}><StarRating size={30} set={setOverallRating} name={'OverallRating'}/></div>
           <label className="labelModal">Do You Recommend This Product?</label>
