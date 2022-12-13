@@ -17,6 +17,7 @@ import '../styles.css';
 import './Overview/overview.css';
 import './RelatedItems/relatedItems.css';
 import YourOutfitList from './RelatedItems/YourOutfitList';
+import YourOutfitCard from './RelatedItems/YourOutfitCard';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -88,7 +89,7 @@ function App() {
             characteristics={productData.meta.characteristics}
             grabInfo={grabInfo}
           />
-          <YourOutfitList />
+          <YourOutfitList productId={productData.meta.product_id} />
         </div>
       )}
 
@@ -96,10 +97,11 @@ function App() {
       {productData !== null
       && (
         <Reviews
-        metaData={productData.meta}
-        reviewData={productData.reviews}
-        title={productData.productInfo.name}
-      /> )}
+          metaData={productData.meta}
+          reviewData={productData.reviews}
+          title={productData.productInfo.name}
+        />
+      )}
     </div>
   );
 }

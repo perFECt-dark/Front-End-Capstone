@@ -1,10 +1,32 @@
 import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import StarDisplay from '../StarDisplay';
 
-function YourOutfitCard({ yourOutfitId }) {
+function YourOutfitCard({ yourOutfitId, grabInfo }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
   //const [isOpen, setIsOpen] = useState(false);
+
+  function findAverageRating(ratings) {
+    const totalRatings = Number(ratings['1'])
+    + Number(ratings['2'])
+    + Number(ratings['3'])
+    + Number(ratings['4'])
+    + Number(ratings['5']);
+    let total = (Number(ratings['1']) * 1)
+    + (Number(ratings['2']) * 2)
+    + (Number(ratings['3']) * 3)
+    + (Number(ratings['4']) * 4)
+    + (Number(ratings['5']) * 5);
+
+    total /= totalRatings;
+    total = Math.round(total * 10) / 10;
+
+    // console.log('total ratings: ', totalRatings);
+    // console.log('total ',total);
+
+    return total;
+  }
 
   useEffect(() => {
     const newUrl = `http://localhost:3000/item/${yourOutfitId}`;
@@ -19,7 +41,7 @@ function YourOutfitCard({ yourOutfitId }) {
       });
   }, []);
   return (
-    <aside className="card" onClick={() => console.log('Hello')}>
+    <aside className="card" onClick={() => grabInfo(relatedProductData.productInfo.id)}>
       {relatedProductData !== null && (
         <div>
           <div className="image-card">
@@ -42,7 +64,7 @@ function YourOutfitCard({ yourOutfitId }) {
             {relatedProductData.productStyles.results[0].sale_price
               && <aside className="card-default-strikeout">{relatedProductData.productStyles.results[0].original_price}</aside>}
             <br />
-            ⭐⭐⭐⭐ (implement)
+            <StarDisplay size={16} val={findAverageRating(relatedProductData.meta.ratings)} />
           </div>
         </div>
       )}
