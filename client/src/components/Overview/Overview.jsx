@@ -124,6 +124,7 @@ const Overview = ({
     if (rightIndex + 1 >= styles.results[currentStyle].photos.length - 1) {
       rightIndex += 1;
       setLast(true);
+      setFirst(false);
       setCurrentImage(rightIndex);
     } else {
       rightIndex += 1;
