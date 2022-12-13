@@ -7,10 +7,21 @@ module.exports = {
       if (err) {
         res.status(500).send(err);
       } else {
-        console.log(data);
         res.status(201).send(data);
       }
-    }, req.params.product_id, req.params.count);
+    }, req.params.product_id, req.params.count, req.params.sort);
+  },
+
+  post: function (req, res) {
+
+    models.reviews.PostReview((err, data) => {
+      if (err) {
+        res.status(501).send(err);
+      } else {
+        res.sendStatus(201);
+      }
+
+    }, req.body);
   }
 
 };
