@@ -3,8 +3,9 @@ require('dotenv').config();
 
 module.exports = {
 
-  getAll: function (cb, product_id, rCount) {
+  getAll: function (cb, product_id, rCount, rSort) {
 
+    console.log(rSort);
     let optionsReviews = {
       headers: {
         Authorization: process.env.AUTH
@@ -12,7 +13,7 @@ module.exports = {
       params: {
         page: 1,
         count: rCount,
-        sort: 'relevant',
+        sort: rSort,
         product_id: product_id
       }
     };
@@ -28,6 +29,26 @@ module.exports = {
       cb(err);
 
      });
+
+  },
+
+  PostReview: function (cb, reviewPost) {
+
+    let options = {
+      headers: {
+        Authorization: process.env.AUTH
+      }
+    };
+
+    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', reviewPost, options)
+    .then((response) => {
+
+      cb(null, response.data);
+    })
+    .catch((err) => {
+
+      cb(err);
+    });
 
   }
 };
