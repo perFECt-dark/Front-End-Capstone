@@ -5,13 +5,13 @@ import QAListEntry from './QAListEntry.jsx';
 function QAList({
   curQuestions, product
 }) {
-  console.log('current questions are', curQuestions);
   return (
-    <div>
+    <div className="questions-list">
       {curQuestions !== null
         ? curQuestions.map((curQuestion) => (
           <QAListEntry
             curQuestion={curQuestion}
+            curQuestions={curQuestions}
             product={product}
           />
         ))
