@@ -443,15 +443,17 @@ h1, h3, h4, h5, p {
   cursor: zoom-in;
 }
 
-.thumbnails {
-  max-height: 700px;
+#thumbnails {
+  max-height: 615px;
   padding-top: 15px;
-  max-width: 100px;
+  max-width: 120px;
   text-align: center;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.thumbnails:hover {
+#thumbnails:hover {
   cursor: pointer;
 }
 
@@ -629,6 +631,7 @@ h1, h3, h4, h5, p {
   cursor: zoom-out;
   background-size: 300%;
   background-repeat: no-repeat;
+  z-index: 3;
 }
 
 #zoom:checked+label>img {
@@ -637,4 +640,78 @@ h1, h3, h4, h5, p {
 
 #zoom:checked+div{
   visibility: hidden;
+}
+
+/*
+  ========================================
+  Features && Share-to icons
+  ========================================
+*/
+.item-features {
+  display: flex;
+}
+
+.item-feature {
+  display: inline-flex;
+  margin-right: 15px;
+}
+
+.shared-icons {
+  max-width: 25px;
+  max-height: 25px;
+  border-radius: 10%;
+  margin-left: 15px;
+}
+
+/*
+  ========================================
+  Attempt to hide thumbnails, arrows and close
+  ========================================
+*/
+
+/* #zoom:checked+label>.hide-background {
+  visibility: visible;
+  display: block;
+  position: absolute;
+  left: -500px;
+  width: 100%;
+  height: 700px;
+  background-color: rgb(230, 230, 230);
+  background-size: 100%;
+  z-index: 4;
+} */
+
+/*
+  ========================================
+  Select
+  ========================================
+*/
+
+#cart-box {
+  display: block;
+}
+
+#item-size {
+  float: left;
+  width: 50%;
+  margin-right: 30px;
+}
+
+#item-quant {
+  float: left;
+  width: 30%;
+}
+
+#no-size-error {
+  visibility: hidden;
+}
+
+#read-all-reviews {
+  display: flex;
+  padding-left: 80px;
+}
+
+#read-all-reviews:hover {
+  color: blue;
+  text-decoration: underline;
 }
