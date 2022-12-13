@@ -17,7 +17,8 @@ const Information = ({
   // star review indicator
   let rating = 0;
   rating += (Number(meta.ratings['1']) + (Number(meta.ratings['2']) * 2) + (Number(meta.ratings['3']) * 3) + (Number(meta.ratings['4']) * 4) + (Number(meta.ratings['5']) * 5));
-  rating /= (Number(meta.ratings['1']) + Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) + Number(meta.ratings['5']));
+  const totalReview = (Number(meta.ratings['1']) + Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) + Number(meta.ratings['5']));
+  rating /= totalReview;
   const showStar = <StarDisplay size={20} val={rating} />;
   if (current.sale_price !== null) {
     price = (
@@ -37,19 +38,19 @@ const Information = ({
   const reference = document.getElementsByClassName('ratingBox');
   const scrollHandler = () => reference[0].scrollIntoView();
   let reviewCount;
-  if (reviews.count === 1) {
+  if (totalReview === 1) {
     reviewCount = (
       <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read [
-        {reviews.count}
+        {totalReview}
         ] review!
       </p>
     );
-  } else if (reviews.count > 1) {
+  } else if (totalReview > 1) {
     reviewCount = (
       <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read all [
-        {reviews.count}
+        {totalReview}
         ] reviews!
       </p>
     );

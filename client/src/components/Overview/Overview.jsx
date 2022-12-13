@@ -43,10 +43,12 @@ const Overview = ({
         setCurrentStyle(index);
       }
     });
+    setFirst(true);
+    setLast(false);
     if (styles.results[currentStyle].photos.length === 1) {
       setLast(true);
     }
-  }, []);
+  }, [info, styles, reviews, meta]);
   // function to check what the current image is for arrows
   const checkFirstAndLast = () => {
     if (currentImage === 0) {
