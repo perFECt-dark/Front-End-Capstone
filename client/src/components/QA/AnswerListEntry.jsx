@@ -12,7 +12,6 @@ function AnswerListEntry({ curAnswer }) {
       return;
     }
     setDisableHelpful(true);
-    console.log('clicked');
     const url = `http://localhost:3000/qa/answers/${curAnswer.id}/helpful`;
     axios.put(url, {
       answer_id: curAnswer.id,
@@ -30,7 +29,6 @@ function AnswerListEntry({ curAnswer }) {
       return;
     }
     setDisableReport(true);
-    console.log('clicked');
     const url = `http://localhost:3000/qa/answers/${curAnswer.id}/report`;
     axios.put(url, {
       answer_id: curAnswer.id,

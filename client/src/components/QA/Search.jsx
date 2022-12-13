@@ -15,18 +15,10 @@ function Search({ filterQuestions }) {
       filterQuestions('');
     }
   }
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   if (event.target.search.value.length >= 3) {
-  //     filterQuestions(event.target.search.value);
-  //   }
-  // }
   return (
     <div>
       <form className="search-bar">
-      {/* <form className="search-bar" onSubmit={handleSubmit}> */}
         <input className="search" type="text" name="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={handleChange} />
-        {/* <input type="submit" name="Search" value="Search" /> */}
       </form>
     </div>
   );
