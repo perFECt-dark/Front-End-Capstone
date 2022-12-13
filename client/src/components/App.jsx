@@ -46,7 +46,7 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    const initialProduct = 40344;
+    const initialProduct = 40345;
     grabInfo(initialProduct);
   }, []);
 
@@ -83,7 +83,6 @@ function App() {
       {/* Review */}
       {productData !== null
       && <Reviews metaData={productData.meta} reviewData={productData.reviews} title={productData.productInfo.name} />}
-      )}
     </div>
   );
 }

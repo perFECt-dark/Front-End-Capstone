@@ -50,7 +50,7 @@ function Reviews(props) {
   //useEffect(() => {}, [meta]);
 
   const filterReviews = (type) => {
-    console.log('Here it isssss: ', type);
+    //console.log('Here it isssss: ', type);
     if (type === 'Relevant') {
       setSortList(['Relevant', 'Helpful', 'Newest']);
       moreReviews('relevant', 0);
@@ -66,14 +66,14 @@ function Reviews(props) {
   const moreReviews = (sort, increment = 2) => {
 
     var newCount = reviews.count + increment;
-    console.log('Here is the sort: ', sort);
-    console.log('Here is the count: ', newCount);
+    //console.log('Here is the sort: ', sort);
+    //console.log('Here is the count: ', newCount);
     const newUrl = `http://localhost:3000/item/${reviews.product}/reviews/${newCount}/${sort}`;
 
     axios.get(newUrl)
     .then((reviewData) => {
 
-      console.log('This should not trigger');
+      //console.log('This should not trigger');
       setReviews(reviewData.data);
 
     })
@@ -101,7 +101,7 @@ function Reviews(props) {
         '135241': 5
       }
     }
-    console.log(sauce);
+    //console.log(sauce);
 
     //console.log(JSON.stringify(sauce));
 
