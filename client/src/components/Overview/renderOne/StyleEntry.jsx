@@ -5,16 +5,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const StyleEntry = ({ item, click, index }) => {
-  return (
-    <img
-      className="style-icons"
-      src={item.photos[0].thumbnail_url}
-      name={index}
-      alt=""
-      onClick={(e) => { click(e); }}
-    />
-  );
+const StyleEntry = ({
+  item, click, index, currentStyle,
+}) => {
+  let highlight;
+  if (index === currentStyle) {
+    highlight = (
+      <img
+        className="style-icons"
+        src={item.photos[0].thumbnail_url}
+        name={index}
+        alt=""
+        onClick={(e) => { click(e); }}
+        style={{ boxShadow: '0 0 0 3px rgba(0, 0, 0, 1)' }}
+      />
+    );
+  } else {
+    highlight = (
+      <img
+        className="style-icons"
+        src={item.photos[0].thumbnail_url}
+        name={index}
+        alt=""
+        onClick={(e) => { click(e); }}
+      />
+    );
+  }
+  return (highlight);
 };
 StyleEntry.propTypes = {
   item: PropTypes.shape().isRequired,

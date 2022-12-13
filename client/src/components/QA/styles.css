@@ -1,0 +1,153 @@
+.qa-main {
+  text-align: center;
+}
+
+.search {
+  width: 40%;
+  margin-bottom: 25px;
+}
+
+.more-q {
+  color: grey;
+  font-size: 12.5px;
+}
+
+.add-q {
+  color: grey;
+  font-size: 12.5px;
+}
+
+.question-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: .9;
+}
+
+.answer-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  height: 45%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fff;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: .9;
+}
+
+.modal-content {
+  width: 500px;
+  background-color: #fff;
+}
+
+.modal-header, .modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin: 0;
+}
+
+.modal-body {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-input {
+  height: 100px;
+  width: 75%;
+}
+
+.modal-nickname, .modal-email {
+  width: 75%;
+}
+
+.btn {
+  color: grey;
+  font-size: 15px;
+}
+
+.q-tag {
+  font-weight:bold;
+  font-size: 25px;
+  padding-right: 5px;
+}
+
+.a-tag {
+  font-weight:bold;
+  font-size: 25px;
+  padding-right: 5px;
+}
+
+.q-body {
+  font-weight:bold;
+  font-size: 25px;
+}
+
+.a-body {
+  font-size: 20px;
+}
+
+.user {
+  font-size: 15px;
+}
+
+.date {
+  font-size: 15px;
+}
+
+.q-helpful {
+  font-size: 15px;
+  padding-left: 100px;
+}
+
+.a-helpful {
+  font-size: 15px;
+  padding-left: 20px;
+}
+
+.yes {
+  font-size: 15px;
+  padding-left: 12.5px;
+  padding-right: 5px;
+}
+
+.yes-count {
+
+}
+
+.vertical-bar {
+  padding-left: 12.5px;
+  padding-right: 12.5px;
+}
+
+.add-answer {
+  font-size: 15px;
+}
+
+.report {
+  font-size: 15px;
+}
+
+h3 {
+  padding-top: 25px;
+}

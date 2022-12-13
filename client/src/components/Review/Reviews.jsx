@@ -200,7 +200,7 @@ function Reviews(props) {
 
               <div className="dropdown" style={{textAlign: 'left'}}>
                 <span className="btn">{sortList[0]}</span>
-                <div class="dropdown-content" style={{cursor: 'pointer'}}>
+                <div className="dropdown-content" style={{cursor: 'pointer'}}>
                   <p onClick={() => filterReviews(sortList[1])}
                    onMouseEnter={() => setHoverOne(true)}
                    onMouseLeave={() => setHoverOne(false)}

@@ -32,7 +32,7 @@ const Information = ({ info, current, reviews }) => {
   if (current.sale_price) {
     price = (
       <div>
-        <h5 style={{ float: 'left', paddingRight: '10px' }}>
+        <h5 className="sale-price">
           $
           {current.sale_price}
         </h5>

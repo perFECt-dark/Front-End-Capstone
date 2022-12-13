@@ -1,23 +1,18 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import React, { useState } from 'react';
-import Gallery from './Gallery.jsx';
-import Information from './Information.jsx';
-import StyleSelector from './StyleSelector.jsx';
-import AddToCart from './AddToCart.jsx';
+import Gallery from './Gallery';
+import Expanded from './Expanded';
+import Information from './Information';
+import StyleSelector from './StyleSelector';
+import AddToCart from './AddToCart';
 
 const Overview = ({ info, styles, reviews }) => {
   /*
-  info has
-    category
-    price
-    description
-    id
-    name
-    slogan
-
   styles has
     product_id
     results
@@ -31,20 +26,14 @@ const Overview = ({ info, styles, reviews }) => {
         skus: 1394769: {quantity: 8, size: 'XS'},
        }, ...
       ]
-  */
-  // incoming data
-  /*
   expansion - setting new width of image with own set of features such as
   a hover, a zoom feature, and disabling some other things
-  click handlers - States I need to keep track of/ things that change:
-  the current style that is selected
-  the set of thumbnails based off of the style selected
-  the main image
   */
   const [currentStyle, setCurrentStyle] = useState(0);
   const [currentImage, setCurrentImage] = useState(0);
   const [first, setFirst] = useState(true);
   const [last, setLast] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const checkFirstAndLast = () => {
     if (currentImage === 0) {
       setFirst(true);
@@ -104,16 +93,28 @@ const Overview = ({ info, styles, reviews }) => {
       setCurrentImage(rightIndex);
     }
   };
-
-  const largePic = {
-    width: '50%',
-    height: '800px',
-    backgroundSize: '100% 100%',
-    backgroundImage: `url(${styles.results[currentStyle].photos[currentImage].url})`,
-    marginLeft: '90px',
+  // expand default image on click
+  let overviewModal = document.getElementById('expand-modal');
+  const expandClick = () => {
+    if (overviewModal === null) {
+      overviewModal = document.getElementById('expand-modal');
+    }
+    setExpanded(true);
+    overviewModal.style.display = 'block';
+  };
+  // switch back to default image on click
+  const expandClose = (event) => {
+    if (overviewModal !== null && (event.target !== overviewModal || event.target.className === 'close-expanded')) {
+      overviewModal.style.display = 'none';
+    }
+    setExpanded(false);
+  };
+  const defaultPic = {
+    width: '60%',
+    height: '700px',
   };
   const rightSide = {
-    height: '800px',
+    height: '700px',
     position: 'relative',
     float: 'right',
   };
@@ -121,15 +122,33 @@ const Overview = ({ info, styles, reviews }) => {
     <section className="row">
       <div className="grid">
         <section>
-          <div className="col-2-3 main-image" style={largePic}>
+          <div className="col-2-3" style={defaultPic}>
             <Gallery
               current={styles.results[currentStyle]}
+              currentImage={currentImage}
               click={thumbnailClickHandler}
               leftClick={leftClick}
               rightClick={rightClick}
               first={first}
               last={last}
+              expandClick={expandClick}
+              expanded={expanded}
             />
+            <div id="expand-modal" className="overview-modal">
+              <div className="expanded-content" name="">
+                <span className="close-expanded" onClick={(e) => expandClose(e)}>X</span>
+                <Expanded
+                  current={styles.results[currentStyle]}
+                  currentImage={currentImage}
+                  click={thumbnailClickHandler}
+                  leftClick={leftClick}
+                  rightClick={rightClick}
+                  first={first}
+                  last={last}
+                  expanded={expanded}
+                />
+              </div>
+            </div>
           </div>
           <aside className="col-1-3" style={rightSide}>
             <Information info={info} current={styles.results[currentStyle]} reviews={reviews} />
@@ -137,7 +156,7 @@ const Overview = ({ info, styles, reviews }) => {
             <AddToCart />
           </aside>
         </section>
-        <section style={{ paddingTop: '20px' }}>
+        <section style={{ paddingTop: '20px' }} onClick={(e) => expandClose(e)}>
           <div className="col-2-3">
             <h3>{info.slogan}</h3>
             <p>{info.description}</p>

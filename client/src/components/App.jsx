@@ -1,21 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-  icon
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import QA from './QA/QA';
 import Reviews from './Review/Reviews';
 import Overview from './Overview/Overview';
 import StarRating from './StarRating';
 import StarDisplay from './StarDisplay';
 import RelatedProductsList from './RelatedItems/RelatedProductsList';
+
 // if you have the css file in another place, make sure to update the path and it's name if needed
 import '../styles.css';
 import './Overview/overview.css';
 import './RelatedItems/relatedItems.css';
+import YourOutfitList from './RelatedItems/YourOutfitList';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -53,7 +50,7 @@ function App() {
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
-      <header
+      {/* <header
         className="primary-header container group"
         style={{ backgroundColor: 'blue' }}
       >
@@ -64,7 +61,7 @@ function App() {
             Dark
           </a>
         </h1>
-        {/* placeholder search */}
+        placeholder search
         <h3 className="tagline">_______________ Search</h3>
       </header>
       {productData !== null
@@ -78,11 +75,30 @@ function App() {
 
       {/* Related Items */}
       {productData !== null
-      && <RelatedProductsList cards={productData.relatedProducts} />}
-
+      && (
+        <div>
+          <RelatedProductsList
+            productName={productData.productInfo.name}
+            styles={productData.productStyles}
+            cards={productData.relatedProducts}
+            characteristics={productData.meta.characteristics}
+            grabInfo={grabInfo}
+          />
+          <YourOutfitList />
+        </div>
+      )}
+      {/* Questions & Answers */}
+      <div>
+        {productData !== null && <QA productInfo={productData.productInfo} />}
+      </div>
       {/* Review */}
       {productData !== null
-      && <Reviews metaData={productData.meta} reviewData={productData.reviews} title={productData.productInfo.name} />}
+      && (
+        <Reviews
+        metaData={productData.meta}
+        reviewData={productData.reviews}
+        title={productData.productInfo.name}
+      /> )}
     </div>
   );
 }
