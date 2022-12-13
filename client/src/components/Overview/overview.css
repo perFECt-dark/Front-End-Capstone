@@ -159,7 +159,7 @@ p a {
 
 .row,
 .row-alt{
-  min-width: 960px;
+  min-width: 1200px;
 }
 
 .row {
@@ -406,67 +406,235 @@ h1, h3, h4, h5, p {
 
 /*
   ========================================
-  Gallery elements
+  Gallery containers
   ========================================
 */
 
-/* #main-image {
-  background-image: url("https://images.unsplash.com/photo-1501088430049-71c79fa3283e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80");
-} */
+.carousel {
+  vertical-align: middle;
+  background-position: center;
+  background-color: rgb(230, 230, 230);
+  justify-content: space-between;
+}
 
-.style-icons {
-  padding: 3px;
-  width: 75px;
-  height: 75px;
-  border-radius: 100%;
+.around-image {
+  width: 65%;
+  height: 700px;
+  display: inline-flex;
+  flex-flow: row;
+  text-align: center;
+}
+
+/*
+  ========================================
+  Inside carousel/gallery
+  ========================================
+*/
+
+#selected-image {
+  height: auto;
+  width: 100%;
+  max-height: 700px;
+  position: relative;
+  margin: auto;
+}
+
+#selected-image:hover {
+  cursor: zoom-in;
+}
+
+.thumbnails {
+  max-height: 700px;
+  padding-top: 15px;
+  max-width: 100px;
+  text-align: center;
+  position: relative;
+}
+
+.thumbnails:hover {
+  cursor: pointer;
 }
 
 .thumbnail-icon {
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 80px;
   border-radius: 20%;
   border: 1px solid black;
 }
 
-.arrows {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 400px;
+.small-icons {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  border: 1px solid black;
 }
 
 .left,
 .right,
 .expand {
-  color: red;
-  font-size: 30px;
+  color: black;
   border: none;
   background-color: transparent;
-  z-index: 1;
 }
 
-.main-image :hover {
-  cursor: zoom-in;
+.arrows {
+  display: flex;
+  margin: auto;
+  font-size: 30px;
+  border: none;
 }
 
-.thumbnails :hover {
+.arrows:hover {
+  color: rgb(142, 142, 142);
   cursor: pointer;
 }
 
-.arrows :hover {
-  color: blue;
+.expand {
+  float: right;
+  font-size: 30px;
+  padding-right: 15px;
+  padding-top: 10px;
+}
+
+.expand:hover {
+  color: grey;
   cursor: pointer;
 }
 
-.expand :hover {
-  color: blue;
-  cursor: nesw-resize;
+/*
+  ========================================
+  Info elements
+  ========================================
+*/
+
+.style-icons {
+  margin: 3px;
+  width: 75px;
+  height: 75px;
+  border-radius: 100%;
+  border: 1px solid black;
 }
 
 .discounted {
-  color:red;
   text-decoration: line-through;
 }
 
+.sale-price {
+  float: left;
+  padding-right: 10px;
+  color: red;
+}
+
 .hidden {
+  visibility: hidden;
+}
+
+/*
+  ========================================
+  Expanded Modal
+  ========================================
+*/
+
+.overview-modal {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left:0;
+  top:170px;
+  width: 100%;
+  height: 700px;
+}
+
+.expanded-content {
+  background-color: rgb(230, 230, 230);
+  margin: 0;
+  width: 100%;
+}
+
+.close-expanded {
+  color: rgb(109, 114, 117);
+  float: right;
+  margin: 20px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.close-expanded:hover,.close-expanded:focus{
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*
+  ========================================
+  Expanded Gallery elements
+  ========================================
+*/
+
+.expanded-container {
+  width: 80%;
+  height: 700px;
+  display: inline-flex;
+  flex-flow: row;
+  text-align: center;
+  justify-content: space-between;
+}
+
+#expanded-image {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  max-height: 700px;
+  position: relative;
+  margin: auto;
+}
+
+#expanded-image:hover {
+  cursor: crosshair;
+}
+
+.expanded-view-icons {
+  max-height: 700px;
+  padding-top: 15px;
+  max-width: 75px;
+  text-align: center;
+  position: relative;
+}
+
+.expanded-view-icons:hover {
+  cursor: pointer;
+}
+
+/*
+  ========================================
+  Zoom 2.5x elements
+  ========================================
+*/
+
+#zoom {
+  display: none;
+}
+
+.zoom-background {
+  background-size: 0 0;
+  max-height: 700px;
+  max-width: 100%;
+  margin: auto;
+}
+
+#zoom:checked+label{
+  /* background-position: 50% 50%; */
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-out;
+  background-size: 300%;
+  background-repeat: no-repeat;
+}
+
+#zoom:checked+label>img {
+  visibility: hidden;
+}
+
+#zoom:checked+div{
   visibility: hidden;
 }

@@ -6,18 +6,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Thumbnail = ({ url, click, index }) => {
+const Thumbnail = ({
+  url, click, index, currentImage, icons,
+}) => {
   // for selected image...
   // highlight/outline/add some kind of checkmark
-  return (
-    <img
-      className="thumbnail-icon"
-      name={index}
-      src={url}
-      alt=""
-      onClick={(e) => { click(e); }}
-    />
-  );
+  let highlight;
+  if (index === currentImage) {
+    highlight = (
+      <img
+        className={icons}
+        name={index}
+        src={url}
+        alt=""
+        onClick={(e) => { click(e); }}
+        style={{ boxShadow: '0 0 0 3px rgba(0, 0, 0, 1)' }}
+      />
+    );
+  } else {
+    highlight = (
+      <img
+        className={icons}
+        name={index}
+        src={url}
+        alt=""
+        onClick={(e) => { click(e); }}
+      />
+    );
+  }
+  return (highlight);
 };
 Thumbnail.propTypes = {
   url: PropTypes.string.isRequired,
