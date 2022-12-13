@@ -17,7 +17,6 @@ function QA({ productInfo }) {
     const url = 'http://localhost:3000/qa/questions';
     axios.get(url)
       .then((questions) => {
-        console.log('Here is our question data: ', questions.data);
         setQuestionData(questions.data);
         setCurQuestions(questions.data.slice(0, 2));
       })
@@ -27,16 +26,13 @@ function QA({ productInfo }) {
   }
   function addMoreQuestions(num) {
     const questionList = questionData.slice(0, num);
-    console.log('current list of questions to show ', questionList);
     setCurQuestions(questionList);
   }
   function handleMoreQuestions() {
-    console.log('clicked');
     let newNum = numQ;
     newNum += 2;
     setNumQ(newNum);
-    // console.log(numQ);
-    addMoreQuestions(numQ);
+    addMoreQuestions(newNum);
   }
   function collapseQuestions() {
     const questionList = questionData.slice(0, 2);
@@ -44,7 +40,6 @@ function QA({ productInfo }) {
     setNumQ(questionList.length);
   }
   function filterQuestions(text) {
-    // const copy = curQuestions.slice();
     const copy = questionData.slice();
     const result = [];
     if (text) {
@@ -59,7 +54,6 @@ function QA({ productInfo }) {
     }
   }
   useEffect(() => {
-  /// This effect inciates page with data
     getQuestion();
   }, []);
   return (
@@ -74,9 +68,6 @@ function QA({ productInfo }) {
             { curQuestions !== null
               ? <QAList curQuestions={curQuestions} product={productInfo.name}/> : null }
           </div>
-          {/* <div>
-            { questionData === null || questionData.length <= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
-          </div> */}
           <div>
             <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
           </div>
@@ -86,7 +77,6 @@ function QA({ productInfo }) {
           </div>
         </div>
       )
-        // : <div>Loading</div> }
         : (
           <div>
             <h3>QUESTIONS & ANSWERS</h3>

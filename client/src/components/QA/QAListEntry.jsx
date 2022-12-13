@@ -4,12 +4,11 @@ import './styles.css';
 import AnswerList from './AnswerList.jsx';
 import AnswerModal from './AnswerModal.jsx';
 
-const { useState } = React;
+const { useState, useEffect } = React;
 
 function QAListEntry({ curQuestion, product }) {
   const [showA, setShowA] = useState(false);
   const [disableHelp, setDisableHelp] = useState(false);
-  // const [totalAnswers, setTotalAnswers] = useState(null);
   const array = [];
   let answerCount = 0;
   if (curQuestion !== null) {
@@ -31,7 +30,6 @@ function QAListEntry({ curQuestion, product }) {
     let newNum = numAnswers;
     newNum += 2;
     setNumAnswers(newNum);
-    addMoreAnswers(numAnswers);
   }
   function handleQHelpful(e) {
     e.preventDefault();
@@ -56,6 +54,12 @@ function QAListEntry({ curQuestion, product }) {
     setCurAnswers(answerList);
     setNumAnswers(answerList.length);
   }
+  useEffect(() => {
+    addMoreAnswers(numAnswers);
+  }, [numAnswers]);
+  useEffect(() => {
+    addMoreAnswers(numAnswers);
+  }, [curQuestion]);
   return (
     <div>
       {curAnswers !== null
