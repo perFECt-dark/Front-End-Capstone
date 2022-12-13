@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
@@ -6,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Information = ({
-  info, current, reviews, meta, StarDisplay,
+  info, current, meta, StarDisplay,
 }) => {
   let price = (
     <h5>
@@ -16,8 +17,10 @@ const Information = ({
   );
   // star review indicator
   let rating = 0;
-  rating += (Number(meta.ratings['1']) + (Number(meta.ratings['2']) * 2) + (Number(meta.ratings['3']) * 3) + (Number(meta.ratings['4']) * 4) + (Number(meta.ratings['5']) * 5));
-  rating /= (Number(meta.ratings['1']) + Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) + Number(meta.ratings['5']));
+  // updated in the case that some ratings don't exist
+  Object.entries(meta.ratings).forEach((rate) => rating += Number(rate[0]) * Number(rate[1]));
+  const totalReview = Number(meta.recommended.false) + Number(meta.recommended.true);
+  rating /= totalReview;
   const showStar = <StarDisplay size={20} val={rating} />;
   if (current.sale_price !== null) {
     price = (
@@ -37,19 +40,19 @@ const Information = ({
   const reference = document.getElementsByClassName('ratingBox');
   const scrollHandler = () => reference[0].scrollIntoView();
   let reviewCount;
-  if (reviews.count === 1) {
+  if (totalReview === 1) {
     reviewCount = (
       <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read [
-        {reviews.count}
+        {totalReview}
         ] review!
       </p>
     );
-  } else if (reviews.count > 1) {
+  } else if (totalReview > 1) {
     reviewCount = (
       <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read all [
-        {reviews.count}
+        {totalReview}
         ] reviews!
       </p>
     );
@@ -71,7 +74,6 @@ const Information = ({
 };
 Information.propTypes = {
   info: PropTypes.shape().isRequired,
-  reviews: PropTypes.shape().isRequired,
   current: PropTypes.shape().isRequired,
   meta: PropTypes.shape().isRequired,
   StarDisplay: PropTypes.func.isRequired,

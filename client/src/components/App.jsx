@@ -50,7 +50,7 @@ function App() {
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
-       <header
+      <header
         className="primary-header container group"
         style={{ backgroundColor: 'blue' }}
       >
@@ -64,6 +64,8 @@ function App() {
         placeholder search
         <h3 className="tagline">_______________ Search</h3>
       </header>
+
+      {/* Overview */}
       {productData !== null
         && (
           <Overview
