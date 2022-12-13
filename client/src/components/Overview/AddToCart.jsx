@@ -7,7 +7,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const AddToCart = ({ current, info }) => {
-  const sizes = [{ key: 'select', size: 'Select Size...' }];
+  const sizes = [{ key: 'select', size: 'Select Size...', amount: 'null' }];
   const quantity = [];
   let currentQuantity = 0;
   Object.entries(current.skus).map((unit) => {
@@ -15,7 +15,7 @@ const AddToCart = ({ current, info }) => {
   });
   // these update based on selected
   const [size, setSize] = React.useState(sizes[0]);
-  const [amount, setAmount] = React.useState(quantity[0]);
+  const [amount, setAmount] = React.useState(0);
   const [cart, setCart] = React.useState([]); // temporary cart
   sizes.forEach((item) => {
     if (item.size === (size)) {
@@ -26,10 +26,11 @@ const AddToCart = ({ current, info }) => {
     quantity.push({ key: i, value: i });
   }
   const cartHandler = () => {
-    if (size.key === 'select') {
-      const sizeSelect = document.getElementById('item-size');
-      sizeSelect.click();
+    if (size.key === 'select' || amount < 1) {
       document.getElementById('no-size-error').style.visibility = 'visible';
+      document.getElementById('item-size').focus();
+      // focuses on the select but doesn't open the dropdown
+      document.getElementById('item-size').click();
     } else {
       setCart([...cart, {
         itemName: info.name, itemStyle: current.name, itemSize: size, itemAmount: amount,
@@ -38,6 +39,12 @@ const AddToCart = ({ current, info }) => {
     }
   };
   // console.log(cart); if I want to see what is inside the cart
+  let cartButton;
+  if (sizes.every((item) => item.amount === 'null')) {
+    cartButton = <h3 style={{ float: 'left' }}>Out of Stock</h3>;
+  } else {
+    cartButton = <button className="cart" onClick={(e) => cartHandler(e)}>Add to Cart</button>;
+  }
   return (
     <div id="cart-box" style={{ verticalAlign: 'bottom' }}>
       <form>
@@ -46,7 +53,14 @@ const AddToCart = ({ current, info }) => {
           <select
             id="item-size"
             value={size || 'OUT OF STOCK'}
-            onChange={(e) => { setSize(e.target.value); setAmount(1); }}
+            onChange={(e) => {
+              setSize(e.target.value);
+              if (e.target.value === 'Select Size...') {
+                setAmount(0);
+                return;
+              }
+              setAmount(1);
+            }}
           >
             {sizes.some((item) => item.amount > 0) ? sizes.map((item) => {
               if (item.amount < 1) { return; }
@@ -71,7 +85,7 @@ const AddToCart = ({ current, info }) => {
           </select>
         </label>
       </form>
-      <button className="cart" onClick={(e) => cartHandler(e)}>Add to Cart</button>
+      {cartButton}
     </div>
   );
 };

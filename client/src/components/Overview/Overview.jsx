@@ -11,7 +11,9 @@ import Information from './Information';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 
-const Overview = ({ info, styles, reviews }) => {
+const Overview = ({
+  info, styles, reviews, meta, StarDisplay,
+}) => {
   /*
   styles has
     product_id
@@ -189,7 +191,13 @@ const Overview = ({ info, styles, reviews }) => {
             </div>
           </div>
           <aside className="col-1-3" style={rightSide}>
-            <Information info={info} current={styles.results[currentStyle]} reviews={reviews} />
+            <Information
+              info={info}
+              current={styles.results[currentStyle]}
+              reviews={reviews}
+              meta={meta}
+              StarDisplay={StarDisplay}
+            />
             <StyleSelector style={styles} click={styleClickHandler} currentStyle={currentStyle} />
             <AddToCart info={info} current={styles.results[currentStyle]} />
           </aside>

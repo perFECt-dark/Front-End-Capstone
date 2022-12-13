@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  solid,
-  regular,
-  brands,
-  icon
-} from '@fortawesome/fontawesome-svg-core/import.macro';
+import QA from './QA/QA';
 import Reviews from './Review/Reviews';
 import Overview from './Overview/Overview';
 import StarRating from './StarRating';
 import StarDisplay from './StarDisplay';
 import RelatedProductsList from './RelatedItems/RelatedProductsList';
+
 // if you have the css file in another place, make sure to update the path and it's name if needed
 import '../styles.css';
 import './Overview/overview.css';
@@ -47,12 +43,14 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    grabInfo(40344);
+    const initialProduct = 40345;
+    grabInfo(initialProduct);
   }, []);
+
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
-      <header
+       <header
         className="primary-header container group"
         style={{ backgroundColor: 'blue' }}
       >
@@ -63,19 +61,21 @@ function App() {
             Dark
           </a>
         </h1>
-        {/* placeholder search */}
+        placeholder search
         <h3 className="tagline">_______________ Search</h3>
       </header>
       
       {/* Overview */}
       {productData !== null
-      && (
-      <Overview
-        info={productData.productInfo}
-        styles={productData.productStyles}
-        reviews={productData.reviews}
-      />
-      )}
+        && (
+          <Overview
+            info={productData.productInfo}
+            styles={productData.productStyles}
+            reviews={productData.reviews}
+            meta={productData.meta}
+            StarDisplay={StarDisplay}
+          />
+        )}
 
       {/* Related Items */}
       {productData !== null
@@ -91,15 +91,19 @@ function App() {
           <YourOutfitList />
         </div>
       )}
-
+      {/* Questions & Answers */}
+      <div>
+        {productData !== null && <QA productInfo={productData.productInfo} />}
+      </div>
       {/* Review */}
       {productData !== null
       && (
-        <Reviews
+      <Reviews
         metaData={productData.meta}
         reviewData={productData.reviews}
         title={productData.productInfo.name}
-      /> )}
+      />
+      )}
     </div>
   );
 }

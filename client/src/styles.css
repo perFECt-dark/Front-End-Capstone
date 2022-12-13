@@ -499,7 +499,7 @@ h1, h3, h4, h5, p {
   z-index: 1;
 }
 
-.ReviewModalContainer {
+#ReviewModalContainer {
 
   width: 500px;
   height: 600px;
