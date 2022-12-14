@@ -52,13 +52,13 @@ table {
   ========================================
 */
 body {
-  background: #293f50;
+  background: #252525;
   color: #888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4 {
-  color: #648880;
+h1, h2, h3, h4, p {
+  color: #fff;
 }
 
 h1 {
@@ -105,7 +105,7 @@ a:hover {
   color: #a9b2b9;
 }
 
-p a {
+ a {
   border-bottom: 1px solid #dfe2e5;
 }
 
@@ -163,7 +163,7 @@ p a {
 }
 
 .row {
-  background: #fff;
+  background: #252525;
   padding: 36px 0 14px 0;
 }
 
@@ -181,9 +181,9 @@ p a {
   ========================================
 */
 
-h1, h3, h4, h5, p {
+/* h1, h3, h4, h5, p {
   margin-bottom: 22px;
-}
+} */
 
 /*
   ========================================

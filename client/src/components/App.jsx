@@ -44,6 +44,7 @@ function App() {
   useEffect(() => {
     /// This effect inciates page with data
     const initialProduct = 40345;
+    /// infinity stone 40353
     grabInfo(initialProduct);
   }, []);
 
