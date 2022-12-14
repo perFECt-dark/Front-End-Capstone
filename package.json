@@ -18,7 +18,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "build": "webpack --config webpack.config.js -w",
-    "server-dev": "npx nodemon server/index.js"
+    "server-dev": "npx nodemon server/index.js",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
@@ -37,6 +38,7 @@
     "jest": "^29.3.1",
     "mocha": "^10.1.0",
     "nodemon": "^2.0.20",
+    "react-test-renderer": "^18.2.0",
     "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0",
