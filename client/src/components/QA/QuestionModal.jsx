@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import './styles.css';
 
-function QuestionModal({showQ, onCloseQ, product}) {
+const { useState } = React;
+
+function QuestionModal({showQ, onCloseQ, product, productInfo}) {
+  const [questionWarning, setQuestionWarning] = useState(false);
   if (!showQ) {
     return null;
   }
@@ -12,7 +15,7 @@ function QuestionModal({showQ, onCloseQ, product}) {
       body: q,
       name: n,
       email: e,
-      product_id: 40344,
+      product_id: productInfo.id,
     })
       .then(() => {
         console.log('successful post request from question modal');
@@ -21,11 +24,26 @@ function QuestionModal({showQ, onCloseQ, product}) {
         console.log(err);
       });
   }
+  function validateEmail(email) {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
     const question = e.target.question.value;
     const nickname = e.target.nickname.value;
     const email = e.target.email.value;
+    if (!question || !nickname || !email) {
+      setQuestionWarning(true);
+      return;
+    }
+    if (!Array.isArray(validateEmail(email))) {
+      setQuestionWarning(true);
+      return;
+    }
     addQuestion(question, nickname, email);
     onCloseQ();
   };
@@ -34,14 +52,15 @@ function QuestionModal({showQ, onCloseQ, product}) {
       <div className="modal-header">
         <h4 className="modal-title">Ask Your Question</h4>
         <div>
-          <p>
+          <a>
             About the
-            {product}
-          </p>
+            <a> {product}</a>
+          </a>
         </div>
       </div>
       <div className="modal-content" />
       <div className="modal-body">
+        {questionWarning ? <a className="warning">You Must Enter The Following</a> : null}
         <form onSubmit={handleSubmit}>
           <div>
             <textarea className="modal-input" type="text" name="question" maxLength="1000" />

@@ -44,7 +44,9 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    grabInfo(40344);
+    const initialProduct = 40345;
+    /// infinity stone 40353
+    grabInfo(initialProduct);
   }, []);
 
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
@@ -64,14 +66,18 @@ function App() {
         {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
+
+      {/* Overview */}
       {productData !== null
-      && (
-      <Overview
-        info={productData.productInfo}
-        styles={productData.productStyles}
-        reviews={productData.reviews}
-      />
-      )}
+        && (
+          <Overview
+            info={productData.productInfo}
+            styles={productData.productStyles}
+            reviews={productData.reviews}
+            meta={productData.meta}
+            StarDisplay={StarDisplay}
+          />
+        )}
 
       {/* Related Items */}
       {productData !== null
@@ -94,11 +100,11 @@ function App() {
       {/* Review */}
       {productData !== null
       && (
-        <Reviews
-          metaData={productData.meta}
-          reviewData={productData.reviews}
-          title={productData.productInfo.name}
-        />
+      <Reviews
+        metaData={productData.meta}
+        reviewData={productData.reviews}
+        title={productData.productInfo.name}
+      />
       )}
     </div>
   );

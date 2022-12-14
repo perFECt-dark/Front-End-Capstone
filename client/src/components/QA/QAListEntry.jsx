@@ -4,17 +4,19 @@ import './styles.css';
 import AnswerList from './AnswerList.jsx';
 import AnswerModal from './AnswerModal.jsx';
 
-const { useState } = React;
+const { useState, useEffect } = React;
 
 function QAListEntry({ curQuestion, product }) {
   const [showA, setShowA] = useState(false);
   const [disableHelp, setDisableHelp] = useState(false);
   const array = [];
+  let answerCount = 0;
   if (curQuestion !== null) {
     const answersList = curQuestion.answers;
     const keyList = Object.keys(answersList);
     for (let i = 0; i < keyList.length; i += 1) {
       array.push(answersList[keyList[i]]);
+      answerCount += 1;
     }
   }
   const [numAnswers, setNumAnswers] = useState(2);
@@ -28,7 +30,6 @@ function QAListEntry({ curQuestion, product }) {
     let newNum = numAnswers;
     newNum += 2;
     setNumAnswers(newNum);
-    addMoreAnswers(numAnswers);
   }
   function handleQHelpful(e) {
     e.preventDefault();
@@ -47,23 +48,38 @@ function QAListEntry({ curQuestion, product }) {
         console.log(err);
       });
   }
+  function collapseAnswers(e) {
+    e.preventDefault();
+    const answerList = curAnswers.slice(0, 2);
+    setCurAnswers(answerList);
+    setNumAnswers(answerList.length);
+  }
+  useEffect(() => {
+    addMoreAnswers(numAnswers);
+  }, [numAnswers]);
+  useEffect(() => {
+    addMoreAnswers(numAnswers);
+  }, [curQuestion]);
   return (
     <div>
       {curAnswers !== null
         ? (
-          <div>
+          <div className="question-entry">
             <div>
-              <a className="q-tag">Q:</a>
-              <a className="q-body">{curQuestion.question_body}</a>
-              <a className="q-helpful">Helpful?</a>
-              {disableHelp === false ? <u className="yes" onClick={handleQHelpful}>Yes</u> : <u className="yes">Yes</u>}
-              <a className="yes-count">
-                (
-                {curQuestion.question_helpfulness}
-                )
-              </a>
-              <a className="vertical-bar">|</a>
-              <u className="add-answer" onClick={() => setShowA(true)}>Add Answer</u>
+                <a className="q-tag">Q:</a>
+                <a className="q-body">{curQuestion.question_body}</a>
+              <aside className="question-options">
+                <a className="q-helpful">Helpful?</a>
+                {disableHelp === false ? <u className="yes" onClick={handleQHelpful}>Yes</u> : <u className="yes">Yes</u>}
+                <a className="yes-count">
+                  (
+                  {disableHelp === true
+                    ? curQuestion.question_helpfulness + 1 : curQuestion.question_helpfulness}
+                  )
+                </a>
+                <a className="vertical-bar">|</a>
+                <u className="add-answer" onClick={() => setShowA(true)}>Add Answer</u>
+              </aside>
             </div>
             <div>
               <AnswerModal className="answer-modal" showA={showA} onCloseA={() => setShowA(false)} curQuestion={curQuestion} product={product} />
@@ -71,8 +87,11 @@ function QAListEntry({ curQuestion, product }) {
             <div>
               <AnswerList curAnswers={curAnswers} numAnswers={numAnswers} />
             </div>
-            <div>
-              <p onClick={handleLoadMoreA}><b>LOAD MORE ANSWERS</b></p>
+            <div className="more-answers">
+              {answerCount >= 2 && answerCount !== curAnswers.length
+                ? <p onClick={handleLoadMoreA}><b>LOAD MORE ANSWERS</b></p> : null}
+              {answerCount >= 3 && answerCount === curAnswers.length
+                ? <p onClick={collapseAnswers}><b>COLLAPSE ANSWERS</b></p> : null}
             </div>
           </div>
         )

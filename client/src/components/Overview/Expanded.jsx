@@ -25,11 +25,6 @@ const Expanded = ({
   } else {
     right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
-  // render down button if there are more than 7 thumbnails
-  let down = <button className="down">↓</button>;
-  if (current.photos.length < 8) {
-    down = <button className="hidden">↓</button>;
-  }
   // background for zoom handler
   const zoomStyle = {
     backgroundImage: `url(${current.photos[currentImage].url})`,
@@ -74,22 +69,25 @@ const Expanded = ({
   return (
     <section className="carousel">
       <div className="col-1-3 expanded-view-icons">
-        {current.photos.map((pic, index) => (
-          <Thumbnail
-            index={index}
-            url={pic.thumbnail_url}
-            key={pic.thumbnail_url}
-            click={click}
-            currentImage={currentImage}
-            icons={icons}
-          />
-        ))}
-        {down}
+        {current.photos.map((pic, index) => {
+          const key = pic.thumbnail_url + index;
+          return (
+            <Thumbnail
+              index={index}
+              url={pic.thumbnail_url}
+              key={key}
+              click={click}
+              currentImage={currentImage}
+              icons={icons}
+            />
+          );
+        })}
       </div>
       <aside className="col-7-10 expanded-container" onMouseMove={(e) => zoomHandler(e)}>
         {left}
+        {/* <div className="hide-background" /> */}
         <input id="zoom" type="checkbox" />
-        <label htmlFor="zoom" className="zoom-background" onMouseMove={(e) => zoomHandler(e)} onClick={(e) => zoomHandler(e)} style={zoomStyle}>
+        <label htmlFor="zoom" className="zoom-background" onFocus={(e) => zoomHandler(e)} onMouseOver={(e) => zoomHandler(e)} style={zoomStyle}>
           <img id="expanded-image" alt="" src={current.photos[currentImage].url} onClick={(e) => zoomHandler(e)} />
         </label>
         {right}

@@ -3,27 +3,22 @@ import './styles.css';
 
 const { useState } = React;
 
-function Search() {
-  const [searchedFor, setSearchedFor] = useState([]);
-  function handleChange(event) {
-    if (event.target.value.length < 3) {
-      const array = [];
-      for (let i = 0; i < event.target.value.length; i + 1) {
-        array.push(event.target.value);
-      }
-      if (array.length > 0) {
-        setSearchedFor(array);
-      }
+function Search({ filterQuestions }) {
+  const [searched, setSearched] = useState('');
+  function handleChange(e) {
+    e.preventDefault();
+    const text = e.target.value;
+    if (text.length >= 3) {
+      filterQuestions(text);
     }
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
+    if (text.length <= 2) {
+      filterQuestions('');
+    }
   }
   return (
     <div>
-      <form className="search-bar" onSubmit={handleSubmit}>
+      <form className="search-bar">
         <input className="search" type="text" name="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={handleChange} />
-        <input type="submit" name="Search" value="Search" />
       </form>
     </div>
   );
