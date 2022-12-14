@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { GiCancel } from 'react-icons/gi';
 import axios from 'axios';
 import StarDisplay from '../StarDisplay';
+import { IconContext }from 'react-icons';
 
 function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
@@ -68,7 +69,8 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
                 left: 0,
                 behavior: 'smooth',
               });
-            }}>
+            }}
+          >
             {relatedProductData.productInfo.category}
             <br />
             {relatedProductData.productInfo.name}

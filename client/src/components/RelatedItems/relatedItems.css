@@ -5,12 +5,10 @@
 */
 .card-row {
   min-width: 960px;
-  background: #fff;
   padding: 36px 0 14px 0;
   overflow: auto;
 }
 .card-grid {
-  background: #fff;
   margin: 0 auto;
   width: 1200px;
   padding-left: 15px;
@@ -36,7 +34,8 @@
 }
 .card:hover {
   cursor: pointer;
-  box-shadow: 0 0 25px rgba(33,33,33,.3);
+  box-shadow: 0 0 25px rgba(243, 237, 237, 0.288);
+  transition: .7s;
 }
 .card-title {
   font-size: 24px;
@@ -50,6 +49,7 @@
 }
 .card-info {
   font-size: 16px;
+  color: white;
 }
 .card-image-object {
   height: 375px;
@@ -98,7 +98,7 @@
 }
 .card:hover .card-action-button {
   display:block;
-  /* transition: .7s; */
+  transition: .2s;
 }
 /*
   ========================================
@@ -122,7 +122,8 @@
 .related-products-modal-content {
   color: black;
   text-align: center;
-  background-color: white;
+  background-color: #252525;
+  width: 2000px;
 }
 .related-products-modal-title {
   font-size: 48px;
