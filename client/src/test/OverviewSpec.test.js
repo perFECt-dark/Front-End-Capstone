@@ -1,7 +1,7 @@
 const { describe, expect, test } = require("@jest/globals");
-const App = require("../components/App")
 const renderer = require('react-test-renderer')
-const index = require('../index')
+// const App = require("../components/App.jsx")
+
 describe('testing the tests', () => {
   it('should be able to test', () => {
     expect(1).toBe(1);
@@ -12,8 +12,12 @@ describe('testing the tests', () => {
   })
 })
 
-describe('trying to test index', () => {
-  it('loads', () => {
-    const component
-  })
-})
+// describe('trying to test App', () => {
+//   it('loads', () => {
+//     const component = renderer.create(
+//       <App/>,
+//     );
+//     let tree = component.toJSON();
+//     expect(tree).toMatchSnapshot();
+//   })
+// })
