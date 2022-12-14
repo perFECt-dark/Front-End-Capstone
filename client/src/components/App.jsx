@@ -38,6 +38,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        console.log('For some reason. We did not get the data!');
       });
   }
 
