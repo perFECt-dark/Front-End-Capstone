@@ -50,7 +50,7 @@ function App() {
   // <FontAwesomeIcon icon={regular('star')} className="star" size='6x' />
   return (
     <div>
-      {/* <header
+      <header
         className="primary-header container group"
         style={{ backgroundColor: 'blue' }}
       >
@@ -61,7 +61,7 @@ function App() {
             Dark
           </a>
         </h1>
-        placeholder search
+        {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
       {productData !== null
@@ -84,7 +84,7 @@ function App() {
             characteristics={productData.meta.characteristics}
             grabInfo={grabInfo}
           />
-          <YourOutfitList productId={productData.meta.product_id} />
+          <YourOutfitList productId={productData.meta.product_id} grabInfo={grabInfo} />
         </div>
       )}
       {/* Questions & Answers */}

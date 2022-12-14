@@ -25,16 +25,28 @@
 .card {
   display: inline-block;
   border-width: 10px;
-  border-style: outset;
+  /* border-style: outset; */
   /*
   box-shadow: 10px 5px 5px blue;
   */
+  /* border-radius:10px;
+  border: 1px solid #ccc; */
+  padding: 5px;
+  /* margin: 10px; */
+}
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(33,33,33,.3);
 }
 .card-title {
   font-size: 24px;
   padding-top: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
+}
+.card:hover .card-info {
+  color: #bb9d7bb3;
+  transition: .7s;
 }
 .card-info {
   font-size: 16px;
@@ -43,9 +55,10 @@
   height: 375px;
   width: 250px;
 }
-.card-action-button {
-  opacity: 0.4;
-  position: absolute;
+.card:hover .card-image-object {
+  opacity: 50%;
+  background-color: #bb9d7bb3;
+  transition: .7s;
 }
 .card-default-strikeout {
   padding-left: 5px;
@@ -53,35 +66,58 @@
   text-decoration: line-through;
   display: inline;
 }
-
+.add-product-card {
+  width: 270px;
+  height: 489px;
+  font-size: xx-large;
+}
+/*
+  ========================================
+  Buttons
+  ========================================
+*/
+.card-action-button{
+  position:relative;
+  display: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 1;
+  top: 10px;
+  left: 85%;
+  padding:0px;
+  margin:0px;
+}
+.card-action-button:hover {
+  -webkit-text-stroke: 2px #bb9d7bb3;
+  color: #bb9d7bb3;
+}
+.card-action-button:hover .card-image-object{
+  background-color: #bb9d7bb3;
+  opacity: 50%;
+}
+.card:hover .card-action-button {
+  display:block;
+  /* transition: .7s; */
+}
 /*
   ========================================
   Modals
   ========================================
 */
 .related-products-modal {
-  /* background-color: rgba(0, 0, 0, 0.2);
   width: 100vw;
   height: 100vh;
-  z-index: 0;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute; */
-
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* margin: 0;
-  padding: 0;
-
-  height: 100%;
-  width: 100%;
-
-  z-index: 99999;
-  pointer-events: none;
-  overflow-x: auto; */
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(200, 200, 200, .5);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
 }
 .related-products-modal-content {
   color: black;

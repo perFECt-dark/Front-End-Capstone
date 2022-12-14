@@ -3,9 +3,9 @@ import propTypes from 'prop-types';
 
 function AddProductCard({ addToOutfits }) {
   return (
-    <div className="card" onClick={addToOutfits}>
+    <aside className="card add-product-card" onClick={addToOutfits}>
       <div> ADD TO OUTFITS</div>
-    </div>
+    </aside>
   );
 }
 

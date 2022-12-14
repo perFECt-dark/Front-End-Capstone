@@ -1,27 +1,25 @@
-import _, { map } from 'underscore';
 import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import YourOutfitCard from './YourOutfitCard';
 import AddProductCard from './AddProductCard';
 
-function YourOutfitList({ productId }) {
-  const [outfitIds, setOutfitIds] = useState(JSON.parse(localStorage.getItem('outfits')) || []);
-  // outfitIds.push(40344);
+function YourOutfitList({ productId, grabInfo }) {
+  const [outfitIds, setOutfitIds] = useState(JSON.parse(window.localStorage.getItem('outfits')) || []);
   function handleAddProduct() {
     if (outfitIds.indexOf(productId) === -1) {
-      outfitIds.push(productId);
-      localStorage.setItem('outfits', JSON.stringify(outfitIds));
+      const temp = [...outfitIds, productId];
+      window.localStorage.setItem('outfits', JSON.stringify(temp));
+      setOutfitIds(current => [...current, productId]);
     }
   }
   function handleDeleteId(oldProductId) {
-    const index = outfitIds.indexOf(oldProductId);
-    outfitIds.splice(index, 1);
-    localStorage.setItem('outfits', JSON.stringify(outfitIds));
+    const temp = outfitIds.filter((id) => id !== oldProductId);
+    console.log('This is temp in delete function', temp);
+    window.localStorage.setItem('outfits', JSON.stringify(temp));
+    setOutfitIds(temp);
+    console.log('This it outfitIds at the end of delete function', outfitIds);
+    console.log('This it temp at the end of delete function', temp);
   }
-
-  useEffect(() => {
-    console.log('These are the outfitIds', outfitIds);
-  }, []);
 
   return (
     <section className="card-row">
@@ -30,16 +28,17 @@ function YourOutfitList({ productId }) {
           <div className="card-title">
             Your Outfit
           </div>
+          {console.log('These are the outfitIds in the return', outfitIds)}
+          {console.log('This is what is in localStorage.outfits', window.localStorage.getItem('outfits'))}
           <AddProductCard addToOutfits={handleAddProduct} />
           { outfitIds.length > 0
             && outfitIds.map((someCardId) => (
               <YourOutfitCard
                 yourOutfitId={Number(someCardId)}
+                grabInfo={grabInfo}
+                handleDeleteId={handleDeleteId}
               />
             ))}
-
-          {outfitIds.length > 0
-            && console.log('These are the outfitIds in the return', outfitIds)}
         </section>
       </div>
     </section>
@@ -48,9 +47,7 @@ function YourOutfitList({ productId }) {
 
 YourOutfitList.propTypes = {
   productId: propTypes.string.isRequired,
-  // styles: propTypes.shape().isRequired,
-  // cards: propTypes.arrayOf(propTypes.number).isRequired,
-  // characteristics: propTypes.shape().isRequired,
+  grabInfo: propTypes.func.isRequired,
 };
 
 export default YourOutfitList;

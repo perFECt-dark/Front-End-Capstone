@@ -1,11 +1,11 @@
 import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import { GiCancel } from 'react-icons/gi';
 import axios from 'axios';
 import StarDisplay from '../StarDisplay';
 
-function YourOutfitCard({ yourOutfitId, grabInfo }) {
+function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
-  //const [isOpen, setIsOpen] = useState(false);
 
   function findAverageRating(ratings) {
     const totalRatings = Number(ratings['1'])
@@ -21,9 +21,6 @@ function YourOutfitCard({ yourOutfitId, grabInfo }) {
 
     total /= totalRatings;
     total = Math.round(total * 10) / 10;
-
-    // console.log('total ratings: ', totalRatings);
-    // console.log('total ',total);
 
     return total;
   }
@@ -41,18 +38,37 @@ function YourOutfitCard({ yourOutfitId, grabInfo }) {
       });
   }, []);
   return (
-    <aside className="card" onClick={() => grabInfo(relatedProductData.productInfo.id)}>
+    <aside className="card">
       {relatedProductData !== null && (
         <div>
           <div className="image-card">
-            <button className="card-action-button" onClick={() => {setIsOpen(true)}}>Button</button>
+            <button className="card-action-button" onClick={() => {handleDeleteId(relatedProductData.meta.product_id)}}>
+              <GiCancel className="card-action-button" size={18} />
+            </button>
             <img
               className="card-image-object"
               alt={`for ${relatedProductData.productInfo.name}`}
+              onClick={() => {
+                grabInfo(relatedProductData.productInfo.id);
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }}
               src={relatedProductData.productStyles.results[0].photos[0].url ? `${relatedProductData.productStyles.results[0].photos[0].url}` : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}
             />
           </div>
-          <div className="card-info">
+          <div
+            className="card-info"
+            onClick={() => {
+              grabInfo(relatedProductData.productInfo.id);
+              window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+              });
+            }}>
             {relatedProductData.productInfo.category}
             <br />
             {relatedProductData.productInfo.name}
@@ -73,11 +89,9 @@ function YourOutfitCard({ yourOutfitId, grabInfo }) {
 }
 
 YourOutfitCard.propTypes = {
-  // productName: propTypes.string.isRequired,
-  // styles: propTypes.shape().isRequired,
   yourOutfitId: propTypes.number.isRequired,
-  // characteristics: propTypes.shape(),
-  // actionButton: propTypes.func.isRequired,
+  grabInfo: propTypes.func.isRequired,
+  handleDeleteId: propTypes.func.isRequired,
 };
 YourOutfitCard.defaultProps = {
   // characteristics: null,
