@@ -7,6 +7,16 @@
   margin-bottom: 25px;
 }
 
+.questions-list {
+  max-height: 700px;
+  overflow-y: scroll;
+}
+
+.answers-list {
+  max-height: 350px;
+  overflow-y: scroll;
+}
+
 .more-q {
   color: grey;
   font-size: 12.5px;

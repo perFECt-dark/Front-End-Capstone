@@ -32,7 +32,7 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   }
-  console.log('validation ', validateEmail('hey.com@gmail'));
+  // console.log('validation ', validateEmail('hey.com@gmail'));
   const handleSubmit = (e) => {
     e.preventDefault();
     const answer = e.target.answer.value;

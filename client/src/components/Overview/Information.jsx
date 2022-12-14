@@ -1,35 +1,28 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Information = ({ info, current, reviews }) => {
+const Information = ({
+  info, current, meta, StarDisplay,
+}) => {
   let price = (
     <h5>
       $
-      {info.default_price}
+      {current.original_price}
     </h5>
   );
-  // temporary star review indicator
+  // star review indicator
   let rating = 0;
-  reviews.results.forEach((rev) => {
-    rating += rev.rating;
-  });
-  rating /= reviews.results.length;
-  let showStar = '☆☆☆☆☆';
-  if (rating >= 5) {
-    showStar = '⭐⭐⭐⭐⭐ ';
-  } else if (rating >= 4) {
-    showStar = '⭐⭐⭐⭐☆ ';
-  } else if (rating >= 3) {
-    showStar = '⭐⭐⭐☆☆ ';
-  } else if (rating >= 2) {
-    showStar = '⭐⭐☆☆☆ ';
-  } else if (rating >= 1) {
-    showStar = '⭐☆☆☆☆ ';
-  }
-  // temporary star review indicator
-  if (current.sale_price) {
+  // updated in the case that some ratings don't exist
+  Object.entries(meta.ratings).forEach((rate) => rating += Number(rate[0]) * Number(rate[1]));
+  const totalReview = Number(meta.recommended.false) + Number(meta.recommended.true);
+  rating /= totalReview;
+  const showStar = <StarDisplay size={20} val={rating} />;
+  if (current.sale_price !== null) {
     price = (
       <div>
         <h5 className="sale-price">
@@ -43,29 +36,32 @@ const Information = ({ info, current, reviews }) => {
       </div>
     );
   }
+  // scroll to reviews
+  const reference = document.getElementsByClassName('ratingBox');
+  const scrollHandler = () => reference[0].scrollIntoView();
   let reviewCount;
-  if (reviews.count === 1) {
+  if (totalReview === 1) {
     reviewCount = (
-      <p>
-        {showStar}
+      <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read [
-        {reviews.count}
+        {totalReview}
         ] review!
       </p>
     );
-  } else if (reviews.count > 1) {
+  } else if (totalReview > 1) {
     reviewCount = (
-      <p>
-        {showStar}
+      <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read all [
-        {reviews.count}
+        {totalReview}
         ] reviews!
       </p>
     );
   }
   return (
     <div>
+      <div style={{ float: 'left' }}>{showStar}</div>
       {reviewCount}
+      <br />
       <h5>
         {info.category}
       </h5>
@@ -78,7 +74,8 @@ const Information = ({ info, current, reviews }) => {
 };
 Information.propTypes = {
   info: PropTypes.shape().isRequired,
-  reviews: PropTypes.shape().isRequired,
   current: PropTypes.shape().isRequired,
+  meta: PropTypes.shape().isRequired,
+  StarDisplay: PropTypes.func.isRequired,
 };
 export default Information;

@@ -8,12 +8,18 @@ import PropTypes from 'prop-types';
 const StyleEntry = ({
   item, click, index, currentStyle,
 }) => {
+  let urlSource;
+  if (item.photos[0].thumbnail_url === null) {
+    urlSource = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+  } else {
+    urlSource = item.photos[0].thumbnail_url;
+  }
   let highlight;
   if (index === currentStyle) {
     highlight = (
       <img
         className="style-icons"
-        src={item.photos[0].thumbnail_url}
+        src={urlSource}
         name={index}
         alt=""
         onClick={(e) => { click(e); }}
@@ -24,7 +30,7 @@ const StyleEntry = ({
     highlight = (
       <img
         className="style-icons"
-        src={item.photos[0].thumbnail_url}
+        src={urlSource}
         name={index}
         alt=""
         onClick={(e) => { click(e); }}
