@@ -15,7 +15,6 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
       body: a,
       name: n,
       email: e,
-      photos: ['test1', 'test2', 'test3'],
       question_id: curQuestion.question_id,
     })
       .then(() => {
@@ -32,7 +31,6 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   }
-  // console.log('validation ', validateEmail('hey.com@gmail'));
   const handleSubmit = (e) => {
     e.preventDefault();
     const answer = e.target.answer.value;
