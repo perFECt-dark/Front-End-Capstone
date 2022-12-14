@@ -31,7 +31,7 @@ function Card({
     return total;
   }
   useEffect(() => {
-    const newUrl = `http://localhost:3000/item/${relatedCardId}`;
+    const newUrl = `http://localhost:3000/item/${relatedCardId}/card`;
     axios
       .get(newUrl)
       .then((infoToReturn) => {
@@ -40,6 +40,7 @@ function Card({
       })
       .catch((err) => {
         console.log(err);
+        console.log('For some reason. We did not get the data!');
       });
   }, []);
   return (
