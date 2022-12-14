@@ -18,13 +18,32 @@ function Reviews(props) {
   const characteristics = Object.keys(meta.characteristics);
   const [scroll, setScroll] = useState(false);
 
+
   useEffect(() => {
 
     if (reviews.results.length >= 6) {
       setScroll(true);
+    } else {
+      setScroll(false);
     }
-  }, [reviews])
+  }, [reviews]);
 
+  useEffect(() => {
+
+    setReviews(props.reviewData);
+  }, [props]);
+
+
+  const getTotalReviews = () => {
+
+    var total = Number(meta.ratings['1']) + Number(meta.ratings['1']) +
+    Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) +
+    Number(meta.ratings['5']);
+
+    return total;
+  }
+
+  const totalReviews = getTotalReviews();
 
   const findAverageRating = (ratings) => {
 
@@ -50,7 +69,7 @@ function Reviews(props) {
   //useEffect(() => {}, [meta]);
 
   const filterReviews = (type) => {
-    console.log('Here it isssss: ', type);
+    //console.log('Here it isssss: ', type);
     if (type === 'Relevant') {
       setSortList(['Relevant', 'Helpful', 'Newest']);
       moreReviews('relevant', 0);
@@ -65,15 +84,16 @@ function Reviews(props) {
 
   const moreReviews = (sort, increment = 2) => {
 
+    console.log('This is item id we are searching for: ', reviews.product);
     var newCount = reviews.count + increment;
-    console.log('Here is the sort: ', sort);
-    console.log('Here is the count: ', newCount);
-    const newUrl = `http://localhost:3000/item/${reviews.product}/reviews/${newCount}/${sort}`;
+    //console.log('Here is the sort: ', sort);
+    //console.log('Here is the count: ', newCount);
+    var newUrl = `http://localhost:3000/item/${reviews.product}/reviews/${newCount}/${sort}`;
 
     axios.get(newUrl)
     .then((reviewData) => {
 
-      console.log('This should not trigger');
+      //console.log('This should not trigger');
       setReviews(reviewData.data);
 
     })
@@ -101,7 +121,7 @@ function Reviews(props) {
         '135241': 5
       }
     }
-    console.log(sauce);
+    //console.log(sauce);
 
     //console.log(JSON.stringify(sauce));
 
@@ -144,7 +164,7 @@ function Reviews(props) {
 
     <div className="grid" >
 
-        <h2>Ratings and Reviews</h2>
+        <h2>Ratings and Reviews &#40;{totalReviews}&#41;</h2>
 
         <section className="ratingBox">
 
@@ -199,7 +219,7 @@ function Reviews(props) {
             </aside><aside className="col-1-3" style={{textAlign: 'left', padding: '0px', paddingLeft: '5px'}}>
 
               <div className="dropdown" style={{textAlign: 'left'}}>
-                <span className="btn">{sortList[0]}</span>
+                <span className="bttn-alt">{sortList[0]}</span>
                 <div className="dropdown-content" style={{cursor: 'pointer'}}>
                   <p onClick={() => filterReviews(sortList[1])}
                    onMouseEnter={() => setHoverOne(true)}
@@ -229,12 +249,12 @@ function Reviews(props) {
 
           <div className="col-2-3">
 
-            <div className="btn" onClick={() => setDisplayForm(true)}>Add a Review</div>
+            <div className="bttn" onClick={() => setDisplayForm(true)}>Add a Review</div>
 
 
           </div><aside className="col-1-3" style={{textAlign: 'right'}}>
 
-          <div className="btn" onClick={() => moreReviews(sortList[0].toLowerCase())}>More Reviews</div>
+          <div className="bttn" onClick={() => moreReviews(sortList[0].toLowerCase())}>More Reviews</div>
 
           </aside>
         </section>

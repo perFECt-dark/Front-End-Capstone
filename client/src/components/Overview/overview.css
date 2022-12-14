@@ -52,13 +52,13 @@ table {
   ========================================
 */
 body {
-  background: #293f50;
+  background: #252525;
   color: #888;
   font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-h1, h2, h3, h4 {
-  color: #648880;
+h1, h2, h3, h4, p {
+  color: #fff;
 }
 
 h1 {
@@ -105,7 +105,7 @@ a:hover {
   color: #a9b2b9;
 }
 
-p a {
+ a {
   border-bottom: 1px solid #dfe2e5;
 }
 
@@ -163,7 +163,7 @@ p a {
 }
 
 .row {
-  background: #fff;
+  background: #252525;
   padding: 36px 0 14px 0;
 }
 
@@ -181,9 +181,9 @@ p a {
   ========================================
 */
 
-h1, h3, h4, h5, p {
+/* h1, h3, h4, h5, p {
   margin-bottom: 22px;
-}
+} */
 
 /*
   ========================================
@@ -443,15 +443,17 @@ h1, h3, h4, h5, p {
   cursor: zoom-in;
 }
 
-.thumbnails {
-  max-height: 700px;
+#thumbnails {
+  max-height: 615px;
   padding-top: 15px;
-  max-width: 100px;
+  max-width: 120px;
   text-align: center;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
-.thumbnails:hover {
+#thumbnails:hover {
   cursor: pointer;
 }
 
@@ -540,7 +542,7 @@ h1, h3, h4, h5, p {
   position: absolute;
   z-index: 1;
   left:0;
-  top:170px;
+  top:192px;
   width: 100%;
   height: 700px;
 }
@@ -629,6 +631,7 @@ h1, h3, h4, h5, p {
   cursor: zoom-out;
   background-size: 300%;
   background-repeat: no-repeat;
+  z-index: 3;
 }
 
 #zoom:checked+label>img {
@@ -637,4 +640,78 @@ h1, h3, h4, h5, p {
 
 #zoom:checked+div{
   visibility: hidden;
+}
+
+/*
+  ========================================
+  Features && Share-to icons
+  ========================================
+*/
+.item-features {
+  display: flex;
+}
+
+.item-feature {
+  display: inline-flex;
+  margin-right: 15px;
+}
+
+.shared-icons {
+  max-width: 25px;
+  max-height: 25px;
+  border-radius: 10%;
+  margin-left: 15px;
+}
+
+/*
+  ========================================
+  Attempt to hide thumbnails, arrows and close
+  ========================================
+*/
+
+/* #zoom:checked+label>.hide-background {
+  visibility: visible;
+  display: block;
+  position: absolute;
+  left: -500px;
+  width: 100%;
+  height: 700px;
+  background-color: rgb(230, 230, 230);
+  background-size: 100%;
+  z-index: 4;
+} */
+
+/*
+  ========================================
+  Select
+  ========================================
+*/
+
+#cart-box {
+  display: block;
+}
+
+#item-size {
+  float: left;
+  width: 50%;
+  margin-right: 30px;
+}
+
+#item-quant {
+  float: left;
+  width: 30%;
+}
+
+#no-size-error {
+  visibility: hidden;
+}
+
+#read-all-reviews {
+  display: flex;
+  padding-left: 80px;
+}
+
+#read-all-reviews:hover {
+  color: blue;
+  text-decoration: underline;
 }
