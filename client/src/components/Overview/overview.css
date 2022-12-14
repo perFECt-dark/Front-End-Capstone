@@ -715,3 +715,19 @@ h1, h3, h4, h5, p {
   color: blue;
   text-decoration: underline;
 }
+
+.cart {
+  padding: 15px;
+  background-color: #bb9d7b;
+  color: white;
+  border: none;
+  width: 89%;
+  margin-top: 10px;
+  transition: all .2s ease-in;
+}
+
+.cart:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}

@@ -58,7 +58,7 @@ const Information = ({
     );
   }
   return (
-    <div>
+    <div style={{ marginTop: '10px' }}>
       <div style={{ float: 'left' }}>{showStar}</div>
       {reviewCount}
       <br />

@@ -43,7 +43,7 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    const initialProduct = 40345;
+    const initialProduct = 40346;
     grabInfo(initialProduct);
   }, []);
 
