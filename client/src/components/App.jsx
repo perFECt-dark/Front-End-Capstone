@@ -38,6 +38,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        console.log('For some reason. We did not get the data!');
       });
   }
 
@@ -100,11 +101,11 @@ function App() {
       {/* Review */}
       {productData !== null
       && (
-        <Reviews
-          metaData={productData.meta}
-          reviewData={productData.reviews}
-          title={productData.productInfo.name}
-        />
+      <Reviews
+        metaData={productData.meta}
+        reviewData={productData.reviews}
+        title={productData.productInfo.name}
+      />
       )}
     </div>
   );
