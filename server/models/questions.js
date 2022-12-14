@@ -1,8 +1,7 @@
 const axios = require('axios');
 require('dotenv').config();
 
-function getQuestions(callback) {
-  console.log('here in get questions model');
+function getQuestions(data, callback) {
   const optionsQuestions = {
     headers: {
       Authorization: process.env.AUTH,
@@ -10,7 +9,7 @@ function getQuestions(callback) {
     params: {
       page: 1,
       count: 500,
-      product_id: 40344,
+      product_id: data,
     },
   };
   axios.get('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', optionsQuestions)
@@ -24,7 +23,6 @@ function getQuestions(callback) {
 }
 
 function getAnswers(data, callback) {
-  console.log('here in get answers model');
   const optionsQuestions = {
     headers: {
       Authorization: process.env.AUTH,
@@ -44,13 +42,11 @@ function getAnswers(data, callback) {
 }
 
 function postQuestion(data, callback) {
-  console.log('data in post question model is ', data);
   const optionsQuestions = {
     headers: {
       Authorization: process.env.AUTH,
     },
   };
-  console.log('header stuff', optionsQuestions);
   axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions', data, optionsQuestions)
     .then((response) => {
       console.log('in then success block of question');
@@ -62,7 +58,6 @@ function postQuestion(data, callback) {
 }
 
 function postAnswer(data, callback) {
-  console.log('data in model post answer is ', data);
   const bodyObj = {};
   bodyObj.body = data.body;
   bodyObj.name = data.name;
@@ -73,7 +68,6 @@ function postAnswer(data, callback) {
       Authorization: process.env.AUTH,
     },
   };
-  console.log('header stuff', optionsQuestions);
   axios.post(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/qa/questions/${data.question_id}/answers`, bodyObj, optionsQuestions)
     .then((response) => {
       console.log('in then success block of question');
@@ -85,7 +79,6 @@ function postAnswer(data, callback) {
 }
 
 function putQHelpful(data, callback) {
-  console.log('data in model helpful is ', data);
   const optionsQuestions = {
     headers: {
       Authorization: process.env.AUTH,
@@ -106,7 +99,6 @@ function putQHelpful(data, callback) {
 // },
 
 function putAHelpful(data, callback) {
-  console.log('data in model helpful is ', data);
   const optionsQuestions = {
     headers: {
       Authorization: process.env.AUTH,
@@ -123,7 +115,6 @@ function putAHelpful(data, callback) {
 }
 
 function putAReport(data, callback) {
-  console.log('data in model report is ', data);
   const optionsQuestions = {
     headers: {
       Authorization: process.env.AUTH,

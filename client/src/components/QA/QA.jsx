@@ -15,7 +15,11 @@ function QA({ productInfo }) {
   const [curQuestions, setCurQuestions] = useState(null);
   function getQuestion() {
     const url = 'http://localhost:3000/qa/questions';
-    axios.get(url)
+    axios.get(url, {
+      params: {
+        data: productInfo.id,
+      },
+    })
       .then((questions) => {
         setQuestionData(questions.data);
         setCurQuestions(questions.data.slice(0, 2));
@@ -56,40 +60,47 @@ function QA({ productInfo }) {
   useEffect(() => {
     getQuestion();
   }, []);
+  useEffect(() => {
+    getQuestion();
+  }, [productInfo]);
   return (
-    <div className="qa-main">
-      { questionData !== null ? (
-        <div>
-          <h3>QUESTIONS & ANSWERS</h3>
-          <div>
-            <Search filterQuestions={filterQuestions} />
-          </div>
-          <div>
-            { curQuestions !== null
-              ? <QAList curQuestions={curQuestions} product={productInfo.name}/> : null }
-          </div>
-          <div>
-            <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
-          </div>
-          <div>
-            {curQuestions !== null && curQuestions.length !== questionData.length ? <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <button type="button" className="more-q" onClick={collapseQuestions}>COLLAPSE QUESTIONS</button>}
-            {curQuestions !== null && curQuestions.length >= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
-          </div>
+    <section className="row">
+      <div className="grid">
+        <div className="qa-main">
+          { questionData !== null ? (
+            <div>
+              <h3>QUESTIONS & ANSWERS</h3>
+              <div>
+                <Search filterQuestions={filterQuestions} />
+              </div>
+              <div>
+                { curQuestions !== null
+                  ? <QAList curQuestions={curQuestions} product={productInfo.name} productInfo={productInfo}/> : null }
+              </div>
+              <div>
+                <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} productInfo={productInfo}/>
+              </div>
+              <div>
+                {curQuestions !== null && curQuestions.length !== questionData.length ? <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <button type="button" className="more-q" onClick={collapseQuestions}>COLLAPSE QUESTIONS</button>}
+                {curQuestions !== null && curQuestions.length >= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
+              </div>
+            </div>
+          )
+            : (
+              <div>
+                <h3>QUESTIONS & ANSWERS</h3>
+                <div>
+                  <Search />
+                </div>
+                <div>
+                  <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
+                </div>
+                <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button>
+              </div>
+            )}
         </div>
-      )
-        : (
-          <div>
-            <h3>QUESTIONS & ANSWERS</h3>
-            <div>
-              <Search />
-            </div>
-            <div>
-              <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} />
-            </div>
-            <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button>
-          </div>
-        )}
-    </div>
+      </div>
+    </section>
   );
 }
 

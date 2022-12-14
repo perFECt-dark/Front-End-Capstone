@@ -36,26 +36,26 @@ return (
   <div>
     <svg className="linear-gradient-template">
                 <linearGradient id="grad0" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" style={{stopColor: '#ffc107'}}></stop>
-                    <stop offset="0%" style={{stopColor: '#e4e5e9'}}></stop>
+                    <stop offset="0%" style={{stopColor: '#fff'}}></stop>
+                    <stop offset="0%" style={{stopColor: '#252525'}}></stop>
                 </linearGradient>
     </svg>
     <svg className="linear-gradient-template">
                 <linearGradient id="grad25" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="25%" style={{stopColor: '#ffc107'}}></stop>
-                    <stop offset="25%" style={{stopColor: '#e4e5e9'}}></stop>
+                    <stop offset="25%" style={{stopColor: '#fff'}}></stop>
+                    <stop offset="25%" style={{stopColor: '#252525'}}></stop>
                 </linearGradient>
     </svg>
     <svg className="linear-gradient-template">
                 <linearGradient id="grad50" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="50%" style={{stopColor: '#ffc107'}}></stop>
-                    <stop offset="50%" style={{stopColor: '#e4e5e9'}}></stop>
+                    <stop offset="50%" style={{stopColor: '#fff'}}></stop>
+                    <stop offset="50%" style={{stopColor: '#252525'}}></stop>
                 </linearGradient>
     </svg>
     <svg className="linear-gradient-template">
                 <linearGradient id="grad75" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="75%" style={{stopColor: '#ffc107'}}></stop>
-                    <stop offset="75%" style={{stopColor: '#e4e5e9'}}></stop>
+                    <stop offset="75%" style={{stopColor: '#fff'}}></stop>
+                    <stop offset="75%" style={{stopColor: '#252525'}}></stop>
                 </linearGradient>
     </svg>
 
@@ -68,8 +68,10 @@ return (
           value={ratingValue}
         />
         <FaStar size={props.size}
-        color={ratingValue <= props.val ? '#ffc107' : '#e4e5e9'}
-        fill={ratingValue === roundedVal ? percent : 'currentColor'}/>
+        color={ratingValue <= props.val ? '#fff' : '#252525'}
+        fill={ratingValue === roundedVal ? percent : 'currentColor'}
+        stroke= "#fff"
+        stroke-width="30"/>
       </label>
     })}
   </div>

@@ -4,6 +4,9 @@ const controllers = require('./controllers');
 /// Grabs all Info on a product
 router.get('/item/:product_id', controllers.item.get);
 
+///Grabs data for a specific card
+router.get('/item/:product_id/card', controllers.item.getCard);
+
 /// Grabs more reviews on a product
 router.get('/item/:product_id/reviews/:count/:sort', controllers.reviews.get);
 

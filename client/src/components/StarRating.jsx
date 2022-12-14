@@ -28,7 +28,7 @@ return (
       return <label style={{display: 'inline-block', height: '35px'}}>
 
         <FaStar size={props.size}
-        color={ratingValue <= (hover || rating) ? '#ffc107' : '#e4e5e9'}
+        color={ratingValue <= (hover || rating) ? '#fff' : '#000000'}
         onMouseEnter={() => setHover(ratingValue)}
         onMouseLeave={() => setHover(null)}/>
         <input type='radio'
