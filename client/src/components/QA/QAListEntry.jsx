@@ -64,19 +64,22 @@ function QAListEntry({ curQuestion, product }) {
     <div>
       {curAnswers !== null
         ? (
-          <div>
+          <div className="question-entry">
             <div>
-              <a className="q-tag">Q:</a>
-              <a className="q-body">{curQuestion.question_body}</a>
-              <a className="q-helpful">Helpful?</a>
-              {disableHelp === false ? <u className="yes" onClick={handleQHelpful}>Yes</u> : <u className="yes">Yes</u>}
-              <a className="yes-count">
-                (
-                {curQuestion.question_helpfulness}
-                )
-              </a>
-              <a className="vertical-bar">|</a>
-              <u className="add-answer" onClick={() => setShowA(true)}>Add Answer</u>
+                <a className="q-tag">Q:</a>
+                <a className="q-body">{curQuestion.question_body}</a>
+              <aside className="question-options">
+                <a className="q-helpful">Helpful?</a>
+                {disableHelp === false ? <u className="yes" onClick={handleQHelpful}>Yes</u> : <u className="yes">Yes</u>}
+                <a className="yes-count">
+                  (
+                  {disableHelp === true
+                    ? curQuestion.question_helpfulness + 1 : curQuestion.question_helpfulness}
+                  )
+                </a>
+                <a className="vertical-bar">|</a>
+                <u className="add-answer" onClick={() => setShowA(true)}>Add Answer</u>
+              </aside>
             </div>
             <div>
               <AnswerModal className="answer-modal" showA={showA} onCloseA={() => setShowA(false)} curQuestion={curQuestion} product={product} />
@@ -84,12 +87,12 @@ function QAListEntry({ curQuestion, product }) {
             <div>
               <AnswerList curAnswers={curAnswers} numAnswers={numAnswers} />
             </div>
-            <div>
+            <div className="more-answers">
               {answerCount >= 2 && answerCount !== curAnswers.length
                 ? <p onClick={handleLoadMoreA}><b>LOAD MORE ANSWERS</b></p> : null}
+              {answerCount >= 3 && answerCount === curAnswers.length
+                ? <p onClick={collapseAnswers}><b>COLLAPSE ANSWERS</b></p> : null}
             </div>
-            {answerCount >= 3 && answerCount === curAnswers.length
-              ? <p onClick={collapseAnswers}><b>COLLAPSE ANSWERS</b></p> : null}
           </div>
         )
         : <div>Loading</div> }

@@ -13,6 +13,7 @@ import '../styles.css';
 import './Overview/overview.css';
 import './RelatedItems/relatedItems.css';
 import YourOutfitList from './RelatedItems/YourOutfitList';
+import YourOutfitCard from './RelatedItems/YourOutfitCard';
 
 function App() {
   const [productData, setProductData] = useState(null);
@@ -37,6 +38,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+        console.log('For some reason. We did not get the data!');
       });
   }
 
@@ -44,6 +46,8 @@ function App() {
   useEffect(() => {
     /// This effect inciates page with data
     const initialProduct = 40346;
+    /// infinity stone 40353
+    /// no image sunglasses 40345
     grabInfo(initialProduct);
   }, []);
 
@@ -61,7 +65,7 @@ function App() {
             Dark
           </a>
         </h1>
-        placeholder search
+        {/* placeholder search */}
         <h3 className="tagline">_______________ Search</h3>
       </header>
 
@@ -88,7 +92,7 @@ function App() {
             characteristics={productData.meta.characteristics}
             grabInfo={grabInfo}
           />
-          <YourOutfitList />
+          <YourOutfitList productId={productData.meta.product_id} grabInfo={grabInfo} />
         </div>
       )}
       {/* Questions & Answers */}

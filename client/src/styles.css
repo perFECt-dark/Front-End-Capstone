@@ -59,16 +59,14 @@ body {
 
 h1, h2, h3, h4 {
   /*color: #648880; */
-  color: black;
+  color: white;
 }
 
 h1 {
   font-size: 36px;
-  line-height: 44px;
 }
 h2 {
   font-size: 24px;
-  line-height: 44px;
 }
 h3 {
   font-size: 21px;
@@ -164,7 +162,7 @@ p a {
 }
 
 .row {
-  background: #fff;
+  background: #252525;
   padding: 36px 0 14px 0;
 }
 
@@ -206,17 +204,36 @@ h1, h3, h4, h5, p {
   ========================================
 */
 
-.btn {
-  border-radius: 5px;
-  color: black;
+.bttn {
+  background-color: #bb9d7b;
+  color: #fff;
   cursor: pointer;
   display: inline-block;
   font-weight: 400;
   letter-spacing: .5px;
   margin: 0;
-  text-transform: uppercase;
-  border: 1px solid black;
+  padding: 10px 15px;
+
 }
+
+.bttn:hover {
+  background-color: #fff;
+  color: #252525;
+
+}
+
+.bttn-alt {
+  color: #fff;
+  background-color: #252525;
+  border: 1px solid #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  margin: 0;
+  padding: 5px 15px;
+
+}
+
 
 .dropdown {
   position: relative;
@@ -504,7 +521,7 @@ h1, h3, h4, h5, p {
   width: 500px;
   height: 600px;
   border-radius: 2px;
-  background-color: white;
+  background-color: #252525;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: column;
@@ -531,6 +548,7 @@ h1, h3, h4, h5, p {
   border: none;
   font-size: 20px;
   cursor: pointer;
+  color:#bb9d7b;
 }
 
 .ReviewModalBody {
@@ -550,6 +568,7 @@ h1, h3, h4, h5, p {
 
   text-align: left;
   display: block;
+  color: #fff;
 }
 
 .labelModal span {
@@ -568,6 +587,8 @@ h1, h3, h4, h5, p {
   border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
+  background-color: #252525;
+  color: #fff;
 }
 
 .ReviewModalBody-Input {
@@ -578,6 +599,8 @@ h1, h3, h4, h5, p {
   border: 1px solid #ddd;
   box-sizing: border-box;
   display: block;
+  background-color: #252525;
+  color: #fff;
 }
 
 
@@ -629,10 +652,12 @@ display: inline;
 #uploadText {
 
   margin: 13px;
+  border: 1px solid #ddd;
+  background-color: #252525;
 }
 
 .ratingBox {
-  background-color: #adadac;
+  /* background-color: #adadac; */
   border-radius: 2px;
 }
 

@@ -17,9 +17,7 @@ function Reviews(props) {
   const productTitle = props.title;
   const characteristics = Object.keys(meta.characteristics);
   const [scroll, setScroll] = useState(false);
-  console.log('Here is the prop data: ', props);
-  console.log('Here is the const meta', meta);
-  console.log('Here is the Reviews', reviews);
+
 
   useEffect(() => {
 
@@ -35,6 +33,17 @@ function Reviews(props) {
     setReviews(props.reviewData);
   }, [props]);
 
+
+  const getTotalReviews = () => {
+
+    var total = Number(meta.ratings['1']) + Number(meta.ratings['1']) +
+    Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) +
+    Number(meta.ratings['5']);
+
+    return total;
+  }
+
+  const totalReviews = getTotalReviews();
 
   const findAverageRating = (ratings) => {
 
@@ -155,7 +164,7 @@ function Reviews(props) {
 
     <div className="grid" >
 
-        <h2>Ratings and Reviews</h2>
+        <h2>Ratings and Reviews &#40;{totalReviews}&#41;</h2>
 
         <section className="ratingBox">
 
@@ -210,7 +219,7 @@ function Reviews(props) {
             </aside><aside className="col-1-3" style={{textAlign: 'left', padding: '0px', paddingLeft: '5px'}}>
 
               <div className="dropdown" style={{textAlign: 'left'}}>
-                <span className="btn">{sortList[0]}</span>
+                <span className="bttn-alt">{sortList[0]}</span>
                 <div className="dropdown-content" style={{cursor: 'pointer'}}>
                   <p onClick={() => filterReviews(sortList[1])}
                    onMouseEnter={() => setHoverOne(true)}
@@ -240,12 +249,12 @@ function Reviews(props) {
 
           <div className="col-2-3">
 
-            <div className="btn" onClick={() => setDisplayForm(true)}>Add a Review</div>
+            <div className="bttn" onClick={() => setDisplayForm(true)}>Add a Review</div>
 
 
           </div><aside className="col-1-3" style={{textAlign: 'right'}}>
 
-          <div className="btn" onClick={() => moreReviews(sortList[0].toLowerCase())}>More Reviews</div>
+          <div className="bttn" onClick={() => moreReviews(sortList[0].toLowerCase())}>More Reviews</div>
 
           </aside>
         </section>
