@@ -212,7 +212,7 @@ return (
           <label className="labelModal">Overall Rating</label>
           <div style={{textAlign: 'left'}}><StarRating size={30} set={setOverallRating} name={'OverallRating'}/></div>
           <label className="labelModal">Do You Recommend This Product?</label>
-          <div style={{marginTop: '10px', backgroundColor: '#f5f4f2'}}>
+          <div style={{marginTop: '10px', backgroundColor: '#3b3b3b'}}>
             <div className="col-1-2">
               <input type="radio" name="recommend" onClick={() => setRecommend(true)} required/>
               <p>Yes</p>
@@ -235,8 +235,8 @@ return (
             <div className="col-2-3"><input type="text" id="uploadText"
             placeholder="Example: https://i.ibb.co/XWY0Jtr/bgbrain1.png"
             />
-            </div><aside className="col-1-3" style={{textAlign: 'left', paddingLeft: '0px'}}>
-              <button type="button"className="uploadBtn" onClick={addUpload}>Upload</button>
+            </div><aside className="col-1-3" style={{textAlign: 'left', paddingLeft: '0px', paddingTop: '10px'}}>
+              <button type="button"className="bttn-alt" onClick={addUpload}>Upload</button>
             </aside>
            </div>}
            <div style={{display: 'flex'}}>
@@ -244,7 +244,7 @@ return (
               <ImageUpload photo={url} index={i} delete={setUploads} arr={uploads}/>
               )}
            </div>
-           <div className="ReviewModalFooter"><button>Submit Review</button></div>
+           <div style={{marginTop: '10px'}}><button className="bttn"><span style={{fontSize: '20px'}}>Submit Review</span></button></div>
 
         </form>
 
@@ -261,12 +261,12 @@ return (
 
         {submitText === '✓ Your Review Got Posted' && <div className="submitTextPass">
           <h2><span style={{color: 'green'}}>{submitText}</span></h2>
-          <button type="button"className="uploadBtn" onClick={() => props.close(false)}>Close</button>
+          <button type="button"className="bttn-alt" onClick={() => props.close(false)}>Close</button>
         </div>}
 
         {submitText === 'X Review Did not Post. Error.' && <div className="submitTextFail">
           <h2><span style={{color: 'red'}}>{submitText}</span></h2>
-          <button type="button"className="uploadBtn" onClick={() => props.close(false)}>Close</button>
+          <button type="button"className="bttn-alt" onClick={() => props.close(false)}>Close</button>
         </div>}
 
 

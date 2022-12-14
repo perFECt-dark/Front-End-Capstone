@@ -44,7 +44,7 @@ const ModalRadio = (props) => {
     <div style={{textAlign: 'left', padding: '5px 0px'}}>
 
       <label className="labelModal">{props.title}</label>
-      <div style={{marginTop: '5px', backgroundColor: '#f5f4f2'}}>
+      <div style={{marginTop: '5px', backgroundColor: '#3b3b3b'}}>
       <div className="col-1-5" style={{textAlign: 'center', padding: '0px 5px'}}>
           <input type="radio" name={props.name} value={1} onClick={(e) => setRating(e.target.value)} required/>
           <p>{btnData[0]}</p>
