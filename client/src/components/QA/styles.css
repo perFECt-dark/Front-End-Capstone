@@ -157,12 +157,14 @@ a {
   height: 150px;
   width: 75%;
   background-color: #252525;
+  color: white;
   border: 1px solid #ddd;
 }
 
 .modal-nickname, .modal-email {
   width: 75%;
   background-color: #252525;
+  color: white;
   border: 1px solid #ddd;
 }
 
