@@ -26,7 +26,7 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
   }
 
   useEffect(() => {
-    const newUrl = `http://localhost:3000/item/${yourOutfitId}`;
+    const newUrl = `http://localhost:3000/item/${yourOutfitId}/card`;
     axios
       .get(newUrl)
       .then((infoToReturn) => {
@@ -35,6 +35,7 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
       })
       .catch((err) => {
         console.log(err);
+        console.log('For some reason. We did not get the data!');
       });
   }, []);
   return (
@@ -43,7 +44,7 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
         <div>
           <div className="image-card">
             <button className="card-action-button" onClick={() => {handleDeleteId(relatedProductData.meta.product_id)}}>
-              <GiCancel className="card-action-button" size={18} />
+              <GiCancel size={18} />
             </button>
             <img
               className="card-image-object"
@@ -68,7 +69,8 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
                 left: 0,
                 behavior: 'smooth',
               });
-            }}>
+            }}
+          >
             {relatedProductData.productInfo.category}
             <br />
             {relatedProductData.productInfo.name}
