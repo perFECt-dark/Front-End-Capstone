@@ -5,14 +5,12 @@
 */
 .card-row {
   min-width: 960px;
+  max-height: 100%;
   padding: 36px 0 14px 0;
-  overflow: auto;
 }
 .card-grid {
   margin: 0 auto;
-  width: 1200px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20%;
 }
 /*
   ========================================
@@ -146,21 +144,19 @@
   color: white;
   text-align: center;
   background-color: #252525;
-  /* width: 1200px;
-  height: 500px; */
-  width: 55%;
-  height: 45%;
+  width: auto;
+  height: auto;
   padding: 10px;
+  padding-bottom: 40px;
+  border: groove;
 }
 .related-products-modal-title {
   font-size: 48px;
   /* padding-top: 30; */
   position: relative;
-  left: 3%
 }
 .related-products-modal-header {
-  padding-bottom: 60px;
-  padding-top: 30px;
+  padding-bottom: 50px;
 }
 .related-products-modal-section-product-name{
   font-size: 28px;
