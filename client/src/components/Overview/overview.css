@@ -481,7 +481,7 @@ a:hover {
 
 .arrows {
   display: flex;
-  margin: auto;
+  margin: auto 0;
   font-size: 30px;
   border: none;
 }
