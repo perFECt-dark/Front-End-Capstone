@@ -38,7 +38,7 @@ const Information = ({
   }
   // scroll to reviews
   const reference = document.getElementsByClassName('ratingBox');
-  const scrollHandler = () => reference[0].scrollIntoView();
+  const scrollHandler = () => reference[0].scrollIntoView({ behavior: 'smooth' });
   let reviewCount;
   if (totalReview === 1) {
     reviewCount = (
@@ -58,7 +58,7 @@ const Information = ({
     );
   }
   return (
-    <div>
+    <div style={{ marginTop: '10px' }}>
       <div style={{ float: 'left' }}>{showStar}</div>
       {reviewCount}
       <br />

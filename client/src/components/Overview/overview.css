@@ -96,7 +96,7 @@ cite, em {
   ========================================
 */
 
-a {
+/* a {
   color: #648880;
   text-decoration: none;
 }
@@ -107,7 +107,7 @@ a:hover {
 
  a {
   border-bottom: 1px solid #dfe2e5;
-}
+} */
 
 /*
   ========================================
@@ -714,4 +714,20 @@ a:hover {
 #read-all-reviews:hover {
   color: blue;
   text-decoration: underline;
+}
+
+.cart {
+  padding: 15px;
+  background-color: #bb9d7b;
+  color: white;
+  border: none;
+  width: 89%;
+  margin-top: 10px;
+  transition: all .2s ease-in;
+}
+
+.cart:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
 }
