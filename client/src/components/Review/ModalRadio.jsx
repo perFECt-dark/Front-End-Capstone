@@ -67,7 +67,6 @@ const ModalRadio = (props) => {
 
     </div>
 
-
   )
 }
 

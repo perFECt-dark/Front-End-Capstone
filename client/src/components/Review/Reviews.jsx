@@ -3,6 +3,8 @@ import ReviewList from './ReviewList';
 import axios from 'axios';
 import StarDisplay from '../StarDisplay';
 import ReviewModal from './ReviewModal';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 function Reviews(props) {
 
@@ -237,13 +239,15 @@ function Reviews(props) {
           </aside>
 
         </section>
-        <section style={listScroll}>
+        <section>
+          <SimpleBar style={{maxHeight: 500}}>
           <ul>
             {reviews.results.length !== 0 && reviews.results.map(review =>
                   <ReviewList reviewItem={review} key={review.review_id}/>
               )}
 
           </ul>
+          </SimpleBar>
         </section>
         <section style={{borderTop: '1px solid grey', paddingTop: '10px'}}>
 

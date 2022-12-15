@@ -526,8 +526,8 @@ h1, h3, h4, h5, p {
   display: flex;
   flex-direction: column;
   padding: 25px;
-  overflow: auto;
-  scrollbar-width: thin;
+  /* overflow: auto;
+  scrollbar-width: thin; */
 }
 
 .ReviewModalTitle {
