@@ -1,27 +1,41 @@
 body {
-  color: white;
+  color: #252525;
+  background-color: #252525;
 }
 
 h3 {
   font-weight: bolder;
 }
 
+a {
+  color: white;
+  text-decoration: none;
+}
+
 .qa-main {
-  background-color: white;
+  background-color: #252525;
 }
 
 .search {
+  color: white;
   width: 100%;
   height: 75px;
   font-size: 20px;
   font-weight: bold;
+  margin-top: 15px;
   margin-bottom: 15px;
   padding-left: 25px;
+  background-color: #bb9d7b;
+}
+
+::placeholder {
+  color: white;
 }
 
 .questions-list {
   max-height: 700px;
   overflow-y: auto;
+  color: black;
 }
 
 .answers-list {
@@ -30,18 +44,20 @@ h3 {
 }
 
 .more-q {
-  color: grey;
+  color: white;
   font-size: 12.5px;
   height: 50px;
   width: 250px;
+  background-color: #bb9d7b;
 }
 
 .add-q {
-  color: grey;
+  color: white;
   font-size: 12.5px;
   height: 50px;
   width: 250px;
   margin-left: 25px;
+  background-color: #bb9d7b;
 }
 
 .question-entry {
@@ -51,22 +67,36 @@ h3 {
   padding-top: 15px;
 }
 
+.modal-background {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(200, 200, 200, .5);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
 .question-modal {
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  width: 50%;
-  height: 45%;
+  width: 40%;
+  height: 60%;
   margin: auto;
-  background-color: #fff;
   display: block;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   opacity: .9;
-  background-color: lightgray;
+  background-color: #252525;
   border: groove;
 }
 
@@ -76,16 +106,15 @@ h3 {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 50%;
-  height: 45%;
+  width: 40%;
+  height: 60%;
   margin: auto;
-  background-color: #fff;
   display: block;
   align-items: center;
   justify-content: center;
   z-index: 1000;
   opacity: .9;
-  background-color: lightgray;
+  background-color: #252525;
   border: groove;
 }
 
@@ -96,25 +125,54 @@ h3 {
 
 .modal-header, .modal-footer {
   padding: 10px;
+  text-align: center;
+}
+
+.modal-form {
+  display: block;
+  align-items: center;
 }
 
 .modal-title {
   margin: 0;
+  color: white;
+}
+
+.modal-titles {
+  color: white;
+}
+
+.modal-footers {
+  color: #808080;
+  font-size: 12px;
 }
 
 .modal-body {
   padding: 10px;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  display: block;
+  text-align: center;
 }
 
 .modal-input {
   height: 150px;
   width: 75%;
+  background-color: #252525;
+  border: 1px solid #ddd;
 }
 
 .modal-nickname, .modal-email {
   width: 75%;
+  background-color: #252525;
+  border: 1px solid #ddd;
+}
+
+.modal-button {
+  color: white;
+  background-color: #bb9d7b;
+  height: 50px;
+  width: 150px;
+  margin-top: 12.5px;
+  font-size: 20px;
 }
 
 .btn {
@@ -123,44 +181,53 @@ h3 {
 }
 
 .q-tag {
+  color: white;
   font-weight:bold;
   font-size: 25px;
   padding-right: 5px;
 }
 
 .a-tag {
+  color: white;
   font-weight:bold;
   font-size: 25px;
   padding-right: 5px;
 }
 
 .q-body {
+  color: white;
   font-weight:bold;
   font-size: 25px;
 }
 
 .a-body {
+  color: white;
   font-size: 20px;
 }
 
 .more-answers {
   padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .user {
+  color: white;
   font-size: 15px;
 }
 
 .date {
+  color: white;
   font-size: 15px;
 }
 
 .q-helpful {
+  color: white;
   font-size: 15px;
 
 }
 
 .a-helpful {
+  color: white;
   font-size: 15px;
 }
 
@@ -170,26 +237,30 @@ h3 {
 }
 
 .yes {
+  color: white;
   font-size: 15px;
   padding-left: 12.5px;
   padding-right: 5px;
 }
 
 .yes-count {
-
+  color: white;
 }
 
 .vertical-bar {
+  color: white;
   padding-left: 12.5px;
   padding-right: 12.5px;
 }
 
 .add-answer {
+  color: white;
   font-size: 15px;
   padding-right: 10px;
 }
 
 .report {
+  color: white;
   font-size: 15px;
 }
 

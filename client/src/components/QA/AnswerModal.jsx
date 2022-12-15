@@ -48,34 +48,48 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
     onCloseA();
   };
   return (
-    <div className="answer-modal">
-      <div className="modal-header">
-        <h4 className="modal-title">Submit Your Answer</h4>
-        <div>
-          {product}: {curQuestion.question_body}
+    <div className="modal-background">
+      <div className="answer-modal">
+        <div className="modal-header">
+          <div className="titleCloseBtn">
+            <button className="closeBtn" onClick={() => onCloseA(false)}> X </button>
+          </div>
+          <h2 className="modal-title">Submit Your Answer</h2>
+          <h3>
+            {product}: {curQuestion.question_body}
+          </h3>
         </div>
-      </div>
-      <div className="modal-content" />
-      <div className="modal-body">
-        {warning ? <a className="warning">You Must Enter The Following</a> : null}
-        <form onSubmit={handleSubmit}>
-          <div>
-            <textarea className="modal-input" type="text" name="answer" maxLength="1000" />
-          </div>
-          <div>
-            <input className="modal-nickname" type="text" name="nickname" placeholder="Example: jack543!" maxLength="60" />
-            <div>
-              <a>For privacy reasons, do not use your full name or email address</a>
+        <div className="modal-content" />
+        <div className="modal-body">
+          {warning ? <a className="warning">You Must Enter The Following</a> : null}
+          <form onSubmit={handleSubmit}>
+            <div className="modal-titles">
+              Your Answer
             </div>
-          </div>
-          <div>
-            <input className="modal-email" type="text" name="email" placeholder="Example: jack@email.com" maxLength="60" />
             <div>
-              <a>For authentication reasons, you will not be emailed</a>
+              <textarea className="modal-input" type="text" name="answer" maxLength="1000" />
             </div>
-          </div>
-          <button type="Submit">Submit</button>
-        </form>
+            <div className="modal-titles">
+              Your Nickname
+            </div>
+            <div>
+              <input className="modal-nickname" type="text" name="nickname" placeholder="Example: jack543!" maxLength="60" />
+              <div>
+                <a className="modal-footers">For privacy reasons, do not use your full name or email address</a>
+              </div>
+            </div>
+            <div className="modal-titles">
+              Your Email
+            </div>
+            <div>
+              <input className="modal-email" type="text" name="email" placeholder="Example: jack@email.com" maxLength="60" />
+              <div>
+                <a className="modal-footers">For authentication reasons, you will not be emailed</a>
+              </div>
+            </div>
+            <button className="modal-button" type="Submit">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   );
