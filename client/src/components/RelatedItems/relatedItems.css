@@ -68,11 +68,17 @@
   display: inline;
 }
 .add-product-card {
-  width: 270px;
-  height: 489px;
-  font-size: xx-large;
+  width: 260px;
+    height: 500px;
+    font-size: xx-large;
+    text-align: center;
+    border: double;
+    color: white;
+    position: relative;
+    top: -62px;
 }
-.image-card {
+.add-product-card:hover {
+  color: #bb9d7bb3;
 }
 /*
   ========================================
@@ -134,7 +140,7 @@
   top: 0;
   bottom: 0;
   z-index: 2;
-  cursor:default ;
+  cursor:default;
 }
 .related-products-modal-content {
   color: white;
