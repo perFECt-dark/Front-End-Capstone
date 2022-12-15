@@ -71,6 +71,8 @@
   height: 489px;
   font-size: xx-large;
 }
+.image-card {
+}
 /*
   ========================================
   Buttons
@@ -78,13 +80,14 @@
 */
 .card-action-button{
   position:relative;
-  display: none;
+  display: block;
   border: none;
+  opacity: 0%;
   background-color: transparent;
   cursor: pointer;
   z-index: 1;
-  top: 10px;
-  left: 85%;
+  top: 30px;
+  left: 90%;
   padding:0px;
   margin:0px;
 }
@@ -97,8 +100,8 @@
   opacity: 50%;
 }
 .card:hover .card-action-button {
-  display:block;
-  transition: .2s;
+  opacity: 100%;
+  transition: .7s;
 }
 /*
   ========================================
@@ -118,26 +121,35 @@
   top: 0;
   bottom: 0;
   z-index: 2;
+  cursor:default ;
 }
 .related-products-modal-content {
-  color: black;
+  color: white;
   text-align: center;
   background-color: #252525;
-  width: 2000px;
+  width: 1000px;
+  height: 200px;
 }
 .related-products-modal-title {
   font-size: 48px;
-  padding-bottom: 40px;
+  padding-top: 30;
+
+}
+.related-products-modal-header {
+  padding-bottom: 20px;
+  display: none;
+}
+.related-products-modal-section-product-name{
+  font-size: 24px;
 }
 .related-products-modal-current-product-section {
   display: inline-block;
-  left: 0px;
 }
-.related-products-modal-current-product-section {
+.related-products-modal-characteristic-section {
   display: inline-block;
-  left: 0px;
+    padding-left: 130px;
+    padding-right: 130px;
 }
-.related-products-modal-current-product-section {
+.related-products-modal-compared-product-section {
   display: inline-block;
-  right: 0px;
 }

@@ -1,9 +1,9 @@
 import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaStar } from 'react-icons/fa';
 import RelatedProductsModal from './RelatedProductsModal';
 import StarDisplay from '../StarDisplay';
-import { FaStar } from 'react-icons/fa';
 
 function Card({
   productName, styles, relatedCardId, characteristics, grabInfo,
@@ -47,7 +47,7 @@ function Card({
         <div>
           <div className="image-card">
             <button className="card-action-button" onClick={() => { setIsOpen(true) }}>
-              <FaStar className="card-action-button" size={18} />
+              <FaStar size={18} />
             </button>
             {(isOpen && characteristics !== null)
             && (

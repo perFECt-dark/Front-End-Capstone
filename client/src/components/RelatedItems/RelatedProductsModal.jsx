@@ -55,7 +55,10 @@ function RelatedProductsModal({
             </ul>
           </div>
           <aside className="related-products-modal-characteristic-section">
-            <div className="related-products-modal-section-title">Characteristic</div>
+            <div className="related-products-modal-section-product-name">
+              Characteristic
+            </div>
+            <br />
             {(currentCharacteristics.Size && relatedCharacteristics.Size) && <ul>Size</ul> }
             {(currentCharacteristics.Width && relatedCharacteristics.Width) && <ul>Width</ul> }
             {(currentCharacteristics.Comfort && relatedCharacteristics.Comfort)
