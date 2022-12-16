@@ -3,8 +3,18 @@ body {
   background-color: #252525;
 }
 
+@font-face {
+    font-family: 'Mona Sans';
+    src:
+      url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff supports variations'),
+      url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+}
+
 h3 {
   font-weight: bolder;
+  font-family: 'Mona-Sans';
 }
 
 a {
@@ -14,6 +24,7 @@ a {
 
 .qa-main {
   background-color: #252525;
+  font-family: 'Mona-Sans';
 }
 
 .search {
@@ -24,8 +35,9 @@ a {
   font-weight: bold;
   margin-top: 15px;
   margin-bottom: 15px;
-  padding-left: 25px;
+  padding-left: 15px;
   background-color: #bb9d7b;
+  font-family: 'Mona-Sans';
 }
 
 ::placeholder {
@@ -45,19 +57,21 @@ a {
 
 .more-q {
   color: white;
-  font-size: 12.5px;
+  font-size: 15px;
   height: 50px;
   width: 250px;
   background-color: #bb9d7b;
+  font-family: 'Mona-Sans';
 }
 
 .add-q {
   color: white;
-  font-size: 12.5px;
+  font-size: 15px;
   height: 50px;
   width: 250px;
   margin-left: 25px;
   background-color: #bb9d7b;
+  font-family: 'Mona-Sans';
 }
 
 .question-entry {
@@ -247,12 +261,14 @@ a {
 
 .yes-count {
   color: white;
+  font-size: 15px;
 }
 
 .vertical-bar {
   color: white;
   padding-left: 12.5px;
   padding-right: 12.5px;
+  font-size: 17.5px;
 }
 
 .add-answer {
