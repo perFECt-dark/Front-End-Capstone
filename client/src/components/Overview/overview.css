@@ -712,6 +712,7 @@ a:hover {
   color: white;
   border: none;
   width: 89%;
+  height: 50px;
   margin-top: 10px;
   transition: all .2s ease-in;
 }
