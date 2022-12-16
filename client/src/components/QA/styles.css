@@ -276,6 +276,7 @@ a {
   font-size: 15px;
   padding-left: 12.5px;
   padding-right: 5px;
+  cursor: pointer;
 }
 
 .yes-count {
@@ -294,6 +295,7 @@ a {
   color: white;
   font-size: 15px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .report {
