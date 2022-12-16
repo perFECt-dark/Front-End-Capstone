@@ -4,14 +4,16 @@
 /* eslint-disable import/no-duplicates */
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Gallery from './Gallery';
 import Expanded from './Expanded';
 import Information from './Information';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
 
-const Overview = ({ info, styles, reviews }) => {
+const Overview = ({
+  info, styles, reviews, meta, StarDisplay,
+}) => {
   /*
   styles has
     product_id
@@ -22,7 +24,7 @@ const Overview = ({ info, styles, reviews }) => {
         original_price: '140.00',
         sale_price: null,
         default?: true,
-        photos: [ { thumbnail_url: like 5 unsplash photos }],
+        photos: [ { thumbnail_url: }],
         skus: 1394769: {quantity: 8, size: 'XS'},
        }, ...
       ]
@@ -34,6 +36,20 @@ const Overview = ({ info, styles, reviews }) => {
   const [first, setFirst] = useState(true);
   const [last, setLast] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  // setting to default style first
+  useEffect(() => {
+    styles.results.forEach((style, index) => {
+      if (style['default?'] === true) {
+        setCurrentStyle(index);
+      }
+    });
+    setFirst(true);
+    setLast(false);
+    if (styles.results[currentStyle].photos.length === 1) {
+      setLast(true);
+    }
+  }, [info, styles, reviews, meta]);
+  // function to check what the current image is for arrows
   const checkFirstAndLast = () => {
     if (currentImage === 0) {
       setFirst(true);
@@ -46,13 +62,21 @@ const Overview = ({ info, styles, reviews }) => {
       setLast(false);
     }
   };
+  // function for clicking on new style to change current style and image
   const styleClickHandler = (event) => {
     const styleIndex = Number(event.target.name);
     setFirst(true);
-    setLast(false);
+    if (styles.results[currentStyle].photos.length === 1) {
+      setLast(true);
+    } else {
+      setLast(false);
+    }
     setCurrentStyle(styleIndex);
     setCurrentImage(0);
+    const scroll = document.getElementById('thumbnails');
+    scroll.scrollTo(0, 0);
   };
+  // function for clicking on a thumbnail to change current default image
   const thumbnailClickHandler = (event) => {
     const clickedIndex = Number(event.target.name);
     checkFirstAndLast();
@@ -62,10 +86,19 @@ const Overview = ({ info, styles, reviews }) => {
     } else if (clickedIndex === styles.results[currentStyle].photos.length - 1) {
       setLast(true);
       setFirst(false);
-      setCurrentImage(clickedIndex);
     } else {
       setFirst(false);
       setLast(false);
+    }
+    // function to move scroll wheel on change
+    // scrolls to bottom past the first 7
+    // if there were more than 14 thumbnails then would need to refactor
+    if (clickedIndex <= 6) {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 0);
+    } else {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 10000);
     }
     setCurrentImage(clickedIndex);
   };
@@ -80,17 +113,27 @@ const Overview = ({ info, styles, reviews }) => {
       setLast(false);
       setCurrentImage(leftIndex);
     }
+    if (leftIndex <= 6) {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 0);
+    }
   };
   const rightClick = () => {
     let rightIndex = Number(currentImage);
     checkFirstAndLast();
     if (rightIndex + 1 >= styles.results[currentStyle].photos.length - 1) {
+      rightIndex += 1;
       setLast(true);
-      setCurrentImage(rightIndex + 1);
+      setFirst(false);
+      setCurrentImage(rightIndex);
     } else {
       rightIndex += 1;
       setFirst(false);
       setCurrentImage(rightIndex);
+    }
+    if (rightIndex > 6) {
+      const scroll = document.getElementById('thumbnails');
+      scroll.scrollTo(0, 10000);
     }
   };
   // expand default image on click
@@ -151,9 +194,15 @@ const Overview = ({ info, styles, reviews }) => {
             </div>
           </div>
           <aside className="col-1-3" style={rightSide}>
-            <Information info={info} current={styles.results[currentStyle]} reviews={reviews} />
+            <Information
+              info={info}
+              current={styles.results[currentStyle]}
+              reviews={reviews}
+              meta={meta}
+              StarDisplay={StarDisplay}
+            />
             <StyleSelector style={styles} click={styleClickHandler} currentStyle={currentStyle} />
-            <AddToCart />
+            <AddToCart info={info} current={styles.results[currentStyle]} />
           </aside>
         </section>
         <section style={{ paddingTop: '20px' }} onClick={(e) => expandClose(e)}>
@@ -163,17 +212,17 @@ const Overview = ({ info, styles, reviews }) => {
           </div>
           <aside className="col-1-3">
             {info.features.length !== 0 && info.features.map((feat) => (
-              <p key={feat.feature}>
-                {feat.feature}
-                :
-                {feat.value}
-              </p>
+              <section className="item-features" key={feat.feature}>
+                <p className="item-feature">{feat.feature}</p>
+                -
+                <p className="item-feature" style={{ marginLeft: '15px' }}>{feat.value}</p>
+              </section>
             ))}
             <div>
               Share to:
-              <div className="facebook" />
-              <div className="instagram" />
-              <div className="pinterest" />
+              <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="fb" className="shared-icons" />
+              <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="insta" className="shared-icons" />
+              <img src="https://cdn-icons-png.flaticon.com/512/3536/3536559.png" alt="pin" className="shared-icons" />
             </div>
           </aside>
         </section>

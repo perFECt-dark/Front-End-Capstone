@@ -64,5 +64,46 @@ module.exports = {
       cb(err);
     });
 
+  },
+
+  getCard: function (cb, product_id) {
+
+    var loadedData = {
+      meta: null,
+      productInfo: null,
+      productStyles: null
+    };
+
+    let optionsProduct = {
+
+      headers: {
+        Authorization: process.env.AUTH
+      },
+      params: {
+        product_id: product_id
+      }
+    };
+
+    let url = 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/';
+
+    const reviewMetaData = axios.get(url + 'reviews/meta', optionsProduct);
+    const productInfo = axios.get(url + 'products/' + product_id, optionsProduct);
+    const productStyles = axios.get(url + 'products/' + product_id + '/styles', optionsProduct);
+
+    Promise.all([reviewMetaData, productInfo, productStyles])
+    .then(function(values) {
+
+      loadedData.meta = values[0].data;
+      loadedData.productInfo = values[1].data;
+      loadedData.productStyles = values[2].data;
+
+
+      cb(null, loadedData);
+    })
+    .catch(function(err) {
+
+      cb(err);
+    });
+
   }
 };

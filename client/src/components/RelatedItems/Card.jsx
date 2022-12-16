@@ -1,6 +1,7 @@
 import propTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FaStar } from 'react-icons/fa';
 import RelatedProductsModal from './RelatedProductsModal';
 import StarDisplay from '../StarDisplay';
 
@@ -25,13 +26,10 @@ function Card({
     total /= totalRatings;
     total = Math.round(total * 10) / 10;
 
-    // console.log('total ratings: ', totalRatings);
-    // console.log('total ',total);
-
     return total;
   }
   useEffect(() => {
-    const newUrl = `http://localhost:3000/item/${relatedCardId}`;
+    const newUrl = `http://localhost:3000/item/${relatedCardId}/card`;
     axios
       .get(newUrl)
       .then((infoToReturn) => {
@@ -40,14 +38,17 @@ function Card({
       })
       .catch((err) => {
         console.log(err);
+        console.log('For some reason. We did not get the data!');
       });
   }, []);
   return (
-    <aside className="card" onClick={() => grabInfo(relatedProductData.productInfo.id)}>
+    <aside className="card">
       {relatedProductData !== null && (
         <div>
           <div className="image-card">
-            <button className="card-action-button" onClick={() => {setIsOpen(true)}}>Button</button>
+            <button className="card-action-button" onClick={() => { setIsOpen(true) }}>
+              <FaStar size={18} />
+            </button>
             {(isOpen && characteristics !== null)
             && (
               <RelatedProductsModal
@@ -63,10 +64,28 @@ function Card({
             <img
               className="card-image-object"
               alt={`for ${relatedProductData.productInfo.name}`}
+              onClick={() => {
+                grabInfo(relatedProductData.productInfo.id);
+                window.scrollTo({
+                  top: 0,
+                  left: 0,
+                  behavior: 'smooth',
+                });
+              }}
               src={relatedProductData.productStyles.results[0].photos[0].url ? `${relatedProductData.productStyles.results[0].photos[0].url}` : 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'}
             />
           </div>
-          <div className="card-info">
+          <div
+            className="card-info"
+            onClick={() => {
+              grabInfo(relatedProductData.productInfo.id);
+                window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth',
+              });
+            }}
+            >
             {relatedProductData.productInfo.category}
             <br />
             {relatedProductData.productInfo.name}
