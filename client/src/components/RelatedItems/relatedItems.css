@@ -6,8 +6,8 @@
 @font-face {
   font-family: 'Mona Sans';
   src:
-  url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff supports variations'),
-  url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff-variations');
+  url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff supports variations'),
+  url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff-variations');
   font-weight: 200 900;
   font-stretch: 75% 125%;
   }
@@ -83,7 +83,7 @@
   border: double;
   color: white;
   position: relative;
-  padding-top: 20
+  padding-top: 20;
 }
 .add-product-card:hover {
   color: #bb9d7bb3;
@@ -139,6 +139,7 @@
   font-size: 15px;
   height: 50px;
   transition: all .2s ease-in;
+  font-family: "Mona Sans";
 }
 .add-the-product:hover {
   cursor: pointer;
