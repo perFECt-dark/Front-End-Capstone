@@ -1,18 +1,30 @@
 /*
   ========================================
+  Font
+  ========================================
+*/
+@font-face {
+  font-family: 'Mona Sans';
+  src:
+  url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff supports variations'),
+  url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  }
+
+/*
+  ========================================
   List
   ========================================
 */
 .card-row {
   min-width: 960px;
+  max-height: 100%;
   padding: 36px 0 14px 0;
-  overflow: auto;
 }
 .card-grid {
   margin: 0 auto;
-  width: 1200px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 20%;
 }
 /*
   ========================================
@@ -21,16 +33,12 @@
 */
 
 .card {
-  display: inline-block;
+  display: inline-flex;
   border-width: 10px;
-  /* border-style: outset; */
-  /*
-  box-shadow: 10px 5px 5px blue;
-  */
-  /* border-radius:10px;
-  border: 1px solid #ccc; */
   padding: 5px;
-  /* margin: 10px; */
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
 }
 .card:hover {
   cursor: pointer;
@@ -69,13 +77,13 @@
 }
 .add-product-card {
   width: 260px;
-    height: 500px;
-    font-size: xx-large;
-    text-align: center;
-    border: double;
-    color: white;
-    position: relative;
-    top: -62px;
+  height: 500px;
+  font-size: xx-large;
+  text-align: center;
+  border: double;
+  color: white;
+  position: relative;
+  padding-top: 20;
 }
 .add-product-card:hover {
   color: #bb9d7bb3;
@@ -122,6 +130,22 @@
 .modal-close-button:hover {
   cursor: pointer;
 }
+.add-the-product {
+  width: 250px;
+  margin-left: 30px;
+  background-color: #bb9d7b;
+  color: white;
+  border: none;
+  font-size: 15px;
+  height: 50px;
+  transition: all .2s ease-in;
+  font-family: "Mona Sans";
+}
+.add-the-product:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
 /*
   ========================================
   Modals
@@ -139,28 +163,25 @@
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: 2;
+  z-index: 1;
   cursor:default;
 }
 .related-products-modal-content {
   color: white;
   text-align: center;
   background-color: #252525;
-  /* width: 1200px;
-  height: 500px; */
-  width: 55%;
-  height: 45%;
+  width: auto;
+  height: auto;
   padding: 10px;
+  padding-bottom: 40px;
+  border: groove;
 }
 .related-products-modal-title {
   font-size: 48px;
-  /* padding-top: 30; */
   position: relative;
-  left: 3%
 }
 .related-products-modal-header {
-  padding-bottom: 60px;
-  padding-top: 30px;
+  padding-bottom: 50px;
 }
 .related-products-modal-section-product-name{
   font-size: 28px;
@@ -184,4 +205,35 @@
 .related-products-modal-section-product-style {
   font-size: 22px;
   color: #bb9d7bb3;
+}
+/*
+  ========================================
+  Carousel
+  ========================================
+*/
+.related-products-carousel {
+  overflow: hidden;
+  width: 1042px;
+  height: 530px;
+}
+.inner {
+  white-space: nowrap;
+  transition: transform 0.3s;
+}
+.carousel-buttons {
+  background-color: transparent;
+  border: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 200px;
+  font-size: 60px;
+  color: #bb9d7bb3;
+}
+.carousel-right-button {
+  right: 42px;
+  position: relative;
+}
+.carousel-buttons:hover {
+  cursor: pointer;
+  color: white;
 }

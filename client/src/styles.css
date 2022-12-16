@@ -386,7 +386,7 @@ h1, h3, h4, h5, p {
 
 .col-1-10 {
 
-  width: 12%;
+  width: 10%;
 }
 
 .col-1-5 {
@@ -409,6 +409,12 @@ h1, h3, h4, h5, p {
   width: 20%;
   margin: 0px;
 }
+.col-90 {
+  width: 90%;
+}
+.col-5 {
+  width: 4%;
+}
 
 .col-80 {
   width: 80%;
@@ -427,7 +433,10 @@ h1, h3, h4, h5, p {
 .col-1-3,
 .col-45,
 .col-80,
-.col-2-3 {
+.col-2-3,
+.col-2-3,
+.col-90,
+.col-5 {
   display: inline-block;
   vertical-align: top;
 }
@@ -442,7 +451,10 @@ h1, h3, h4, h5, p {
 .col-1-3,
 .col-45,
 .col-80,
-.col-2-3 {
+.col-2-3,
+.col-2-3,
+.col-90,
+.col-5 {
   padding-left: 15px;
   padding-right: 15px;
 }

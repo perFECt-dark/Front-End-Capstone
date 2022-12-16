@@ -14,7 +14,7 @@ body {
 
 h3 {
   font-weight: bolder;
-  font-family: 'Mona-Sans';
+  /* font-family: 'Mona-Sans'; */
 }
 
 a {
@@ -22,9 +22,13 @@ a {
   text-decoration: none;
 }
 
+.qa-title {
+  font-size: 22px;
+}
+
 .qa-main {
   background-color: #252525;
-  font-family: 'Mona-Sans';
+  /* font-family: 'Mona-Sans'; */
 }
 
 .search {
@@ -37,7 +41,7 @@ a {
   margin-bottom: 15px;
   padding-left: 15px;
   background-color: #bb9d7b;
-  font-family: 'Mona-Sans';
+  /* font-family: 'Mona-Sans'; */
 }
 
 ::placeholder {
@@ -61,7 +65,7 @@ a {
   height: 50px;
   width: 250px;
   background-color: #bb9d7b;
-  font-family: 'Mona-Sans';
+  /* font-family: 'Mona-Sans'; */
   transition: all .2s ease-in;
 }
 
@@ -72,7 +76,7 @@ a {
   width: 250px;
   margin-left: 25px;
   background-color: #bb9d7b;
-  font-family: 'Mona-Sans';
+  /* font-family: 'Mona-Sans'; */
   transition: all .2s ease-in;
 }
 
@@ -218,26 +222,26 @@ a {
 .q-tag {
   color: white;
   font-weight:bold;
-  font-size: 25px;
+  font-size: 22px;
   padding-right: 5px;
 }
 
 .a-tag {
   color: white;
   font-weight:bold;
-  font-size: 25px;
+  font-size: 22px;
   padding-right: 5px;
 }
 
 .q-body {
   color: white;
   font-weight:bold;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .a-body {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .more-answers {

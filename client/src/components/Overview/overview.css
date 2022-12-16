@@ -51,10 +51,19 @@ table {
   Custom styles
   ========================================
 */
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff supports variations'),
+  url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
 body {
   background: #252525;
   color: #888;
   /* font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font: 300 16px/22px "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, p, h5 {
@@ -437,15 +446,17 @@ a:hover {
   overflow-y: auto;
 }
 
-#thumbnails:hover {
-  cursor: pointer;
-}
-
 .thumbnail-icon {
   height: 80px;
   width: 80px;
-  border-radius: 20%;
+  margin-top: 1px;
+  border-radius: 15%;
   border: 1px solid black;
+}
+
+.thumbnail-icon:hover {
+  opacity: 70%;
+  cursor: pointer;
 }
 
 .small-icons {
@@ -498,7 +509,12 @@ a:hover {
   width: 75px;
   height: 75px;
   border-radius: 100%;
-  border: 1px solid black;
+  border: 1px solid rgb(100, 100, 100);
+}
+
+.style-icons:hover {
+  cursor: pointer;
+  opacity: 70%;
 }
 
 .discounted {
@@ -526,7 +542,7 @@ a:hover {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 170px;
+  top: 166px;
   width: 100%;
   height: 700px;
 }
@@ -670,8 +686,12 @@ a:hover {
   Select
   ========================================
 */
+select {
+  font-family: "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 #cart-box {
+  font-family: "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: block;
 }
 
@@ -701,11 +721,14 @@ a:hover {
 }
 
 .cart {
+  font-size: 16px;
+  font-family: "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 15px;
   background-color: #bb9d7b;
   color: white;
   border: none;
   width: 89%;
+  height: 50px;
   margin-top: 10px;
   transition: all .2s ease-in;
 }

@@ -25,7 +25,12 @@ const Expanded = ({
   } else {
     right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
-  const imgSrc = current.photos[currentImage].url || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+  let imgSrc;
+  if (current.photos[currentImage] === undefined) {
+    imgSrc = current.photos[0].url;
+  } else {
+    imgSrc = current.photos[currentImage].url || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+  }
   // background for zoom handler
   const zoomStyle = {
     backgroundImage: `url(${imgSrc})`,
@@ -94,7 +99,6 @@ const Expanded = ({
             alt=""
             src={imgSrc}
             onClick={(e) => zoomHandler(e)}
-            // onError={(e) => { e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'; }}
           />
         </label>
         {right}

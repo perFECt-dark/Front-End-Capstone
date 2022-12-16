@@ -32,7 +32,12 @@ const Gallery = ({
   } else {
     icons = 'thumbnail-icon';
   }
-  const imgSrc = current.photos[currentImage].url || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+  let imgSrc;
+  if (current.photos[currentImage] === undefined) {
+    imgSrc = current.photos[0].url;
+  } else {
+    imgSrc = current.photos[currentImage].url || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+  }
   return (
     <section className="carousel">
       <div className="col-1-3" id="thumbnails">

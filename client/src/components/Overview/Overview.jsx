@@ -5,50 +5,48 @@
 /* eslint-disable import/extensions */
 /* eslint-disable react/function-component-definition */
 import React, { useState, useEffect } from 'react';
-import Gallery from './Gallery';
 import Expanded from './Expanded';
 import Information from './Information';
 import StyleSelector from './StyleSelector';
 import AddToCart from './AddToCart';
+import Gallery from './Gallery';
 
 const Overview = ({
   info, styles, reviews, meta, StarDisplay,
 }) => {
-  /*
-  styles has
-    product_id
-    results
-      [
-        { style_id: 240500,
-        name: 'Forest Green & Black',
-        original_price: '140.00',
-        sale_price: null,
-        default?: true,
-        photos: [ { thumbnail_url: }],
-        skus: 1394769: {quantity: 8, size: 'XS'},
-       }, ...
-      ]
-  expansion - setting new width of image with own set of features such as
-  a hover, a zoom feature, and disabling some other things
-  */
-  const [currentStyle, setCurrentStyle] = useState(0);
+  const [currentStyle, setCurrentStyle] = useState(null);
   const [currentImage, setCurrentImage] = useState(0);
   const [first, setFirst] = useState(true);
   const [last, setLast] = useState(false);
   const [expanded, setExpanded] = useState(false);
   // setting to default style first
   useEffect(() => {
+    setCurrentImage(0);
+    let target = -1;
     styles.results.forEach((style, index) => {
       if (style['default?'] === true) {
-        setCurrentStyle(index);
+        target = index;
       }
     });
+    if (target > -1) {
+      setCurrentStyle(target);
+    } else {
+      setCurrentStyle(0);
+    }
     setFirst(true);
     setLast(false);
-    if (styles.results[currentStyle].photos.length === 1) {
+  }, [info, styles, reviews, meta]);
+  let current;
+  if (styles.results[currentStyle] === undefined) {
+    current = styles.results[0];
+  } else {
+    current = styles.results[currentStyle];
+  }
+  useEffect(() => {
+    if (current.photos.length === 1) {
       setLast(true);
     }
-  }, [info, styles, reviews, meta]);
+  }, [styles]);
   // function to check what the current image is for arrows
   const checkFirstAndLast = () => {
     if (currentImage === 0) {
@@ -56,7 +54,7 @@ const Overview = ({
     } else {
       setFirst(false);
     }
-    if (currentImage >= styles.results[currentStyle].photos.length - 1) {
+    if (currentImage >= current.photos.length - 1) {
       setLast(true);
     } else {
       setLast(false);
@@ -66,7 +64,7 @@ const Overview = ({
   const styleClickHandler = (event) => {
     const styleIndex = Number(event.target.name);
     setFirst(true);
-    if (styles.results[currentStyle].photos.length === 1) {
+    if (current.photos.length === 1) {
       setLast(true);
     } else {
       setLast(false);
@@ -83,7 +81,7 @@ const Overview = ({
     if (clickedIndex === 0) {
       setFirst(true);
       setLast(false);
-    } else if (clickedIndex === styles.results[currentStyle].photos.length - 1) {
+    } else if (clickedIndex === current.photos.length - 1) {
       setLast(true);
       setFirst(false);
     } else {
@@ -121,7 +119,7 @@ const Overview = ({
   const rightClick = () => {
     let rightIndex = Number(currentImage);
     checkFirstAndLast();
-    if (rightIndex + 1 >= styles.results[currentStyle].photos.length - 1) {
+    if (rightIndex + 1 >= current.photos.length - 1) {
       rightIndex += 1;
       setLast(true);
       setFirst(false);
@@ -167,7 +165,7 @@ const Overview = ({
         <section>
           <div className="col-2-3" style={defaultPic}>
             <Gallery
-              current={styles.results[currentStyle]}
+              current={current}
               currentImage={currentImage}
               click={thumbnailClickHandler}
               leftClick={leftClick}
@@ -181,7 +179,7 @@ const Overview = ({
               <div className="expanded-content" name="">
                 <span className="close-expanded" onClick={(e) => expandClose(e)}>X</span>
                 <Expanded
-                  current={styles.results[currentStyle]}
+                  current={current}
                   currentImage={currentImage}
                   click={thumbnailClickHandler}
                   leftClick={leftClick}
@@ -196,13 +194,13 @@ const Overview = ({
           <aside className="col-1-3" style={rightSide}>
             <Information
               info={info}
-              current={styles.results[currentStyle]}
+              current={current}
               reviews={reviews}
               meta={meta}
               StarDisplay={StarDisplay}
             />
             <StyleSelector style={styles} click={styleClickHandler} currentStyle={currentStyle} />
-            <AddToCart info={info} current={styles.results[currentStyle]} />
+            <AddToCart info={info} current={current} />
           </aside>
         </section>
         <section style={{ paddingTop: '20px' }} onClick={(e) => expandClose(e)}>

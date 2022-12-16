@@ -4,29 +4,25 @@ import propTypes from 'prop-types';
 function AddProductCard({ addToOutfits }) {
   return (
     <aside className="card add-product-card" onClick={addToOutfits}>
-      <div>
-        <br />
-        <br />
-        ADD
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        TO
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        OUTFITS
-      </div>
+      ADD
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      TO
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      OUTFITS
     </aside>
   );
 }
