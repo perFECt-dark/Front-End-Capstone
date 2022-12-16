@@ -443,15 +443,17 @@ a:hover {
   overflow-y: auto;
 }
 
-#thumbnails:hover {
-  cursor: pointer;
-}
-
 .thumbnail-icon {
   height: 80px;
   width: 80px;
-  border-radius: 20%;
+  margin-top: 1px;
+  border-radius: 15%;
   border: 1px solid black;
+}
+
+.thumbnail-icon:hover {
+  opacity: 70%;
+  cursor: pointer;
 }
 
 .small-icons {
@@ -504,7 +506,12 @@ a:hover {
   width: 75px;
   height: 75px;
   border-radius: 100%;
-  border: 1px solid black;
+  border: 1px solid rgb(100, 100, 100);
+}
+
+.style-icons:hover {
+  cursor: pointer;
+  opacity: 70%;
 }
 
 .discounted {

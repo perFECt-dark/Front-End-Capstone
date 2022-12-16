@@ -23,7 +23,7 @@ const StyleEntry = ({
         name={index}
         alt=""
         onClick={(e) => { click(e); }}
-        style={{ boxShadow: '0 0 0 3px rgba(0, 0, 0, 1)' }}
+        style={{ boxShadow: '0 0 0 3px rgba(100, 100, 100, 1)' }}
       />
     );
   } else {
