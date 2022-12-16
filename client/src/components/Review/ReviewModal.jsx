@@ -3,6 +3,8 @@ import StarRating from '../StarRating';
 import ImageUpload from './ImageUpload';
 import ModalRadio from './ModalRadio';
 import axios from 'axios';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
 
 
 function ReviewModal(props) {
@@ -90,10 +92,10 @@ const addUpload = () => {
   if (!validateEmail(email)) {
     validated = false;
     setEmailText('This email is not a valid email');
-    document.querySelector("#ReviewModalContainer").scrollTo(0,0);
+    document.querySelector(".simplebar-content-wrapper").scrollTo(0,0);
   } else {
     setEmailText('For authentication reasons, you will not be emailed');
-    document.querySelector("#ReviewModalContainer").scrollTo(0,0);
+    document.querySelector(".simplebar-content-wrapper").scrollTo(0,0);
   }
 
   if (body.length < 50) {
@@ -162,6 +164,8 @@ return (
 
     <div id="ReviewModalContainer">
 
+    <SimpleBar style={{maxHeight: 550}}>
+
       {!submitMode && <div>
       <div className="titleCloseBtn">
         <button className="closeBtn" onClick={() => props.close(false)}> X </button>
@@ -190,7 +194,7 @@ return (
           onChange={(e) => setBody(e.target.value)}
           placeholder="Why did you like the product or not?">
           </textarea>
-          <div style={bodyCountStyle}><p>{bodyCount}</p></div>
+          <div style={bodyCountStyle}><p><span style={{color: 'grey'}}>{bodyCount}</span></p></div>
           <label className="labelModal">Display Name</label>
           <input type="text" className="ReviewModalBody-Input"
            required
@@ -273,7 +277,7 @@ return (
 
       </div>}
 
-
+      </SimpleBar>
     </div>
   </div>
 )
