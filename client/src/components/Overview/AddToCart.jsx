@@ -32,6 +32,7 @@ const AddToCart = ({ current, info }) => {
       // focuses on the select but doesn't open the dropdown
       document.getElementById('item-size').click();
     } else {
+      document.getElementById('no-size-error').style.visibility = 'hidden';
       setCart([...cart, {
         itemName: info.name, itemStyle: current.name, itemSize: size, itemAmount: amount,
       }]);
@@ -47,9 +48,9 @@ const AddToCart = ({ current, info }) => {
   }
   return (
     <div id="cart-box" style={{ verticalAlign: 'bottom' }}>
+      <h4 id="no-size-error">Please select size</h4>
       <form>
         <label htmlFor="item-size">
-          <h4 id="no-size-error">Please select size</h4>
           <select
             id="item-size"
             value={size || 'OUT OF STOCK'}
