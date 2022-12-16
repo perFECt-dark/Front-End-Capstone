@@ -57,7 +57,7 @@ body {
   /* font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 
-h1, h2, h3, h4, p {
+h1, h2, h3, h4, p, h5 {
   color: #fff;
 }
 
@@ -76,12 +76,6 @@ h4 {
   font-size: 18px;
 }
 
-h5 {
-  color: #a9b2b9;
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: uppercase;
-}
 
 strong {
   font-weight: 400;

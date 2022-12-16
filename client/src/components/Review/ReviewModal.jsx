@@ -122,7 +122,7 @@ const addUpload = () => {
     console.log('Here is out post obj: ', reviewPost);
     setSubmitMode(true);
 
-    axios.post('http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/review/submit', reviewPost)
+    axios.post('http://localhost:3000/review/submit', reviewPost)
     .then((response) => {
 
       setSubmitText('✓ Your Review Got Posted');

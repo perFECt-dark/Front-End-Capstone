@@ -69,7 +69,7 @@ function App() {
       </header>
 
       {/* Overview */}
-      {productData !== null
+      {productData === 'dont render'
         && (
           <Overview
             info={productData.productInfo}
@@ -81,7 +81,7 @@ function App() {
         )}
 
       {/* Related Items */}
-      {productData !== null
+      {productData === 'dont render'
       && (
         <div>
           <RelatedProductsList
@@ -96,7 +96,7 @@ function App() {
       )}
       {/* Questions & Answers */}
       <div>
-        {productData !== null && <QA productInfo={productData.productInfo} />}
+        {productData === 'dont render' && <QA productInfo={productData.productInfo} />}
       </div>
       {/* Review */}
       {productData !== null

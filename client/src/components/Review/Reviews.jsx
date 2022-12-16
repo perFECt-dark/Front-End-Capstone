@@ -19,6 +19,7 @@ function Reviews(props) {
   const productTitle = props.title;
   const characteristics = Object.keys(meta.characteristics);
   const [scroll, setScroll] = useState(false);
+  console.log(reviews.results);
 
 
   useEffect(() => {
@@ -38,9 +39,13 @@ function Reviews(props) {
 
   const getTotalReviews = () => {
 
-    var total = Number(meta.ratings['1']) + Number(meta.ratings['1']) +
-    Number(meta.ratings['2']) + Number(meta.ratings['3']) + Number(meta.ratings['4']) +
-    Number(meta.ratings['5']);
+    var total = 0;
+
+    if (meta.ratings['1'] !== undefined) {total += Number(meta.ratings['1'])}
+    if (meta.ratings['2'] !== undefined) {total += Number(meta.ratings['2'])}
+    if (meta.ratings['3'] !== undefined) {total += Number(meta.ratings['3'])}
+    if (meta.ratings['4'] !== undefined) {total += Number(meta.ratings['4'])}
+    if (meta.ratings['5'] !== undefined) {total += Number(meta.ratings['5'])}
 
     return total;
   }
@@ -49,16 +54,14 @@ function Reviews(props) {
 
   const findAverageRating = (ratings) => {
 
-    var totalRatings = Number(ratings['1']) +
-    Number(ratings['2']) + Number(ratings['3']) + Number(ratings['4']) +
-    Number(ratings['5']);
-    var total = (Number(ratings['1']) * 1) +
-    (Number(ratings['2']) * 2) +
-    (Number(ratings['3']) * 3) +
-    (Number(ratings['4']) * 4) +
-    (Number(ratings['5']) * 5);
+    var total = 0;
+    if (ratings['1'] !== undefined) {total += (Number(ratings['1']) * 1)}
+    if (ratings['2'] !== undefined) {total += (Number(ratings['2']) * 2)}
+    if (ratings['3'] !== undefined) {total += (Number(ratings['3']) * 3)}
+    if (ratings['4'] !== undefined) {total += (Number(ratings['4']) * 4)}
+    if (ratings['5'] !== undefined) {total += (Number(ratings['5']) * 5)}
 
-    total = total / totalRatings;
+    total = total / totalReviews;
     total = Math.round(total * 10) / 10;
 
     // console.log('total ratings: ', totalRatings);
@@ -105,45 +108,6 @@ function Reviews(props) {
     });
   }
 
-  const sendReview = () => {
-
-    var sauce = {
-      product_id: 40350,
-      rating: 3,
-      summary: 'Great product with a perfect fit!',
-      body: 'This product is so great but I am only giving it 3 stars because it makes me look fat.',
-      recommend: true,
-      name: 'BrosBeforeTrolls123',
-      email: 'ilovebros123@gmail.com',
-      photos: ['https://i.ibb.co/Y7bBBSx/bros1.jpg', 'https://i.ibb.co/r4Zz5J3/bros2.jpg', 'https://i.ibb.co/BCkqKLN/coolguy.png'],
-      characteristics: {
-        '135242': 5,
-        '135243': 4,
-        '135240': 3,
-        '135241': 5
-      }
-    }
-    //console.log(sauce);
-
-    //console.log(JSON.stringify(sauce));
-
-    let options = {
-
-      headers: {
-        Authorization: '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'
-      }
-    };
-
-    axios.post('https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/', sauce, options)
-    .then((response) => {
-
-      console.log('yay!',response.data);
-    })
-    .catch((err) => {
-
-      console.log('we got an error!', err);
-    });
-  }
 
   // Styles go here //
   const listOne = {
@@ -172,47 +136,116 @@ function Reviews(props) {
 
         <section className="ratingBox">
 
-          <div className="col-1-2" style={{paddingTop: '12px'}}>
+          <div className="col-1-5" style={{paddingTop: '12px'}}>
 
               <div style={{paddingLeft: '30px'}}><h2>Average Rating</h2></div>
-              <div className="col-1-3" style={{paddingRight: '0px', textAlign: 'center'}}>
+              <div className="col-2-3" style={{paddingRight: '0px', textAlign: 'center'}}>
                 <StarDisplay size={20} val={averageRating}/>
               </div><aside className="col-1-3" style={{paddingLeft: '0px', paddingBottom:'15px'}}>
-                <span style={{fontSize: '20px'}}>{averageRating} Stars</span>
+                <span style={{fontSize: '20px'}}>{averageRating}</span>
               </aside>
 
-          </div><aside className="col-1-2" style={{paddingTop: '8px'}}>
+          </div><aside className="col-1-3" style={{paddingTop: '5px', paddingLeft: '30px'}}>
 
-              <div className="col-1-3">
+              {meta.ratings['1'] !== undefined && <div><div className="col-1-5" >
+                <div style={{display: 'inline-block'}}><h5>1 </h5></div>
+                <div style={{display: 'inline-block', padding: '5px 0px 0px 5px'}}><StarDisplay size={13} val={1} stars={1}/></div>
+                </div><aside className="col-80" style={{paddingTop: '7px'}}>
+
+                <div style={{width: '60%', height: '10px', border: '1px solid #fff'}}>
+                  <div style={{width: `${(Number(meta.ratings['1'])/totalReviews*100) + '%'}`, height: '9px', backgroundColor: '#fff'}}></div>
+                </div>
+              </aside></div>}
+
+              {meta.ratings['2'] !== undefined && <div><div className="col-1-5" >
+                <div style={{display: 'inline-block'}}><h5>2 </h5></div>
+                <div style={{display: 'inline-block', padding: '5px 0px 0px 5px'}}><StarDisplay size={13} val={1} stars={1}/></div>
+                </div><aside className="col-80" style={{paddingTop: '7px'}}>
+
+                <div style={{width: '60%', height: '10px', border: '1px solid #fff'}}>
+                  <div style={{width: `${(Number(meta.ratings['2'])/totalReviews*100) + '%'}`, height: '9px', backgroundColor: '#fff'}}></div>
+                </div>
+              </aside></div>}
+
+              {meta.ratings['3'] !== undefined && <div><div className="col-1-5" >
+                <div style={{display: 'inline-block'}}><h5>3 </h5></div>
+                <div style={{display: 'inline-block', padding: '5px 0px 0px 5px'}}><StarDisplay size={13} val={1} stars={1}/></div>
+                </div><aside className="col-80" style={{paddingTop: '7px'}}>
+
+                <div style={{width: '60%', height: '10px', border: '1px solid #fff'}}>
+                  <div style={{width: `${(Number(meta.ratings['3'])/totalReviews*100) + '%'}`, height: '9px', backgroundColor: '#fff'}}></div>
+                </div>
+              </aside></div>}
+
+
+              {meta.ratings['4'] !== undefined && <div><div className="col-1-5" >
+                <div style={{display: 'inline-block'}}><h5>4 </h5></div>
+                <div style={{display: 'inline-block', padding: '5px 0px 0px 5px'}}><StarDisplay size={13} val={1} stars={1}/></div>
+                </div><aside className="col-80" style={{paddingTop: '7px'}}>
+
+                <div style={{width: '60%', height: '10px', border: '1px solid #fff'}}>
+                  <div style={{width: `${(Number(meta.ratings['4'])/totalReviews*100) + '%'}`, height: '9px', backgroundColor: '#fff'}}></div>
+                </div>
+              </aside></div>}
+
+
+              {meta.ratings['5'] !== undefined && <div><div className="col-1-5" >
+                <div style={{display: 'inline-block'}}><h5>5 </h5></div>
+                <div style={{display: 'inline-block', padding: '5px 0px 0px 5px'}}><StarDisplay size={13} val={1} stars={1}/></div>
+                </div><aside className="col-80" style={{paddingTop: '7px'}}>
+
+                <div style={{width: '60%', height: '10px', border: '1px solid #fff'}}>
+                  <div style={{width: `${(Number(meta.ratings['5'])/totalReviews*100) + '%'}`, height: '9px', backgroundColor: '#fff'}}></div>
+                </div>
+              </aside></div>}
+
+              {/* meta.characteristics[characteristics[0]].value */}
+
+
+            </aside><aside className="col-45" style={{paddingTop: '4px'}}>
+
+              <div className="col-1-3" style={{paddingTop: '10px'}}>
 
                 {characteristics.length > 0 &&
-                <h4>{characteristics[0]}  <StarDisplay size={15} val={meta.characteristics[characteristics[0]].value}/></h4>}
+                <div style={{paddingBottom: '10px'}}><h4>{characteristics[0]}</h4><div style={{width: '100%', height: '10px', border: '1px solid #fff', marginTop: '10px'}}>
+                <div style={{width: `${(meta.characteristics[characteristics[0]].value/5*100) + '%'}`, height: '9px', borderRight: '2px solid #fff'}}>
+                  </div></div></div>}
 
-                {characteristics.length > 3 &&
-                <h4>{characteristics[3]}  <StarDisplay size={15} val={meta.characteristics[characteristics[3]].value}/></h4>}
+                  {characteristics.length > 3 &&
+                <div style={{paddingBottom: '10px'}}><h4>{characteristics[3]}</h4><div style={{width: '100%', height: '10px', border: '1px solid #fff', marginTop: '10px'}}>
+                <div style={{width: `${(meta.characteristics[characteristics[3]].value/5*100) + '%'}`, height: '9px', borderRight: '2px solid #fff'}}>
+                  </div></div></div>}
 
-              </div><aside className="col-1-3">
+              </div><aside className="col-1-3" style={{paddingTop: '10px'}}>
 
-                {characteristics.length > 1 &&
-                <h4>{characteristics[1]}  <StarDisplay size={15} val={meta.characteristics[characteristics[1]].value}/></h4>}
+              {characteristics.length > 1 &&
+                <div style={{paddingBottom: '10px'}}><h4>{characteristics[1]}</h4><div style={{width: '100%', height: '10px', border: '1px solid #fff', marginTop: '10px'}}>
+                <div style={{width: `${(meta.characteristics[characteristics[1]].value/5*100) + '%'}`, height: '9px', borderRight: '2px solid #fff'}}>
+                  </div></div></div>}
 
-                {characteristics.length > 4 &&
-                <h4>{characteristics[4]}  <StarDisplay size={15} val={meta.characteristics[characteristics[4]].value}/></h4>}
+                  {characteristics.length > 4 &&
+                <div style={{paddingBottom: '10px'}}><h4>{characteristics[4]}</h4><div style={{width: '100%', height: '10px', border: '1px solid #fff', marginTop: '10px'}}>
+                <div style={{width: `${(meta.characteristics[characteristics[4]].value/5*100) + '%'}`, height: '9px', borderRight: '2px solid #fff'}}>
+                  </div></div></div>}
 
-              </aside><aside className="col-1-3">
+              </aside><aside className="col-1-3" style={{paddingTop: '10px'}}>
 
-                {characteristics.length > 2 &&
-                <h4>{characteristics[2]}  <StarDisplay size={15} val={meta.characteristics[characteristics[2]].value}/></h4>}
+              {characteristics.length > 2 &&
+                <div style={{paddingBottom: '10px'}}><h4>{characteristics[2]}</h4><div style={{width: '100%', height: '10px', border: '1px solid #fff', marginTop: '10px'}}>
+                <div style={{width: `${(meta.characteristics[characteristics[2]].value/5*100) + '%'}`, height: '9px', borderRight: '2px solid #fff'}}>
+                  </div></div></div>}
 
-                {characteristics.length > 5 &&
-                <h4>{characteristics[5]}  <StarDisplay size={15} val={meta.characteristics[characteristics[5]].value}/></h4>}
+                  {characteristics.length > 5 &&
+                <div style={{paddingBottom: '10px'}}><h4>{characteristics[5]}</h4><div style={{width: '100%', height: '10px', border: '1px solid #fff', marginTop: '10px'}}>
+                <div style={{width: `${(meta.characteristics[characteristics[5]].value/5*100) + '%'}`, height: '9px', borderRight: '2px solid #fff'}}>
+                  </div></div></div>}
 
               </aside>
 
                 </aside>
 
         </section>
-        <section style={{paddingTop: '10px', paddingBottom: '10px'}}>
+        <section style={{paddingBottom: '10px'}}>
 
           <div className="col-2-3"></div><aside className="col-1-3"  style={{textAlign: 'right', padding: '0px'}}>
 
@@ -245,7 +278,7 @@ function Reviews(props) {
           <SimpleBar style={{maxHeight: 500}}>
           <ul>
             {reviews.results.length !== 0 && reviews.results.map(review =>
-                  <ReviewList reviewItem={review} key={review.review_id}/>
+                  <ReviewList reviewItem={review} key={review.review_id} id={review.review_id}/>
               )}
 
           </ul>

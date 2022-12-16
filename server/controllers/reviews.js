@@ -22,6 +22,18 @@ module.exports = {
       }
 
     }, req.body);
+  },
+
+  put: function (req, res) {
+
+    models.reviews.putReview((err, data) => {
+      if (err) {
+        res.status(501).send(err);
+      } else {
+        res.sendStatus(201);
+      }
+    },req.params.review_id, req.params.subType);
+
   }
 
 };

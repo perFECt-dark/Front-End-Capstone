@@ -3,6 +3,8 @@ import { FaStar } from 'react-icons/fa';
 
 const StarDisplay = (props) => {
 
+  var starAmount = props.stars || 5;
+
   const convert = (num) => {
 
     if (num % 1 === 0) {
@@ -59,7 +61,7 @@ const StarDisplay = (props) => {
         </linearGradient>
       </svg>
 
-      {[...Array(5)].map((star, i) => {
+      {[...Array(starAmount)].map((star, i) => {
         const ratingValue = i + 1;
         return <label>
           <input type='radio'
