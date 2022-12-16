@@ -21,7 +21,7 @@ const Information = ({
   Object.entries(meta.ratings).forEach((rate) => rating += Number(rate[0]) * Number(rate[1]));
   const totalReview = Number(meta.recommended.false) + Number(meta.recommended.true);
   rating /= totalReview;
-  const showStar = <StarDisplay size={20} val={rating} />;
+  const showStar = <StarDisplay size={20} val={rating} style={{ maxWidth: '105px' }} />;
   if (current.sale_price !== null) {
     price = (
       <div>
@@ -59,12 +59,9 @@ const Information = ({
   }
   return (
     <div style={{ marginTop: '10px' }}>
-      <div style={{ float: 'left' }}>{showStar}</div>
-      {reviewCount}
-      <br />
-      <h5>
-        {info.category}
-      </h5>
+      <div style={{ position: 'absolute', maxWidth: '105px' }}>{showStar}</div>
+      <aside style={{ marginLeft: '90px', maxWidth: 'fit-content' }}>{reviewCount}</aside>
+      <h5 style={{ marginTop: '20px' }}>{info.category}</h5>
       <h1>
         {info.name}
       </h1>

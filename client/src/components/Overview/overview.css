@@ -707,12 +707,12 @@ a:hover {
 }
 
 #read-all-reviews {
-  display: flex;
-  padding-left: 80px;
+  display: inline-flex;
+  margin-left: 75px;
 }
 
 #read-all-reviews:hover {
-  color: blue;
+  color: #bb9d7b;
   text-decoration: underline;
 }
 
