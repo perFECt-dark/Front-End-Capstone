@@ -5,11 +5,12 @@ import './relatedItems.css';
 function RelatedProductsModal({
   productName, styles, setIsOpen, currentCharacteristics, relatedName, relatedCharacteristics, relatedStyles,
 }) {
+  console.log('The relatedProductModal loaded');
   return (
     <div className="related-products-modal">
       <div className="related-products-modal-content">
         <div className="related-products-modal-header">
-        <button className="modal-close-button" onClick={() => setIsOpen(false)}>X</button>
+        <button className="modal-close-button" onClick={() => setIsOpen({setIsOpen: false})}>X</button>
           <div className="related-products-modal-title"> Compare </div>
         </div>
         <div className="related-products-modal-body">
