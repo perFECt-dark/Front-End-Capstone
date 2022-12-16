@@ -17,10 +17,12 @@ const Information = ({
   );
   // star review indicator
   let rating = 0;
+  let total = 0;
   // updated in the case that some ratings don't exist
-  Object.entries(meta.ratings).forEach((rate) => rating += Number(rate[0]) * Number(rate[1]));
-  const totalReview = Number(meta.recommended.false) + Number(meta.recommended.true);
-  rating /= totalReview;
+  Object.entries(meta.ratings).forEach((rate) => {
+    rating += Number(rate[0]) * Number(rate[1]); total += Number(rate[1]);
+  });
+  rating /= total;
   const showStar = <StarDisplay size={20} val={rating} style={{ maxWidth: '105px' }} />;
   if (current.sale_price !== null) {
     price = (
@@ -40,19 +42,19 @@ const Information = ({
   const reference = document.getElementsByClassName('ratingBox');
   const scrollHandler = () => reference[0].scrollIntoView({ behavior: 'smooth' });
   let reviewCount;
-  if (totalReview === 1) {
+  if (total === 1) {
     reviewCount = (
       <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read [
-        {totalReview}
+        {total}
         ] review!
       </p>
     );
-  } else if (totalReview > 1) {
+  } else if (total > 1) {
     reviewCount = (
       <p id="read-all-reviews" onClick={(e) => scrollHandler(e)}>
         Read all [
-        {totalReview}
+        {total}
         ] reviews!
       </p>
     );
