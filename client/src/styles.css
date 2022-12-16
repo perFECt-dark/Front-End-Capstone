@@ -305,7 +305,7 @@ h1, h3, h4, h5, p {
 */
 
 .logo {
-  border-top: 4px solid #648880;
+  /* border-top: 4px solid #fff; */
   float: left;
   font-size: 48px;
   font-weight: 100;
@@ -332,9 +332,20 @@ h1, h3, h4, h5, p {
   color: #fff;
 }
 
-.primary-header a:hover,
+/* .primary-header a:hover,
 .primary-footer a:hover {
   color: #648880;
+} */
+
+.primary-header {
+
+  background: -webkit-linear-gradient(to right, #bb9d7b, #252525);
+  background: -moz-linear-gradient(to right, #bb9d7b, #252525);
+  background: linear-gradient(to right, #bb9d7b, #252525);
+
+   /* background-color: #bb9d7b; */
+
+  border-radius: 2px;
 }
 
 /*
@@ -517,7 +528,7 @@ h1, h3, h4, h5, p {
 }
 
 #ReviewModalContainer {
-
+  border: groove;
   width: 500px;
   height: 600px;
   border-radius: 2px;
