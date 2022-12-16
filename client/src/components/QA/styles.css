@@ -22,6 +22,10 @@ a {
   text-decoration: none;
 }
 
+.qa-title {
+  font-size: 22px;
+}
+
 .qa-main {
   background-color: #252525;
   font-family: 'Mona-Sans';
@@ -218,26 +222,26 @@ a {
 .q-tag {
   color: white;
   font-weight:bold;
-  font-size: 25px;
+  font-size: 22px;
   padding-right: 5px;
 }
 
 .a-tag {
   color: white;
   font-weight:bold;
-  font-size: 25px;
+  font-size: 22px;
   padding-right: 5px;
 }
 
 .q-body {
   color: white;
   font-weight:bold;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .a-body {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .more-answers {

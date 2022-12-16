@@ -69,7 +69,7 @@ function QA({ productInfo }) {
         <div className="qa-main">
           { questionData !== null ? (
             <div>
-              <h3>QUESTIONS & ANSWERS</h3>
+              <h3 className="qa-title">QUESTIONS & ANSWERS</h3>
               <div>
                 <Search filterQuestions={filterQuestions} />
               </div>
@@ -88,7 +88,7 @@ function QA({ productInfo }) {
           )
             : (
               <div>
-                <h3>QUESTIONS & ANSWERS</h3>
+                <h3 className="qa-title">QUESTIONS & ANSWERS</h3>
                 <div>
                   <Search />
                 </div>
