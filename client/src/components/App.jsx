@@ -45,7 +45,7 @@ function App() {
   // use this to grab initial data
   useEffect(() => {
     /// This effect inciates page with data
-    const initialProduct = 40353;
+    const initialProduct = 40346;
     /// base product 40346
     /// infinity stone 40353
     /// no image sunglasses 40345
