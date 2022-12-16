@@ -51,10 +51,19 @@ table {
   Custom styles
   ========================================
 */
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff supports variations'),
+  url('../../Fonts/Mona\ Sans/Mona-Sans.woff') format('woff-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+}
+
 body {
   background: #252525;
   color: #888;
   /* font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font: 300 16px/22px "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, p {
@@ -683,8 +692,12 @@ a:hover {
   Select
   ========================================
 */
+select {
+  font-family: "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
 
 #cart-box {
+  font-family: "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: block;
 }
 
@@ -714,6 +727,8 @@ a:hover {
 }
 
 .cart {
+  font-size: 16px;
+  font-family: "Mona Sans", "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   padding: 15px;
   background-color: #bb9d7b;
   color: white;
