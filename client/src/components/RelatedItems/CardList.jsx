@@ -1,11 +1,14 @@
 import propTypes from 'prop-types';
 import React, { useState } from 'react';
 import Card from './Card';
+import RelatedProductsModal from './RelatedProductsModal';
 // takes an array of cards
 function CardList({
   productName, styles, cards, listTitle, characteristics, grabInfo,
 }) {
   const [index, setIndex] = useState(0);
+  const [modalData, setModalData] = useState({});
+
   function updateIndex(newIndex, goingRight) {
     console.log('Right button called', index);
     if (goingRight) {
@@ -15,6 +18,19 @@ function CardList({
     }
   }
 
+  function displayModal(productName, styles, setIsOpen, currentCharacteristics, relatedName, metaCharacteristics, relatedStyles) {
+    console.log('These are the characteristics from displayModal', currentCharacteristics);
+    console.log('This is setIsOpen in displayModal', setIsOpen);
+    setModalData({
+      productName: productName,
+      styles: styles,
+      setIsOpen: setIsOpen,
+      currentCharacteristics: currentCharacteristics,
+      relatedName: relatedName,
+      metaCharacteristics: metaCharacteristics,
+      relatedStyles: relatedStyles,
+    });
+  }
   return (
     <section className="row">
       <div className="grid">
@@ -35,6 +51,7 @@ function CardList({
                 characteristics={characteristics}
                 grabInfo={grabInfo}
                 setIndex={setIndex}
+                displayModal={displayModal}
               />
             ))}
           </div>
@@ -42,6 +59,21 @@ function CardList({
         </aside><aside className='col-5'>{index < ((cards.length * 0.25) - 1)
             && <button className="carousel-buttons" onClick={() => {updateIndex(index, true)}}>→</button> }</aside>
       </div>
+      {(modalData.setIsOpen && modalData.characteristics !== null)
+            && (
+              <RelatedProductsModal
+                productName={productName}
+                styles={styles}
+                setIsOpen={setModalData}
+                currentCharacteristics={characteristics}
+                relatedName={modalData.relatedName}
+                relatedCharacteristics={modalData.currentCharacteristics}
+                relatedStyles={modalData.relatedStyles}
+                displayModal={displayModal}
+              />
+            )}
+            {/* {(modalData.setIsOpen && modalData.characteristics) */}
+
     </section>
   );
 }

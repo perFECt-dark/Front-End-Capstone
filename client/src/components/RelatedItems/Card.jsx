@@ -6,7 +6,7 @@ import RelatedProductsModal from './RelatedProductsModal';
 import StarDisplay from '../StarDisplay';
 
 function Card({
-  productName, styles, relatedCardId, characteristics, grabInfo, setIndex,
+  productName, styles, relatedCardId, characteristics, grabInfo, setIndex, displayModal
 }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -46,21 +46,9 @@ function Card({
       {relatedProductData !== null && (
         <div>
           <div className="image-card">
-            <button className="card-action-button" onClick={() => { setIsOpen(true) }}>
+            <button className="card-action-button" onClick={() => { displayModal(productName, styles, true, characteristics, relatedProductData.productInfo.name, relatedProductData.meta.characteristics, relatedProductData.productStyles) }}>
               <FaStar size={18} />
             </button>
-            {(isOpen && characteristics !== null)
-            && (
-              <RelatedProductsModal
-                productName={productName}
-                styles={styles}
-                setIsOpen={setIsOpen}
-                currentCharacteristics={characteristics}
-                relatedName={relatedProductData.productInfo.name}
-                relatedCharacteristics={relatedProductData.meta.characteristics}
-                relatedStyles={relatedProductData.productStyles}
-              />
-            )}
             <img
               className="card-image-object"
               alt={`for ${relatedProductData.productInfo.name}`}
@@ -103,6 +91,18 @@ function Card({
           </div>
         </div>
       )}
+      {/* {(isOpen && characteristics !== null)
+            && (
+              <RelatedProductsModal
+                productName={productName}
+                styles={styles}
+                setIsOpen={setIsOpen}
+                currentCharacteristics={characteristics}
+                relatedName={relatedProductData.productInfo.name}
+                relatedCharacteristics={relatedProductData.meta.characteristics}
+                relatedStyles={relatedProductData.productStyles}
+              />
+            )} */}
     </aside>
   );
 }
