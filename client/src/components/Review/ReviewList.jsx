@@ -23,14 +23,14 @@ const ReviewList = (props) => {
 
     fontSize: '12px',
     cursor: 'pointer',
-    color: toggle === 'yes' ? 'blue' : '#888'
+    color: toggle === 'yes' ? '#bb9d7b' : '#888'
   }
 
   const noStyle = {
 
     fontSize: '12px',
     cursor: 'pointer',
-    color: toggle === 'no' ? 'blue' : '#888'
+    color: toggle === 'no' ? '#bb9d7b' : '#888'
   }
 
 
@@ -43,7 +43,7 @@ const ReviewList = (props) => {
         <div className="col-1-5" style={{overflow: 'hidden'}}>
 
           <h3 style={{paddingTop: '10px'}}>{props.reviewItem.reviewer_name}</h3>
-          {props.reviewItem.recommend && <p style={{fontSize: '12px', color: 'green'}}>✓ I recommend this product</p>}
+          {props.reviewItem.recommend && <p style={{fontSize: '16px', color: '#bb9d7b'}}>✓ I recommend this product</p>}
           <p style={{fontSize: '12px'}}>{props.reviewItem.date}</p>
 
         </div><aside className="col-1-3" style={{overflow: 'hidden'}}>
@@ -53,7 +53,7 @@ const ReviewList = (props) => {
           {!read && props.reviewItem.body.length > 70 && <p>{props.reviewItem.body.slice(0, 70) + '...'}</p>}
           {!read && props.reviewItem.body.length <= 70 && <p>{props.reviewItem.body.slice(0, 70)}</p>}
           {read && <p>{props.reviewItem.body}</p>}
-          {props.reviewItem.body.length > 70 && <span style={{fontStyle: 'italic', fontSize: '14px', color: 'blue', cursor: 'pointer'}}
+          {props.reviewItem.body.length > 70 && <span style={{fontStyle: 'italic', fontSize: '18px', color: '#bb9d7b', cursor: 'pointer'}}
           onClick={() => setRead(!read)}>{readText}</span>}
 
 

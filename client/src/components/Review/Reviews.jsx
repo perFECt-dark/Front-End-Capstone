@@ -147,11 +147,13 @@ function Reviews(props) {
 
   // Styles go here //
   const listOne = {
-    backgroundColor: hoverOne ? '#ebebeb' : 'white'
+    backgroundColor: hoverOne ? '#383838' : '#252525',
+    padding: '10px'
   }
 
   const listTwo = {
-    backgroundColor: hoverTwo ? '#ebebeb' : 'white'
+    backgroundColor: hoverTwo ? '#383838' : '#252525',
+    padding: '10px'
   }
 
   const listScroll = {
@@ -210,11 +212,11 @@ function Reviews(props) {
                 </aside>
 
         </section>
-        <section style={{paddingTop: '10px'}}>
+        <section style={{paddingTop: '10px', paddingBottom: '10px'}}>
 
           <div className="col-2-3"></div><aside className="col-1-3"  style={{textAlign: 'right', padding: '0px'}}>
 
-            <div className="col-1-3"></div><aside className="col-1-3"  style={{textAlign: 'right', padding: '0px'}}>
+            <div className="col-1-3"></div><aside className="col-1-3"  style={{textAlign: 'right', paddingTop: '5px'}}>
 
             <h4>Sort By</h4>
 
@@ -223,14 +225,14 @@ function Reviews(props) {
               <div className="dropdown" style={{textAlign: 'left'}}>
                 <span className="bttn-alt">{sortList[0]}</span>
                 <div className="dropdown-content" style={{cursor: 'pointer'}}>
-                  <p onClick={() => filterReviews(sortList[1])}
+                  <div style={listOne} onClick={() => filterReviews(sortList[1])}
                    onMouseEnter={() => setHoverOne(true)}
-                   onMouseLeave={() => setHoverOne(false)}
-                   style={listOne}>{sortList[1]}</p>
-                  <p onClick={() => filterReviews(sortList[2])}
+                   onMouseLeave={() => setHoverOne(false)}>
+                    <p>{sortList[1]}</p></div>
+                  <div style={listTwo} onClick={() => filterReviews(sortList[2])}
                   onMouseEnter={() => setHoverTwo(true)}
-                  onMouseLeave={() => setHoverTwo(false)}
-                  style={listTwo}>{sortList[2]}</p>
+                  onMouseLeave={() => setHoverTwo(false)}>
+                    <p>{sortList[2]}</p></div>
                 </div>
               </div>
 
