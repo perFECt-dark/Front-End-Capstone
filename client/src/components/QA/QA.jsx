@@ -10,7 +10,7 @@ const { useState, useEffect } = React;
 function QA({ productInfo }) {
   const [showQ, setShowQ] = useState(false);
   // const [showA, setShowA] = useState(false);
-  const [numQ, setNumQ] = useState(2);
+  const [numQ, setNumQ] = useState(4);
   const [questionData, setQuestionData] = useState(null);
   const [curQuestions, setCurQuestions] = useState(null);
   function getQuestion() {
@@ -22,7 +22,7 @@ function QA({ productInfo }) {
     })
       .then((questions) => {
         setQuestionData(questions.data);
-        setCurQuestions(questions.data.slice(0, 2));
+        setCurQuestions(questions.data.slice(0, 4));
       })
       .catch((err) => {
         console.log(err);
