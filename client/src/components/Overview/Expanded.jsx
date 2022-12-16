@@ -25,9 +25,10 @@ const Expanded = ({
   } else {
     right = <button onClick={() => rightClick()} className="right arrows">→</button>;
   }
+  const imgSrc = current.photos[currentImage].url || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
   // background for zoom handler
   const zoomStyle = {
-    backgroundImage: `url(${current.photos[currentImage].url})`,
+    backgroundImage: `url(${imgSrc})`,
   };
   // 2.5x zoom handler
   const zoomHandler = (event) => {
@@ -88,7 +89,13 @@ const Expanded = ({
         {/* <div className="hide-background" /> */}
         <input id="zoom" type="checkbox" />
         <label htmlFor="zoom" className="zoom-background" onFocus={(e) => zoomHandler(e)} onMouseOver={(e) => zoomHandler(e)} style={zoomStyle}>
-          <img id="expanded-image" alt="" src={current.photos[currentImage].url} onClick={(e) => zoomHandler(e)} />
+          <img
+            id="expanded-image"
+            alt=""
+            src={imgSrc}
+            onClick={(e) => zoomHandler(e)}
+            // onError={(e) => { e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'; }}
+          />
         </label>
         {right}
       </aside>

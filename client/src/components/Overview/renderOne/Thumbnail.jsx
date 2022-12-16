@@ -9,12 +9,7 @@ import PropTypes from 'prop-types';
 const Thumbnail = ({
   url, click, index, currentImage, icons,
 }) => {
-  let urlSource;
-  if (url === null) {
-    urlSource = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
-  } else {
-    urlSource = url;
-  }
+  const urlSource = url || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
   let highlight = (
     <img
       className={icons}
@@ -22,6 +17,7 @@ const Thumbnail = ({
       src={urlSource}
       alt=""
       onClick={(e) => { click(e); }}
+      onError={(e) => { e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg'; }}
     />
   );
   if (index === currentImage) {
