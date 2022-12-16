@@ -12,7 +12,7 @@ function AnswerListEntry({ curAnswer }) {
       return;
     }
     setDisableHelpful(true);
-    const url = `http://localhost:3000/qa/answers/${curAnswer.id}/helpful`;
+    const url = `http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/qa/answers/${curAnswer.id}/helpful`;
     axios.put(url, {
       answer_id: curAnswer.id,
     })
@@ -29,7 +29,7 @@ function AnswerListEntry({ curAnswer }) {
       return;
     }
     setDisableReport(true);
-    const url = `http://localhost:3000/qa/answers/${curAnswer.id}/report`;
+    const url = `http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/qa/answers/${curAnswer.id}/report`;
     axios.put(url, {
       answer_id: curAnswer.id,
     })

@@ -50,5 +50,26 @@ module.exports = {
       cb(err);
     });
 
+  },
+
+  putReview: function(cb, review_id, subType) {
+
+    let options = {
+      headers: {
+        Authorization: process.env.AUTH
+      }
+    };
+
+    console.log(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/${subType}`);
+
+    axios.put(`https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/reviews/${review_id}/${subType}`, null, options)
+    .then((response) => {
+
+      cb(null, response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      cb(err);
+    });
   }
 };

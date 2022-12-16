@@ -10,7 +10,7 @@ function AnswerModal({showA, onCloseA, product, curQuestion }) {
     return null;
   }
   function addAnswer(a, n, e) {
-    const url = `http://localhost:3000/qa/questions/${curQuestion.question_id}/answers`;
+    const url = `http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/qa/questions/${curQuestion.question_id}/answers`;
     axios.post(url, {
       body: a,
       name: n,

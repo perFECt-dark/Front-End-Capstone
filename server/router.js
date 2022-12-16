@@ -13,6 +13,9 @@ router.get('/item/:product_id/reviews/:count/:sort', controllers.reviews.get);
 /// Posts a Review
 router.post('/review/submit', controllers.reviews.post);
 
+/// Puts a Review on a Review
+router.put('/reviewId/:review_id/:subType', controllers.reviews.put);
+
 // QA routes below
 // get routes
 router.get('/qa/questions', controllers.questions.getQ);

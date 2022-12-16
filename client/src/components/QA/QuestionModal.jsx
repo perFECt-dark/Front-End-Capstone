@@ -10,7 +10,7 @@ function QuestionModal({showQ, onCloseQ, product, productInfo}) {
     return null;
   }
   function addQuestion(q, n, e) {
-    const url = 'http://localhost:3000/qa/questions';
+    const url = 'http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/qa/questions';
     axios.post(url, {
       body: q,
       name: n,
