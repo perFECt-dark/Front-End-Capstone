@@ -1,5 +1,19 @@
 /*
   ========================================
+  Font
+  ========================================
+*/
+@font-face {
+  font-family: 'Mona Sans';
+  src:
+  url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff supports variations'),
+  url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  }
+
+/*
+  ========================================
   List
   ========================================
 */
@@ -117,12 +131,13 @@
   cursor: pointer;
 }
 .add-the-product {
-  width: 15%;
-  margin-left: 15%;
+  width: 250px;
+  margin-left: 30px;
   background-color: #bb9d7b;
   color: white;
   border: none;
-  height: 30px;
+  font-size: 15px;
+  height: 50px;
   transition: all .2s ease-in;
 }
 .add-the-product:hover {
@@ -210,8 +225,12 @@
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 200px;
-  font-size: 30px;
+  font-size: 60px;
   color: #bb9d7bb3;
+}
+.carousel-right-button {
+  right: 42px;
+  position: relative;
 }
 .carousel-buttons:hover {
   cursor: pointer;

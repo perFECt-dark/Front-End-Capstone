@@ -22,7 +22,8 @@
     "dev": "webpack-dev-server",
     "build": "webpack --config webpack.config.js -w",
     "server-dev": "npx nodemon server/index.js",
-    "test": "jest --silent"
+    "test": "jest --silent",
+    "start": "webpack --config webpack.config.js && npx nodemon server/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
