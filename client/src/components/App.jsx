@@ -56,6 +56,7 @@ function App() {
     <div>
       <header
         className="primary-header container group"
+        style={{ backgroundColor: 'blue' }}
       >
         <h1 className="logo">
           <a href="index.html">
