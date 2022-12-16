@@ -6,7 +6,7 @@ import RelatedProductsModal from './RelatedProductsModal';
 import StarDisplay from '../StarDisplay';
 
 function Card({
-  productName, styles, relatedCardId, characteristics, grabInfo,
+  productName, styles, relatedCardId, characteristics, grabInfo, setIndex,
 }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -65,6 +65,7 @@ function Card({
               className="card-image-object"
               alt={`for ${relatedProductData.productInfo.name}`}
               onClick={() => {
+                setIndex(0);
                 grabInfo(relatedProductData.productInfo.id);
                 window.scrollTo({
                   top: 0,
@@ -78,6 +79,7 @@ function Card({
           <div
             className="card-info"
             onClick={() => {
+              setIndex(0);
               grabInfo(relatedProductData.productInfo.id);
                 window.scrollTo({
                 top: 0,
@@ -111,6 +113,7 @@ Card.propTypes = {
   relatedCardId: propTypes.number.isRequired,
   characteristics: propTypes.shape(),
   grabInfo: propTypes.func.isRequired,
+  // setIndex: propTypes.func.isRequired,
 };
 Card.defaultProps = {
   characteristics: null,

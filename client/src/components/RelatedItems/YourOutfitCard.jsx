@@ -4,7 +4,7 @@ import { GiCancel } from 'react-icons/gi';
 import axios from 'axios';
 import StarDisplay from '../StarDisplay';
 
-function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
+function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId, setIndex }) {
   const [relatedProductData, setRelatedProductData] = useState(null);
 
   function findAverageRating(ratings) {
@@ -51,6 +51,7 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
               alt={`for ${relatedProductData.productInfo.name}`}
               onClick={() => {
                 grabInfo(relatedProductData.productInfo.id);
+                setIndex(0);
                 window.scrollTo({
                   top: 0,
                   left: 0,
@@ -63,6 +64,7 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
           <div
             className="card-info"
             onClick={() => {
+              setIndex(0);
               grabInfo(relatedProductData.productInfo.id);
               window.scrollTo({
                 top: 0,
