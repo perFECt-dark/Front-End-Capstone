@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 import StyleEntry from './renderOne/StyleEntry.jsx';
 
 const StyleSelector = ({ style, click, currentStyle }) => {
+  const textStyle = style.results[currentStyle] || style.results[0];
   return (
     <div id="selection-box" className="right-col">
       <h5 data-testid="current-style">
         Style
         {' > '}
-        {style.results[currentStyle].name}
+        {textStyle.name}
       </h5>
       {style.results.length !== 0
       && style.results.map((item, index) => {
