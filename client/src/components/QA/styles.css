@@ -3,8 +3,18 @@ body {
   background-color: #252525;
 }
 
+@font-face {
+    font-family: 'Mona Sans';
+    src:
+      url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff supports variations'),
+      url('../../Fonts/Mona Sans/Mona-Sans.woff') format('woff-variations');
+    font-weight: 200 900;
+    font-stretch: 75% 125%;
+}
+
 h3 {
   font-weight: bolder;
+  font-family: 'Mona-Sans';
 }
 
 a {
@@ -14,6 +24,7 @@ a {
 
 .qa-main {
   background-color: #252525;
+  font-family: 'Mona-Sans';
 }
 
 .search {
@@ -24,8 +35,9 @@ a {
   font-weight: bold;
   margin-top: 15px;
   margin-bottom: 15px;
-  padding-left: 25px;
+  padding-left: 15px;
   background-color: #bb9d7b;
+  font-family: 'Mona-Sans';
 }
 
 ::placeholder {
@@ -45,19 +57,35 @@ a {
 
 .more-q {
   color: white;
-  font-size: 12.5px;
+  font-size: 15px;
   height: 50px;
   width: 250px;
   background-color: #bb9d7b;
+  font-family: 'Mona-Sans';
+  transition: all .2s ease-in;
 }
 
 .add-q {
   color: white;
-  font-size: 12.5px;
+  font-size: 15px;
   height: 50px;
   width: 250px;
   margin-left: 25px;
   background-color: #bb9d7b;
+  font-family: 'Mona-Sans';
+  transition: all .2s ease-in;
+}
+
+.add-q:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
+}
+
+.more-q:hover{
+  cursor: pointer;
+  background-color: white;
+  color: black;
 }
 
 .question-entry {
@@ -95,7 +123,6 @@ a {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  opacity: .9;
   background-color: #252525;
   border: groove;
 }
@@ -113,7 +140,6 @@ a {
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  opacity: .9;
   background-color: #252525;
   border: groove;
 }
@@ -157,12 +183,14 @@ a {
   height: 150px;
   width: 75%;
   background-color: #252525;
+  color: white;
   border: 1px solid #ddd;
 }
 
 .modal-nickname, .modal-email {
   width: 75%;
   background-color: #252525;
+  color: white;
   border: 1px solid #ddd;
 }
 
@@ -173,6 +201,13 @@ a {
   width: 150px;
   margin-top: 12.5px;
   font-size: 20px;
+  transition: all .2s ease-in;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
 }
 
 .btn {
@@ -241,22 +276,26 @@ a {
   font-size: 15px;
   padding-left: 12.5px;
   padding-right: 5px;
+  cursor: pointer;
 }
 
 .yes-count {
   color: white;
+  font-size: 15px;
 }
 
 .vertical-bar {
   color: white;
   padding-left: 12.5px;
   padding-right: 12.5px;
+  font-size: 17.5px;
 }
 
 .add-answer {
   color: white;
   font-size: 15px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 .report {
@@ -265,6 +304,14 @@ a {
 }
 
 .warning {
-  color: red;
+  color: #bb9d7b;
   font-weight: bold;
+}
+
+.warning-div {
+  padding-bottom: 15px;
+}
+
+textarea:focus, input:focus {
+  outline: none;
 }

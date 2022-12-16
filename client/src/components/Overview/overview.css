@@ -54,7 +54,7 @@ table {
 body {
   background: #252525;
   color: #888;
-  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 
 h1, h2, h3, h4, p {
@@ -265,16 +265,6 @@ a:hover {
   ========================================
 */
 
-.logo {
-  border-top: 4px solid #648880;
-  float: left;
-  font-size: 48px;
-  font-weight: 100;
-  letter-spacing: .5px;
-  line-height: 44px;
-  padding: 20px 0 22px 0;
-  text-transform: uppercase;
-}
 
 .tagline {
   margin: 66px 0 22px 0;
@@ -293,10 +283,10 @@ a:hover {
   color: #fff;
 }
 
-.primary-header a:hover,
+/* .primary-header a:hover,
 .primary-footer a:hover {
   color: #648880;
-}
+} */
 
 /*
   ========================================
@@ -413,7 +403,7 @@ a:hover {
 .carousel {
   vertical-align: middle;
   background-position: center;
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(100, 100, 100);
   justify-content: space-between;
 }
 
@@ -481,13 +471,13 @@ a:hover {
 
 .arrows {
   display: flex;
-  margin: auto;
+  margin: auto 0;
   font-size: 30px;
   border: none;
 }
 
 .arrows:hover {
-  color: rgb(142, 142, 142);
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
 
@@ -499,7 +489,7 @@ a:hover {
 }
 
 .expand:hover {
-  color: grey;
+  color: rgb(255, 255, 255);
   cursor: pointer;
 }
 
@@ -541,20 +531,20 @@ a:hover {
   display: none;
   position: absolute;
   z-index: 1;
-  left:0;
-  top:192px;
+  left: 0;
+  top: 170px;
   width: 100%;
   height: 700px;
 }
 
 .expanded-content {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(100, 100, 100);
   margin: 0;
   width: 100%;
 }
 
 .close-expanded {
-  color: rgb(109, 114, 117);
+  color: rgb(0, 0, 0);
   float: right;
   margin: 20px;
   font-size: 30px;
@@ -562,7 +552,7 @@ a:hover {
 }
 
 .close-expanded:hover,.close-expanded:focus{
-  color: black;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   cursor: pointer;
 }
@@ -707,12 +697,12 @@ a:hover {
 }
 
 #read-all-reviews {
-  display: flex;
-  padding-left: 80px;
+  display: inline-flex;
+  margin-left: 75px;
 }
 
 #read-all-reviews:hover {
-  color: blue;
+  color: #bb9d7b;
   text-decoration: underline;
 }
 

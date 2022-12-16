@@ -54,7 +54,7 @@ table {
 body {
   background: #293f50;
   color: #888;
-  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
 }
 
 h1, h2, h3, h4 {
@@ -243,10 +243,9 @@ h1, h3, h4, h5, p {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
+  background-color: #252525;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  padding: 12px 16px;
   right: 2px;
   z-index: 1;
 }
@@ -305,7 +304,7 @@ h1, h3, h4, h5, p {
 */
 
 .logo {
-  border-top: 4px solid #648880;
+  /* border-top: 4px solid #fff; */
   float: left;
   font-size: 48px;
   font-weight: 100;
@@ -332,9 +331,20 @@ h1, h3, h4, h5, p {
   color: #fff;
 }
 
-.primary-header a:hover,
+/* .primary-header a:hover,
 .primary-footer a:hover {
   color: #648880;
+} */
+
+.primary-header {
+
+  background: -webkit-linear-gradient(to right, #bb9d7b, #252525);
+  background: -moz-linear-gradient(to right, #bb9d7b, #252525);
+  background: linear-gradient(to right, #bb9d7b, #252525);
+
+   /* background-color: #bb9d7b; */
+
+  border-radius: 2px;
 }
 
 /*
@@ -527,7 +537,7 @@ h1, h3, h4, h5, p {
 }
 
 #ReviewModalContainer {
-
+  border: groove;
   width: 500px;
   height: 600px;
   border-radius: 2px;
@@ -536,8 +546,8 @@ h1, h3, h4, h5, p {
   display: flex;
   flex-direction: column;
   padding: 25px;
-  overflow: auto;
-  scrollbar-width: thin;
+  /* overflow: auto;
+  scrollbar-width: thin; */
 }
 
 .ReviewModalTitle {
@@ -668,7 +678,8 @@ display: inline;
 
 .ratingBox {
   /* background-color: #adadac; */
-  border-radius: 2px;
+  border-top: 1px solid #fff;
+
 }
 
 .ratingBox h2, .ratingBox h4, .ratingBox span {
