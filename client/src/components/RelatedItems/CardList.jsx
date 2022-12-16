@@ -39,7 +39,7 @@ function CardList({
         </div>
         <div className="col-5">
           {index !== 0
-            && <button className="carousel-buttons" onClick={() => {updateIndex(index, false)}}>←</button> }
+            && <button className="carousel-buttons carousel-right-button" onClick={() => {updateIndex(index, false)}}>←</button> }
         </div><aside className='col-90'>
         <div className="related-products-carousel">
           <div className="inner" style={{ transform: `translateX(-${index * 100}%)` }}>
