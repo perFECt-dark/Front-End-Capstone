@@ -29,7 +29,7 @@ function App() {
 
   // this grabs the info of an product using its id and updates the page to view that product
   function grabInfo(productId) {
-    const newUrl = `http://localhost:3000/item/${productId}`;
+    const newUrl = `http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/item/${productId}`;
     axios
       .get(newUrl)
       .then((update) => {
