@@ -32,6 +32,7 @@ const Gallery = ({
   } else {
     icons = 'thumbnail-icon';
   }
+  const imgSrc = current.photos[currentImage].url || 'https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
   return (
     <section className="carousel">
       <div className="col-1-3" id="thumbnails">
@@ -51,7 +52,12 @@ const Gallery = ({
       </div>
       <aside className="col-7-10 around-image">
         {left}
-        <img id="selected-image" alt="" src={current.photos[currentImage].url} onClick={() => expandClick()} />
+        <img
+          id="selected-image"
+          alt="default"
+          src={imgSrc}
+          onClick={() => expandClick()}
+        />
         {right}
       </aside>
       {expand}

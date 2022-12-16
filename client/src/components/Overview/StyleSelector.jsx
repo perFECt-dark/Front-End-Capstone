@@ -8,7 +8,7 @@ import StyleEntry from './renderOne/StyleEntry.jsx';
 const StyleSelector = ({ style, click, currentStyle }) => {
   return (
     <div id="selection-box" className="right-col">
-      <h5>
+      <h5 data-testid="current-style">
         Style
         {' > '}
         {style.results[currentStyle].name}

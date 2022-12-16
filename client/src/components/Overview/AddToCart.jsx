@@ -35,7 +35,7 @@ const AddToCart = ({ current, info }) => {
       setCart([...cart, {
         itemName: info.name, itemStyle: current.name, itemSize: size, itemAmount: amount,
       }]);
-      console.log(`${amount} ${info.name} with ${current.name} style of size ${size} added`);
+      alert(`${amount} ${info.name} with ${current.name} style of size ${size} added`);
     }
   };
   // console.log(cart); if I want to see what is inside the cart
