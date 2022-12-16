@@ -14,7 +14,7 @@ function QA({ productInfo }) {
   const [questionData, setQuestionData] = useState(null);
   const [curQuestions, setCurQuestions] = useState(null);
   function getQuestion() {
-    const url = 'http://localhost:3000/qa/questions';
+    const url = 'http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/qa/questions';
     axios.get(url, {
       params: {
         data: productInfo.id,

@@ -90,7 +90,7 @@ function Reviews(props) {
     var newCount = reviews.count + increment;
     //console.log('Here is the sort: ', sort);
     //console.log('Here is the count: ', newCount);
-    var newUrl = `http://localhost:3000/item/${reviews.product}/reviews/${newCount}/${sort}`;
+    var newUrl = `http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/item/${reviews.product}/reviews/${newCount}/${sort}`;
 
     axios.get(newUrl)
     .then((reviewData) => {

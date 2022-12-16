@@ -37,7 +37,7 @@ function QAListEntry({ curQuestion, product }) {
       return;
     }
     setDisableHelp(true);
-    const url = `http://localhost:3000/qa/questions/${curQuestion.question_id}/helpful`;
+    const url = `http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/qa/questions/${curQuestion.question_id}/helpful`;
     axios.put(url, {
       question_id: curQuestion.question_id,
     })

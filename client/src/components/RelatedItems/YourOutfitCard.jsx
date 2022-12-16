@@ -26,7 +26,7 @@ function YourOutfitCard({ yourOutfitId, grabInfo, handleDeleteId }) {
   }
 
   useEffect(() => {
-    const newUrl = `http://localhost:3000/item/${yourOutfitId}/card`;
+    const newUrl = `http://ec2-52-41-185-16.us-west-2.compute.amazonaws.com:3000/item/${yourOutfitId}/card`;
     axios
       .get(newUrl)
       .then((infoToReturn) => {
