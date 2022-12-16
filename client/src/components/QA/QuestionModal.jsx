@@ -64,7 +64,9 @@ function QuestionModal({showQ, onCloseQ, product, productInfo}) {
         </div>
         <div className="modal-content" />
         <div className="modal-body">
+          <div className="warning-div">
           {questionWarning ? <a className="warning">You Must Enter The Following</a> : null}
+          </div>
           <form className="modal-form" onSubmit={handleSubmit}>
             <div className="modal-titles">
               Your Question
