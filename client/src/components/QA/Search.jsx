@@ -15,9 +15,12 @@ function Search({ filterQuestions }) {
       filterQuestions('');
     }
   }
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return (
     <div>
-      <form className="search-bar">
+      <form className="search-bar" onSubmit={handleSubmit}>
         <input className="search" type="text" name="search" placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..." onChange={handleChange} />
       </form>
     </div>
