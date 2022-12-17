@@ -23,7 +23,9 @@ An e-commerce product portal
 ## Description
 
 -Overview
+
 -Related Products
+
 -Questions and Answers
     - displays a list of questions and answers based on the current product
         - both lists are expandable and collapsable
@@ -32,6 +34,7 @@ An e-commerce product portal
     - ability to add an answer to a question through add answer
     - able to mark questions and answers as helpful
     - able to report questions or answers for internal review
+    
 -Ratings and Reviews
 
 ## Technologies
