@@ -61,7 +61,7 @@ function QAListEntry({ curQuestion, product }) {
     addMoreAnswers(numAnswers);
   }, [curQuestion]);
   return (
-    <div>
+    <div className="question-space">
       {curAnswers !== null
         ? (
           <div className="question-entry">
