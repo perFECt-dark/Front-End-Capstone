@@ -27,6 +27,7 @@ An e-commerce product portal
 -Related Products
 
 -Questions and Answers
+
     - displays a list of questions and answers based on the current product
         - both lists are expandable and collapsable
     - search bar which filters the questions for a product
