@@ -80,7 +80,7 @@ function QA({ productInfo }) {
               <div>
                 <QuestionModal className="question-modal" showQ={showQ} onCloseQ={() => setShowQ(false)} product={productInfo.name} productInfo={productInfo}/>
               </div>
-              <div>
+              <div className="bottom-buttons">
                 {curQuestions !== null && curQuestions.length !== questionData.length ? <button type="button" className="more-q" onClick={handleMoreQuestions}>MORE ANSWERED QUESTIONS</button> : <button type="button" className="more-q" onClick={collapseQuestions}>COLLAPSE QUESTIONS</button>}
                 {curQuestions !== null && curQuestions.length >= 2 ? <button type="button" className="add-q" onClick={() => setShowQ(true)}>ADD A QUESTION +</button> : null}
               </div>
