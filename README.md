@@ -23,6 +23,12 @@ An e-commerce product portal
 ## Description
 
 -Overview
+    
+    - complete display of all current style's product information
+    - ability to select different images for main gallery display
+    - ability to open large screen modal
+    - ability to 2.5x zoom into image
+    - customer can select size and quantity of current style
 
 -Related Products
 
