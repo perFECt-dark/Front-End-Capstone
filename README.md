@@ -29,6 +29,8 @@ An e-commerce product portal
     - ability to open large screen modal
     - ability to 2.5x zoom into image
     - customer can select size and quantity of current style
+    
+    ![alt text](client/Gallery.png)
 
 -Related Products
 
